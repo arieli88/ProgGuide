@@ -1,0 +1,782 @@
+{
+  "chapterId": "interfaces-abstract",
+  "multipleChoice": [
+    {
+      "id": "exam3-02",
+      "question": "מדוע אין override במימוש מתודת ממשק?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מתודות ממשק סטטיות"
+        },
+        {
+          "id": "b",
+          "text": "מספקים מימוש ראשוני, לא מחליפים בסיס"
+        },
+        {
+          "id": "c",
+          "text": "מתודות ממשק private"
+        },
+        {
+          "id": "d",
+          "text": "override רק לאופרטורים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "override מחליף מימוש קיים ממחלקת בסיס; בממשק אין מימוש קודם.",
+      "wrongExplanations": {
+        "a": "מתודות ממשק הן instance.",
+        "b": "override מחליף מימוש קיים ממחלקת בסיס; בממשק אין מימוש קודם.",
+        "c": "חברי ממשק public.",
+        "d": "override גם לירושה."
+      },
+      "difficulty": "hard",
+      "topicId": "interfaces-abstract",
+      "termsContext": [
+        {
+          "term": "override",
+          "explanation": "דריסת מימוש virtual/abstract ממחלקת בסיס. דורש חתימה זהה ומילת virtual בבסיס."
+        }
+      ]
+    },
+    {
+      "id": "exam3-05",
+      "question": "מחלקה מממשת שני ממשקים עם מתודה זהה — מה קורה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מימוש יחיד מספיק לשניהם"
+        },
+        {
+          "id": "b",
+          "text": "המהדר נכשל"
+        },
+        {
+          "id": "c",
+          "text": "לא ניתן לממש שניהם"
+        },
+        {
+          "id": "d",
+          "text": "חייב לרשת אחד"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "מימוש אחד יכול לעמוד בשני חוזים זהים.",
+      "wrongExplanations": {
+        "a": "מימוש אחד יכול לעמוד בשני חוזים זהים.",
+        "b": "אין התנגשות כשהחתימה זהה.",
+        "c": "כן ניתן.",
+        "d": "ממשקים לא דורשים ירושה."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "exam3-07",
+      "question": "ב-Book מופשטת, GetPrice לכל יורש — איך להצהרה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "public virtual double GetPrice(){return 0;}"
+        },
+        {
+          "id": "b",
+          "text": "public abstract double GetPrice();"
+        },
+        {
+          "id": "c",
+          "text": "public double GetPrice(){}"
+        },
+        {
+          "id": "d",
+          "text": "private abstract double GetPrice();"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract מכריח כל יורש לממש — אין גוף בבסיס.",
+      "wrongExplanations": {
+        "a": "virtual נותן ברירת מחדל, לא מכריח.",
+        "b": "abstract מכריח כל יורש לממש — אין גוף בבסיס.",
+        "c": "חייב abstract.",
+        "d": "abstract לא private."
+      },
+      "difficulty": "hard",
+      "topicId": "interfaces-abstract",
+      "termsContext": [
+        {
+          "term": "abstract",
+          "explanation": "מחלקה/מתודה מופשטת — אין מימוש (מתודה) או אין מופעים (מחלקה). יורש חייב לממש מתודות abstract או להיות abstract."
+        }
+      ]
+    },
+    {
+      "id": "exam3-10",
+      "question": "ממשקים ובנאים — מה נכון?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק בנאי ללא פרמטרים"
+        },
+        {
+          "id": "b",
+          "text": "חובה בנאי לכל ממשק"
+        },
+        {
+          "id": "c",
+          "text": "ממשקים ללא בנאים — לא ניתן ליצור מופע"
+        },
+        {
+          "id": "d",
+          "text": "בנאי במופשטת מאתחל ממשק"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "ממשק = חוזה; אין מופעים ולכן אין בנאים.",
+      "wrongExplanations": {
+        "a": "אין בנאים בממשק.",
+        "b": "לא נכון.",
+        "c": "ממשק = חוזה; אין מופעים ולכן אין בנאים.",
+        "d": "בנאי שייך למחלקה."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "exam3-13",
+      "question": "מה אסור בממשק C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Properties"
+        },
+        {
+          "id": "b",
+          "text": "Events"
+        },
+        {
+          "id": "c",
+          "text": "שדות מופע (Instance Fields)"
+        },
+        {
+          "id": "d",
+          "text": "חתימות מתודה"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "בחומר הקורס — ממשק מגדיר חוזה, לא state כשדות מופע.",
+      "wrongExplanations": {
+        "a": "מאפיינים מותרים.",
+        "b": "אירועים מותרים.",
+        "c": "בחומר הקורס — ממשק מגדיר חוזה, לא state כשדות מופע.",
+        "d": "מתודות מותרות."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "exam3-16",
+      "question": "יורש abstract בלי לממש מתודה מופשטת?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מתעלמים"
+        },
+        {
+          "id": "b",
+          "text": "המחלקה חייבת להיות abstract"
+        },
+        {
+          "id": "c",
+          "text": "מימוש ריק אוטומטי"
+        },
+        {
+          "id": "d",
+          "text": "קריסה בריצה בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אם לא מממשים abstract — המחלקה עצמה abstract.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "אם לא מממשים abstract — המחלקה עצמה abstract.",
+        "c": "לא.",
+        "d": "שגיאת קומפילציה."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract",
+      "termsContext": [
+        {
+          "term": "abstract",
+          "explanation": "מחלקה/מתודה מופשטת — אין מימוש (מתודה) או אין מופעים (מחלקה). יורש חייב לממש מתודות abstract או להיות abstract."
+        }
+      ]
+    },
+    {
+      "id": "exam3-19",
+      "question": "איך ממשק תומך ב-loose coupling?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ירושה מרובה"
+        },
+        {
+          "id": "b",
+          "text": "נתונים פרטיים"
+        },
+        {
+          "id": "c",
+          "text": "תלות בחוזה התנהגות לא במימוש קונקרטי"
+        },
+        {
+          "id": "d",
+          "text": "מתודות static"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "קוד יכול לעבוד מול IChargeable בלי לדעת אם Phone או Car.",
+      "wrongExplanations": {
+        "a": "זה ירושה.",
+        "b": "encapsulation.",
+        "c": "קוד יכול לעבוד מול IChargeable בלי לדעת אם Phone או Car.",
+        "d": "לא קשור."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "exam3-21",
+      "question": "virtual מול abstract במחלקה מופשטת?",
+      "options": [
+        {
+          "id": "a",
+          "text": "virtual חובה, abstract אופציונלי"
+        },
+        {
+          "id": "b",
+          "text": "abstract בלי גוף, virtual עם מימוש ברירת מחדל"
+        },
+        {
+          "id": "c",
+          "text": "virtual אסור ב-abstract"
+        },
+        {
+          "id": "d",
+          "text": "abstract private"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract = חובה לממש ביורש; virtual = אפשר לדרוס אך יש גוף.",
+      "wrongExplanations": {
+        "a": "ההפך.",
+        "b": "abstract = חובה לממש ביורש; virtual = אפשר לדרוס אך יש גוף.",
+        "c": "מותר.",
+        "d": "לא."
+      },
+      "difficulty": "hard",
+      "topicId": "interfaces-abstract",
+      "termsContext": [
+        {
+          "term": "virtual",
+          "explanation": "מסמן מתודה במחלקת בסיס שניתן לדרוס ביורש. בלי virtual — overriding לא יוצר פולימורפיזם דינמי."
+        },
+        {
+          "term": "abstract",
+          "explanation": "מחלקה/מתודה מופשטת — אין מימוש (מתודה) או אין מופעים (מחלקה). יורש חייב לממש מתודות abstract או להיות abstract."
+        }
+      ]
+    },
+    {
+      "id": "exam3-23",
+      "question": "ממשקים מ-C# 8.0?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שדות מופע"
+        },
+        {
+          "id": "b",
+          "text": "מימושי ברירת מחדל למתודות"
+        },
+        {
+          "id": "c",
+          "text": "יצירת מופע עם new"
+        },
+        {
+          "id": "d",
+          "text": "בנאים פרטיים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "default interface methods — הערה: לקורס עדיין חוזה בסיסי.",
+      "wrongExplanations": {
+        "a": "לא בחומר הבסיסי.",
+        "b": "default interface methods — הערה: לקורס עדיין חוזה בסיסי.",
+        "c": "עדיין לא.",
+        "d": "לא."
+      },
+      "difficulty": "hard",
+      "topicId": "interfaces-abstract",
+      "termsContext": [
+        {
+          "term": "interface",
+          "explanation": "חוזה התנהגות — מגדיר מה המחלקה תעשה, לא איך. מימוש public ללא override. מותר לממש כמה ממשקים."
+        }
+      ]
+    },
+    {
+      "id": "exam3-28",
+      "question": "למה Employee נכשל בקומפילציה?",
+      "code": "interface IWorkable {\n    void PerformTask();\n}\n\nclass Employee : IWorkable {\n    void PerformTask() {\n        Console.WriteLine(\"Working...\");\n    }\n}",
+      "options": [
+        {
+          "id": "a",
+          "text": "חייב override"
+        },
+        {
+          "id": "b",
+          "text": "חייב ירושה לפני ממשק"
+        },
+        {
+          "id": "c",
+          "text": "PerformTask חייב public"
+        },
+        {
+          "id": "d",
+          "text": "ממשק בלי פרמטרים"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "מימוש ממשק חייב להיות public (או מפורש).",
+      "wrongExplanations": {
+        "a": "לא override.",
+        "b": "לא נדרש.",
+        "c": "מימוש ממשק חייב להיות public (או מפורש).",
+        "d": "מותר."
+      },
+      "difficulty": "hard",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q16",
+      "question": "האם ניתן ליצור מופע של interface?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כן עם new"
+        },
+        {
+          "id": "b",
+          "text": "לא — רק מימוש במחלקה"
+        },
+        {
+          "id": "c",
+          "text": "כן תמיד"
+        },
+        {
+          "id": "d",
+          "text": "רק static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ממשק = חוזה, לא אובייקט.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "ממשק = חוזה, לא אובייקט.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q17",
+      "question": "מחלקה abstract עם מתודה abstract — יורש חייב:",
+      "options": [
+        {
+          "id": "a",
+          "text": "להתעלם"
+        },
+        {
+          "id": "b",
+          "text": "לממש או להיות abstract"
+        },
+        {
+          "id": "c",
+          "text": "רק public"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "או מימוש או המחלקה abstract.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "או מימוש או המחלקה abstract.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q18",
+      "question": "ממשק — שדות instance (לא static)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מותרים"
+        },
+        {
+          "id": "b",
+          "text": "לא — רק חתימות/מאפיינים/אירועים"
+        },
+        {
+          "id": "c",
+          "text": "חובה"
+        },
+        {
+          "id": "d",
+          "text": "רק private"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בחומר הקורס — אין state בממשק.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "בחומר הקורס — אין state בממשק.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q19",
+      "question": "class X : IA, IB — כמה ממשקים?",
+      "options": [
+        {
+          "id": "a",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "text": "2 — מותר מרובים"
+        },
+        {
+          "id": "c",
+          "text": "0"
+        },
+        {
+          "id": "d",
+          "text": "רק abstract"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "C# תומך בממשקים מרובים.",
+      "wrongExplanations": {
+        "a": "יותר.",
+        "b": "C# תומך בממשקים מרובים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q20",
+      "question": "מימוש ממשק — חתימת מתודה חייבת להיות:",
+      "options": [
+        {
+          "id": "a",
+          "text": "private"
+        },
+        {
+          "id": "b",
+          "text": "public"
+        },
+        {
+          "id": "c",
+          "text": "protected"
+        },
+        {
+          "id": "d",
+          "text": "internal בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מימוש public (ברירת מחדל).",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "מימוש public (ברירת מחדל).",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q21",
+      "question": "abstract class מול interface — מתי abstract?",
+      "options": [
+        {
+          "id": "a",
+          "text": "תמיד"
+        },
+        {
+          "id": "b",
+          "text": "כשיש מימוש משותף + חלק abstract"
+        },
+        {
+          "id": "c",
+          "text": "לעולם לא"
+        },
+        {
+          "id": "d",
+          "text": "רק Java"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract = שילוב מימוש + חוזה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "abstract = שילוב מימוש + חוזה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q22",
+      "question": "IChargeable עם Charge() — Phone ו-Car מממשים — דוגמה ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "HAS-A"
+        },
+        {
+          "id": "b",
+          "text": "loose coupling דרך ממשק"
+        },
+        {
+          "id": "c",
+          "text": "ירושה מרובה"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "קוד עובד מול IChargeable.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "קוד עובד מול IChargeable.",
+        "c": "ממשקים לא ירושה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q23",
+      "question": "override במימוש interface?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כן override"
+        },
+        {
+          "id": "b",
+          "text": "לא — מימוש ראשון, לא דריסה"
+        },
+        {
+          "id": "c",
+          "text": "חובה virtual"
+        },
+        {
+          "id": "d",
+          "text": "רק static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אין מימוש קודם בממשק.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "אין מימוש קודם בממשק.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q24",
+      "question": "Book abstract עם GetPrice() abstract — יורש:",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא חייב"
+        },
+        {
+          "id": "b",
+          "text": "חייב לממש GetPrice"
+        },
+        {
+          "id": "c",
+          "text": "רק static"
+        },
+        {
+          "id": "d",
+          "text": "מוחק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract מכריח מימוש.",
+      "wrongExplanations": {
+        "a": "חייב.",
+        "b": "abstract מכריח מימוש.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "int-q25",
+      "question": "virtual מול abstract בבסיס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "זהים"
+        },
+        {
+          "id": "b",
+          "text": "virtual יש גוף; abstract אין"
+        },
+        {
+          "id": "c",
+          "text": "abstract static"
+        },
+        {
+          "id": "d",
+          "text": "virtual חייב abstract"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract = בלי מימוש בבסיס.",
+      "wrongExplanations": {
+        "a": "שונה.",
+        "b": "abstract = בלי מימוש בבסיס.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "interfaces-abstract"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "interfaces-abstract-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "interfaces-abstract"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "interfaces-abstract-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "interfaces-abstract"
+    },
+    {
+      "id": "interfaces-abstract-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "interfaces-abstract"
+    }
+  ]
+}

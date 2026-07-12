@@ -1,0 +1,587 @@
+{
+  "chapterId": "classes-objects",
+  "multipleChoice": [
+    {
+      "id": "co-m1",
+      "question": "שאלת מחלקות 1: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m2",
+      "question": "שאלת מחלקות 2: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m3",
+      "question": "שאלת מחלקות 3: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m4",
+      "question": "שאלת מחלקות 4: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m5",
+      "question": "שאלת מחלקות 5: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m6",
+      "question": "שאלת מחלקות 6: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m7",
+      "question": "שאלת מחלקות 7: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m8",
+      "question": "שאלת מחלקות 8: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m9",
+      "question": "שאלת מחלקות 9: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m10",
+      "question": "שאלת מחלקות 10: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m11",
+      "question": "שאלת מחלקות 11: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m12",
+      "question": "שאלת מחלקות 12: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m13",
+      "question": "שאלת מחלקות 13: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m14",
+      "question": "שאלת מחלקות 14: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "co-m15",
+      "question": "שאלת מחלקות 15: מה נכון על בנאי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר int"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה"
+        },
+        {
+          "id": "c",
+          "text": "חייב static"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן לעומס"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בנאי חייב שם זהה למחלקה וללא return.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "classes-objects"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "classes-objects-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "classes-objects"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "classes-objects-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "classes-objects"
+    },
+    {
+      "id": "classes-objects-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "classes-objects"
+    }
+  ]
+}

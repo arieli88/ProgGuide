@@ -1,0 +1,636 @@
+{
+  "chapterId": "polymorphism",
+  "multipleChoice": [
+    {
+      "id": "exam3-12",
+      "question": "מדוע myVehicle.Fuel() גורם לשגיאת קומפול?",
+      "code": "interface IDriveable { void Drive(); }\nclass Car : IDriveable {\n    public void Drive() { Console.WriteLine(\"Driving car\"); }\n    public void Fuel() { Console.WriteLine(\"Fueling\"); }\n}\n\nIDriveable myVehicle = new Car();\nmyVehicle.Fuel();",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fuel חייבת virtual"
+        },
+        {
+          "id": "b",
+          "text": "myVehicle מטיפוס IDriveable שאין בו Fuel"
+        },
+        {
+          "id": "c",
+          "text": "ממשק רק void"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן להקצות Car לממשק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "רפרנס ממשק 'רואה' רק מתודות הממשק.",
+      "wrongExplanations": {
+        "a": "לא קשור ל-virtual.",
+        "b": "רפרנס ממשק 'רואה' רק מתודות הממשק.",
+        "c": "לא מגבלה.",
+        "d": "הקצאה חוקית."
+      },
+      "difficulty": "hard",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-m1",
+      "question": "Pet a = new Dog(); a.Speak() עם override — מה יודפס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Animal"
+        },
+        {
+          "id": "b",
+          "text": "Dog"
+        },
+        {
+          "id": "c",
+          "text": "שגיאה"
+        },
+        {
+          "id": "d",
+          "text": "null"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Dynamic dispatch לפי אובייקט בפועל.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "Dynamic dispatch לפי אובייקט בפועל.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism",
+      "termsContext": [
+        {
+          "term": "override",
+          "explanation": "דריסת מימוש virtual/abstract ממחלקת בסיס. דורש חתימה זהה ומילת virtual בבסיס."
+        }
+      ]
+    },
+    {
+      "id": "poly-m2",
+      "question": "override על מתודה לא virtual?",
+      "options": [
+        {
+          "id": "a",
+          "text": "עובד"
+        },
+        {
+          "id": "b",
+          "text": "שגיאת קומפילציה"
+        },
+        {
+          "id": "c",
+          "text": "hiding"
+        },
+        {
+          "id": "d",
+          "text": "ריצה בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חייב virtual בבסיס.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "חייב virtual בבסיס.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism",
+      "termsContext": [
+        {
+          "term": "virtual",
+          "explanation": "מסמן מתודה במחלקת בסיס שניתן לדרוס ביורש. בלי virtual — overriding לא יוצר פולימורפיזם דינמי."
+        },
+        {
+          "term": "override",
+          "explanation": "דריסת מימוש virtual/abstract ממחלקת בסיס. דורש חתימה זהה ומילת virtual בבסיס."
+        }
+      ]
+    },
+    {
+      "id": "poly-q03",
+      "question": "מה ההבדל בין Overloading ל-Overriding?",
+      "options": [
+        {
+          "id": "a",
+          "text": "אין הבדל"
+        },
+        {
+          "id": "b",
+          "text": "Overloading = חתימות שונות; Override = דריסת מימוש בירושה"
+        },
+        {
+          "id": "c",
+          "text": "שניהם דורשים static"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-interfaces"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Overload = compile-time; Override = runtime polymorphism.",
+      "wrongExplanations": {
+        "a": "יש הבדל.",
+        "b": "Overload = compile-time; Override = runtime polymorphism.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q04",
+      "question": "מתודה virtual בבסיס — מה מאפשרת?",
+      "options": [
+        {
+          "id": "a",
+          "text": "להעמיס אותה"
+        },
+        {
+          "id": "b",
+          "text": "לדרוס ב-override ביורש"
+        },
+        {
+          "id": "c",
+          "text": "להפוך ל-static"
+        },
+        {
+          "id": "d",
+          "text": "למחוק אותה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "virtual מאפשר override ביורש.",
+      "wrongExplanations": {
+        "a": "overloading שונה.",
+        "b": "virtual מאפשר override ביורש.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q05",
+      "question": "override ללא virtual בבסיס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "עובד"
+        },
+        {
+          "id": "b",
+          "text": "שגיאת קומפילציה"
+        },
+        {
+          "id": "c",
+          "text": "hiding בלבד"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-runtime"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חייב virtual (או abstract) בבסיס ל-override.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "חייב virtual (או abstract) בבסיס ל-override.",
+        "c": "new מסתיר, לא override.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q06",
+      "question": "Pet p = new Dog(); p.Eat() עם override — איזה Eat רץ?",
+      "options": [
+        {
+          "id": "a",
+          "text": "של Pet"
+        },
+        {
+          "id": "b",
+          "text": "של Dog (לפי אובייקט בפועל)"
+        },
+        {
+          "id": "c",
+          "text": "שגיאה"
+        },
+        {
+          "id": "d",
+          "text": "אף אחד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Dynamic dispatch — לפי טיפוס האובייקט.",
+      "wrongExplanations": {
+        "a": "זה בלי override/hiding.",
+        "b": "Dynamic dispatch — לפי טיפוס האובייקט.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q07",
+      "question": "מהו Dynamic Binding?",
+      "options": [
+        {
+          "id": "a",
+          "text": "קומפילציה בלבד"
+        },
+        {
+          "id": "b",
+          "text": "בחירת מתודה לפי אובייקט בזמן ריצה"
+        },
+        {
+          "id": "c",
+          "text": "המרה ל-string"
+        },
+        {
+          "id": "d",
+          "text": "static בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ההחלטה איזה override לרוץ — בריצה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "ההחלטה איזה override לרוץ — בריצה.",
+        "c": "לא.",
+        "d": "ההפך."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q08",
+      "question": "new במקום override — מה זה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "פולימורפיזם מלא"
+        },
+        {
+          "id": "b",
+          "text": "Method Hiding — לא פולימורפיזם דינמי"
+        },
+        {
+          "id": "c",
+          "text": "שגיאה"
+        },
+        {
+          "id": "d",
+          "text": "interface"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "new מסתיר — עדיין Pet p = new Dog() יקרא ל-Pet אם אין override.",
+      "wrongExplanations": {
+        "a": "לא polymorphism.",
+        "b": "new מסתיר — עדיין Pet p = new Dog() יקרא ל-Pet אם אין override.",
+        "c": "לא שגיאה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q09",
+      "question": "מערך Pet[] עם Dog ו-Cat — דוגמה ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "HAS-A"
+        },
+        {
+          "id": "b",
+          "text": "פולימורפיזם — טיפול אחיד ביורשים"
+        },
+        {
+          "id": "c",
+          "text": "ירושה מרובה"
+        },
+        {
+          "id": "d",
+          "text": "casting בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מערך פולימורפי — כל איבר יורש מ-Pet.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "מערך פולימורפי — כל איבר יורש מ-Pet.",
+        "c": "לא.",
+        "d": "חלק מהתמונה."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q10",
+      "question": "מתי חובה override?",
+      "options": [
+        {
+          "id": "a",
+          "text": "תמיד"
+        },
+        {
+          "id": "b",
+          "text": "כשמממשים abstract או דורסים virtual"
+        },
+        {
+          "id": "c",
+          "text": "רק ב-static"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-main"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract חייב מימוש; virtual אופציונלי לדריסה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "abstract חייב מימוש; virtual אופציונלי לדריסה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q11",
+      "question": "מה קובע איזו מתודה תרוץ ב-override?",
+      "options": [
+        {
+          "id": "a",
+          "text": "טיפוס המשתנה (הצהרה)"
+        },
+        {
+          "id": "b",
+          "text": "טיפוס האובייקט בפועל בזמן ריצה"
+        },
+        {
+          "id": "c",
+          "text": "השם בלבד"
+        },
+        {
+          "id": "d",
+          "text": "ה-namespace"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Runtime type של האובייקט.",
+      "wrongExplanations": {
+        "a": "זה ב-hiding.",
+        "b": "Runtime type של האובייקט.",
+        "c": "לא מספיק.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q12",
+      "question": "Speak() ב-Animal virtual, Dog override — Animal a = new Dog(); a.Speak()",
+      "options": [
+        {
+          "id": "a",
+          "text": "Animal מדבר"
+        },
+        {
+          "id": "b",
+          "text": "Dog מדבר"
+        },
+        {
+          "id": "c",
+          "text": "שגיאה"
+        },
+        {
+          "id": "d",
+          "text": "null"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Override + dynamic binding.",
+      "wrongExplanations": {
+        "a": "רק בלי override.",
+        "b": "Override + dynamic binding.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q13",
+      "question": "פולימורפיזם מאפשר:",
+      "options": [
+        {
+          "id": "a",
+          "text": "למחוק ירושה"
+        },
+        {
+          "id": "b",
+          "text": "קוד שעובד מול בסיס אך מריץ התנהגות יורש"
+        },
+        {
+          "id": "c",
+          "text": "רק private"
+        },
+        {
+          "id": "d",
+          "text": "רק ממשקים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אותו רפרנס — התנהגות שונה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "אותו רפרנס — התנהגות שונה.",
+        "c": "לא.",
+        "d": "גם ממשקים."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q14",
+      "question": "virtual מול abstract?",
+      "options": [
+        {
+          "id": "a",
+          "text": "זהים"
+        },
+        {
+          "id": "b",
+          "text": "virtual יש מימוש בבסיס; abstract אין — חייב ביורש"
+        },
+        {
+          "id": "c",
+          "text": "abstract static"
+        },
+        {
+          "id": "d",
+          "text": "virtual private"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract = ללא גוף בבסיס.",
+      "wrongExplanations": {
+        "a": "שונה.",
+        "b": "abstract = ללא גוף בבסיס.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "poly-q15",
+      "question": "למה משתמשים בפולימורפיזם?",
+      "options": [
+        {
+          "id": "a",
+          "text": "להסתיר קוד"
+        },
+        {
+          "id": "b",
+          "text": "גמישות — אותו קוד לסוגים שונים של אובייקטים"
+        },
+        {
+          "id": "c",
+          "text": "למנוע ירושה"
+        },
+        {
+          "id": "d",
+          "text": "רק למבחן"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "תכנון גמיש וניתן להרחבה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "תכנון גמיש וניתן להרחבה.",
+        "c": "דורש ירושה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "polymorphism"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "polymorphism-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "polymorphism"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "polymorphism-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "polymorphism"
+    },
+    {
+      "id": "polymorphism-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "polymorphism"
+    }
+  ]
+}

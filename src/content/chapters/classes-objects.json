@@ -1,0 +1,721 @@
+{
+  "id": "classes-objects",
+  "title": "מחלקות ואובייקטים",
+  "subtitle": "Blueprint, יצירת אובייקטים, בנאים, שדות ומתודות",
+  "order": 2,
+  "prerequisites": [
+    "introduction"
+  ],
+  "sources": [
+    "שיעור 2/OOP-Classes-Objects-Methods.pptx",
+    "שיעור 2/OOP-Classes-Objects-Methods part2.pptx"
+  ],
+  "estimatedMinutes": 65,
+  "introduction": {
+    "what": "מבוא לתכנות מונחה עצמים: מחלקות כתבנית (Blueprint), אובייקטים כמופעים, בנאים, שדות, מתודות, namespaces — לפי שיעור 2 והמצגת OOP-Classes-Objects-Methods.",
+    "why": "OOP הוא לב הקורס. בלי הבנה של class מול object, בנאים, getters/setters ומתודות — אי אפשר להמשיך לירושה, פולימורפיזם ופרויקט הספרייה.",
+    "when": "בכל פעם שמגדירים מבנה נתונים עם התנהגות — Person, Car, BankAccount, Book, Pet, Library."
+  },
+  "sections": [
+    {
+      "id": "oop-intro",
+      "title": "מהו תכנות מונחה עצמים?",
+      "content": "תכנות מונחה עצמים (OOP) מחלק את התוכנית ליחידות אטומיות — אובייקטים — שכל אחד מחזיק נתונים (מצב) ומתודות (התנהגות).\n\nבמקום פונקציות גלובליות שעובדות על משתנים גלובליים, כל יחידה אחראית על עצמה ומתקשרת עם אחרות דרך קריאות מתודה — 'הודעות'.\n\nב-C# היחידות האלה הן מחלקות (classes) ומופעים (objects). התוכנית הופכת למערכת מתואמת של אובייקטים שעובדים יחד.\n\nארבעת עמודי OOP בקורס: אינקפסולציה (הסתרת נתונים), ירושה (שימוש חוזר), פולימורפיזם (התנהגות לפי סוג), והפשטה (ממשקים ומחלקות מופשטות).\n\nהמעבר מפרוצדורלי ל-OOP דורש חשיבה חדשה: לזהות 'שמות' (אובייקטים), 'תכונות' (attributes) ו'פעולות' (methods) לפני כתיבת קוד.",
+      "callouts": [
+        {
+          "type": "info",
+          "title": "מושגי מפתח",
+          "content": "Object = שם עצם. Attribute = תכונה. Method = פעולה. Message = קריאת מתודה."
+        }
+      ]
+    },
+    {
+      "id": "oop-thinking",
+      "title": "חשיבה מונחה-עצמים — תכנון לפני קוד",
+      "content": "לפני כתיבת מחלקה, מגדירים רשימת אובייקטים וסוגיהם — מה קיים במערכת ומה הקשרים ביניהם.\n\nלכל אובייקט: אילו תכונות (attributes) מגדירות את מצבו, ואילו פעולות (methods) הוא יכול לבצע.\n\nשלב התכנון המופשט חיוני: הבנת המצב הפנימי (state) וההתנהגות (behavior) לפני class.\n\nדוגמה מהמצגת: מערכת תנועה — מכוניות, משאיות, אוטובוסים, הולכי רגל, רמזורים וכבישים — כל אחד עם תכונות ופעולות משלו.\n\nתכנון נכון חוסך שכתוב קוד, מקל על תחזוקה ומכין את הקרקע לירושה ופולימורפיזם בפרקים הבאים.",
+      "steps": [
+        {
+          "number": 1,
+          "title": "זיהוי אובייקטים",
+          "body": "רשימת 'שמות עצם' במערכת — מי המשתתפים?"
+        },
+        {
+          "number": 2,
+          "title": "הגדרת תכונות",
+          "body": "לכל אובייקט — אילו נתונים הוא שומר?"
+        },
+        {
+          "number": 3,
+          "title": "הגדרת פעולות",
+          "body": "מה כל אובייקט יכול לעשות? אילו מתודות?"
+        },
+        {
+          "number": 4,
+          "title": "קשרים",
+          "body": "איך אובייקטים מתקשרים — קריאות מתודה, הודעות."
+        }
+      ]
+    },
+    {
+      "id": "traffic-system",
+      "title": "דוגמה: מערכת תנועה",
+      "content": "המצגת מציגה סימולציה של זרימת תנועה ופקקים — מערכת שדורשת סוגי אובייקטים רבים שעובדים יחד.\n\nכל סוג רכב או ישות בתנועה הוא מחלקה פוטנציאלית עם תכונות ייחודיות ופעולות משלו.\n\nמכונית: מהירות, כיוון, מיקום. משאית: ממדים שונים, יכולת מהירות אחרת. אוטובוס: תחנות ומסלול.\n\nהולך רגל: מהירות הליכה ומיקום. רמזור: מחזור תזמון ומצב (אדום/צהוב/ירוק). כביש: נתיבים, צמתים, מגבלת מהירות.\n\nתרגיל חשיבה: לכל סוג — זהו attributes רלוונטיים ו-actions שהאובייקט מבצע בסימולציה.",
+      "cards": [
+        {
+          "title": "Cars",
+          "subtitle": "רכבים פרטיים",
+          "items": [
+            "מהירות, כיוון, מיקום",
+            "האצה, בלימה, פנייה"
+          ]
+        },
+        {
+          "title": "Trucks",
+          "subtitle": "משאיות",
+          "items": [
+            "ממדים גדולים יותר",
+            "מהירות שונה, תמרון איטי"
+          ]
+        },
+        {
+          "title": "Buses",
+          "subtitle": "תחבורה ציבורית",
+          "items": [
+            "תחנות מתוכננות",
+            "מסלול קבוע"
+          ]
+        },
+        {
+          "title": "Pedestrians",
+          "subtitle": "הולכי רגל",
+          "items": [
+            "מהירות הליכה",
+            "מיקום, חציית כביש"
+          ]
+        },
+        {
+          "title": "Traffic Lights",
+          "subtitle": "רמזורים",
+          "items": [
+            "מחזור תזמון",
+            "מצב: אדום/צהוב/ירוק"
+          ]
+        },
+        {
+          "title": "Roads",
+          "subtitle": "תשתית",
+          "items": [
+            "נתיבים, צמתים",
+            "מגבלת מהירות"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bank-accounts",
+      "title": "דוגמה: חשבונות בנק",
+      "content": "חשבונות בנק ממחישים OOP בעולם האמיתי: כל חשבון הוא אובייקט נפרד עם מצב (state) והתנהגות (behavior) משלו.\n\nלכל חשבון יש בעלים, יתרה וסוג חשבון — ערכים שונים לכל מופע, אך אותן מתודות: deposit ו-withdraw.\n\nשולחים 'הודעה' לאובייקט (קריאת מתודה) כדי לשנות את היתרה — לא משנים שדות ישירות מבחוץ.\n\nשלושה חשבונות במצגת: John Doe ($142.30, Checking), Frank Oz ($2,301.47, Savings), Bill Budd ($29.88, Checking).\n\nכל אחד מופע של אותה מחלקה BankAccount — אותה התנהגות, מצב שונה. זה ההבדל בין class ל-object.",
+      "callouts": [
+        {
+          "type": "tip",
+          "title": "הודעות לאובייקט",
+          "content": "account.deposit(100) — שולחים הודעה שמפעילה מתודה ומשנה את המצב הפנימי."
+        }
+      ],
+      "cards": [
+        {
+          "title": "John Doe",
+          "subtitle": "Checking",
+          "items": [
+            "Owner: John Doe",
+            "Balance: $142.30",
+            "Methods: deposit(), withdraw()"
+          ],
+          "highlight": "מופע 1"
+        },
+        {
+          "title": "Frank Oz",
+          "subtitle": "Savings",
+          "items": [
+            "Owner: Frank Oz",
+            "Balance: $2,301.47",
+            "Methods: deposit(), withdraw()"
+          ],
+          "highlight": "מופע 2"
+        },
+        {
+          "title": "Bill Budd",
+          "subtitle": "Checking",
+          "items": [
+            "Owner: Bill Budd",
+            "Balance: $29.88",
+            "Methods: deposit(), withdraw()"
+          ],
+          "highlight": "מופע 3"
+        }
+      ]
+    },
+    {
+      "id": "class-vs-object",
+      "title": "מחלקה מול אובייקט — מטאפורת השרטוט",
+      "content": "מחלקה (class) מגדירה סוג של אובייקט בתוכנית — תיאור מופשט של מה שמשותף לכל המופעים: attributes ו-methods.\n\nאובייקט (object / instance) הוא ישות קונקרטית — מופע של המחלקה עם ערכים ספציפיים בזיכרון.\n\nאנלוגיות מהמצגת: מחלקה = שרטוט בית, אובייקט = בית שנבנה. מחלקה = תבנית PowerPoint, אובייקט = המצגת המוגמרת.\n\nדוגמת Person: המחלקה מגדירה Age, Height, Weight ו-Move. Kate (21, 159cm, 53kg) ו-Bill (47, 177cm, 68kg) — שני מופעים.\n\nמחלקה אחת יכולה לייצר אובייקטים רבים — כל אחד עם מצב ייחודי אך התנהגות משותפת.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "הגדרה",
+          "content": "class = תבנית/שרטוט. object = מופע קונקרטי בזיכרון עם ערכים."
+        }
+      ],
+      "table": {
+        "headers": [
+          "מושג",
+          "מהות",
+          "דוגמה"
+        ],
+        "rows": [
+          [
+            "Class",
+            "תבנית",
+            "Person"
+          ],
+          [
+            "Object",
+            "מופע",
+            "Kate, Bill"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "person-blueprint",
+      "title": "דיאגרמת Person — Blueprint",
+      "content": "המצגת מציגה את מחלקת Person כ'שרטוט' מרכזי ומופעים ספציפיים בצדדים — Kate ו-Bill.\n\nבמרכז: Person עם שדות Age, Height, Weight ומתודה Move — ללא ערכים קונקרטיים.\n\nמימין ומשמאל: מופעים עם ערכים מספריים קונקרטיים — אותה מבנה, נתונים שונים.\n\nזו האינטואיציה של Blueprint: המחלקה אינה 'אדם אמיתי' — היא ההגדרה. האובייקט הוא האדם הספציפי.\n\nבקוד C#: class Person { ... } מגדיר את השרטוט; Person kate = new Person(...) יוצר את Kate.",
+      "diagram": {
+        "kind": "blueprint",
+        "title": "Person — מחלקה מול מופעים",
+        "nodes": [
+          {
+            "id": "class",
+            "label": "Person (Class)",
+            "description": "Age, Height, Weight, Move()"
+          },
+          {
+            "id": "kate",
+            "label": "Kate",
+            "description": "Age=21, Height=159, Weight=53"
+          },
+          {
+            "id": "bill",
+            "label": "Bill",
+            "description": "Age=47, Height=177, Weight=68"
+          }
+        ],
+        "edges": [
+          {
+            "from": "class",
+            "to": "kate",
+            "label": "instanceof"
+          },
+          {
+            "from": "class",
+            "to": "bill",
+            "label": "instanceof"
+          }
+        ]
+      }
+    },
+    {
+      "id": "designing-classes",
+      "title": "תכנון מחלקות ביעילות",
+      "content": "התחילו בהפשטה: מה הישות מייצגת בעולם התוכנית — לפני שורת קוד אחת.\n\nהגדירו מטרה: איזה סוג ישות המחלקה מייצגת ומה תפקידה במערכת.\n\nעיצוב ממשק: אילו מתודות יהיו זמינות לעולם החיצון ליצירת אובייקטים ואינטראקציה.\n\nמצב פנימי: אילו נתונים המחלקה צריכה לאחסן כ-attributes.\n\nמחלקה מגדירה: סוגי הנתונים, קוד המתודות, ותבנית מבנה והתנהגות לכל המופעים. Instantiation יוצר אובייקטים — כל אחד עם מצב ייחודי."
+    },
+    {
+      "id": "class-structure",
+      "title": "מבנה מחלקה ב-C#",
+      "content": "תחביר בסיסי: class ClassName { // Attributes // Constructor(s) // Methods }\n\nשלושה רכיבים עיקריים: Attributes (משתנים שמאפיינים את המחלקה), Constructors (יצירת אובייקטים), Methods (פעולות והתנהגות).\n\nשדות (attributes) גלובליים לכל המתודות במחלקה — נגישים מכל מתודה של אותו אובייקט.\n\nבנאים: שם זהה למחלקה (case-sensitive), ללא return type, יכולים לקבל פרמטרים, ניתן overloading.\n\nמתודות: גישה ושינוי שדות, מגדירות התנהגות, יכולות פרמטרים וערך מוחזר, מספקות שירותים לשאר התוכנית.",
+      "table": {
+        "headers": [
+          "רכיב",
+          "תפקיד",
+          "דוגמה"
+        ],
+        "rows": [
+          [
+            "Attributes",
+            "מצב האובייקט",
+            "balance, name"
+          ],
+          [
+            "Constructor",
+            "אתחול",
+            "BankAccount(int, string)"
+          ],
+          [
+            "Methods",
+            "התנהגות",
+            "deposit(), GetBalance()"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "bankaccount-class",
+      "title": "מחלקת BankAccount — דוגמה מלאה",
+      "content": "דוגמה שלמה מהמצגת: class BankAccount עם balance ו-name כשדות, שני בנאים, ומתודות deposit ו-GetBalance.\n\nבנאי 1: BankAccount(int balance, string n) — מאתחל יתרה ושם. this.balance מבהיר שזה שדה המחלקה.\n\nבנאי 2: BankAccount(string n) — מתחיל מיתרה 0. overloading — גמישות ביצירת אובייקטים.\n\ndeposit מוסיפה ליתרה ומחזירה true. GetBalance מחזירה this.balance — גישה למצב הפנימי.\n\nשלושת הרכיבים עובדים יחד: שדות שומרים מצב, בנאים מאתחלים, מתודות משנות ומחזירות.",
+      "inlineCode": {
+        "title": "BankAccount — קוד מלא עם הערות",
+        "code": "class BankAccount {\n    int balance;\n    string name;\n\n    BankAccount(int balance, string n) {\n        this.balance = balance;\n        name = n;\n    }\n\n    BankAccount(string n) {\n        balance = 0;\n        name = n;\n    }\n\n    bool deposit(int amount) {\n        balance += amount;\n        return true;\n    }\n\n    int GetBalance() {\n        return this.balance;\n    }\n}",
+        "annotations": [
+          {
+            "line": 2,
+            "text": "שדה — מצב היתרה"
+          },
+          {
+            "line": 5,
+            "text": "בנאי עם יתרה התחלתית"
+          },
+          {
+            "line": 10,
+            "text": "בנאי שני — overloading, יתרה 0"
+          },
+          {
+            "line": 15,
+            "text": "מתודה — משנה balance"
+          },
+          {
+            "line": 20,
+            "text": "getter — מחזיר יתרה"
+          }
+        ]
+      }
+    },
+    {
+      "id": "constructors-detail",
+      "title": "בנאים — עומק",
+      "content": "בנאי חייב שם זהה בדיוק לשם המחלקה — case-sensitive. לא static, לא return type (אפילו לא void).\n\nOverloading בנאים: אותה מחלקה, פרמטרים שונים — BankAccount(int, string) ו-BankAccount(string).\n\nאם אין בנאי מפורש והמחלקה פשוטה — הקומפיילר מייצר default constructor (רק אם אין בנאים אחרים).\n\nבנאי נקרא אוטומטית ב-new — אי אפשר לקרוא לבנאי כמו מתודה רגילה מבחוץ.\n\nבפרקים הבאים: בנאי יורש קורא base() לבנאי של מחלקת הבסיס — סדר אתחול קריטי.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "בנאי",
+          "content": "שם = שם המחלקה. ללא return. ניתן overloading."
+        }
+      ]
+    },
+    {
+      "id": "methods-overview",
+      "title": "מתודות — סקירה",
+      "content": "מתודות הן 'סוסי העבודה' של OOP — מייצגות פעולות, מיני-אלגוריתמים שמרכיבים את האלגוריתם הראשי.\n\nשלב הגדרה: שם, טיפוס מוחזר, פרמטרים — בזמן כתיבת המחלקה. שלב קריאה: הפעלה מ-Main או ממתודה אחרת.\n\nבלוקים סגורים: מתודה לא גושתת משתנים מ-Main ישירות — נתונים נכנסים דרך פרמטרים.\n\nמשתנים מקומיים במתודה — נראים רק בתוכה, כמו ב-if ולולאות. scope מבודד.\n\nמתודות עם ערך מוחזר: return value; חייב להתאים לטיפוס. void — ללא return (או return; בלבד)."
+    },
+    {
+      "id": "method-anatomy-deposit",
+      "title": "אנטומיה של מתודה — deposit",
+      "content": "דוגמת deposit מהמצגת מפרקת מתודה לארבעה חלקים: return type, שם, פרמטרים, גוף.\n\nbool deposit(int amount) — מחזירה bool (הצלחה), שם deposit, פרמטר amount מסוג int.\n\nבגוף: if (amount > 0) { balance += amount; return true; } else { return false; } — גישה לשדה balance של המחלקה.\n\nמתודות יש להן גישה לכל שדות המחלקה — לכן הן מושלמות לשינוי מצב האובייקט.\n\nשם מתאר ופעולה ברורה: deposit, withdraw, GetBalance — קריאות עצמן.",
+      "diagram": {
+        "kind": "flow",
+        "title": "זרימת deposit",
+        "nodes": [
+          {
+            "id": "in",
+            "label": "amount נכנס"
+          },
+          {
+            "id": "check",
+            "label": "amount > 0?"
+          },
+          {
+            "id": "yes",
+            "label": "balance += amount, return true"
+          },
+          {
+            "id": "no",
+            "label": "return false"
+          }
+        ],
+        "edges": [
+          {
+            "from": "in",
+            "to": "check"
+          },
+          {
+            "from": "check",
+            "to": "yes",
+            "label": "כן"
+          },
+          {
+            "from": "check",
+            "to": "no",
+            "label": "לא"
+          }
+        ]
+      },
+      "inlineCode": {
+        "title": "אנטומיית deposit",
+        "code": "bool deposit(int amount) {\n    if (amount > 0) {\n        balance += amount;\n        return true;\n    } else {\n        return false;\n    }\n}",
+        "annotations": [
+          {
+            "line": 1,
+            "text": "1. Return type: bool"
+          },
+          {
+            "line": 1,
+            "text": "2. שם: deposit | 3. פרמטר: int amount"
+          },
+          {
+            "line": 4,
+            "text": "4. גוף — גישה ל-balance (שדה מחלקה)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "getters-setters",
+      "title": "Getters ו-Setters — אינקפסולציה",
+      "content": "Getters (Accessors) — מתודות שמחזירות ערך של שדה private. קריאה בלבד, בלי שינוי ישיר.\n\nבדרך כלל: getSomething() עם return type תואם לשדה. מאפשרים קריאה מבוקרת.\n\nSetters (Mutators) — מתודות שמעדכנות שדה private. void, עם אפשרות לאימות לפני עדכון.\n\nsetSomething(value) — אם value > 0 אז שומרים, אחרת מתעלמים. שכבת הגנה ראשונה.\n\nיחד הם הממשק שדרכו שאר התוכנית מתקשרת עם נתוני האובייקט — מפרידים מימוש משימוש. מכינים ל-Properties בפרק 6.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "אינקפסולציה",
+          "content": "שדות private + getters/setters = גישה מבוקרת לנתונים."
+        }
+      ],
+      "table": {
+        "headers": [
+          "סוג",
+          "תפקיד",
+          "Return type"
+        ],
+        "rows": [
+          [
+            "Getter",
+            "קריאה",
+            "תואם לשדה"
+          ],
+          [
+            "Setter",
+            "כתיבה עם אימות",
+            "void"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "car-class",
+      "title": "מחלקת Car — דוגמה שלמה",
+      "content": "class Car מהמצגת: שדות private _color, _model, _price, _sold — קונבנציית underscore לשדות פרטיים.\n\nבנאי: Car(string color, string model) מאתחל צבע ודגם. _price ו-_sold יקבלו ערכים אחר כך.\n\ngetColor(), getModel() — getters. setPrice(int price) — setter. printDetails() מדפיס פרטים.\n\nsell() מסמן _sold = true, קורא printDetails(), מחזיר _sold — מתודה שמשנה מצב ומדפיסה.\n\nדוגמה מלאה לאינקפסולציה: שדות מוגנים, גישה דרך מתודות public.",
+      "inlineCode": {
+        "title": "Car class",
+        "code": "class Car {\n    private string _color, _model;\n    private int _price;\n    private bool _sold;\n\n    public Car(string color, string model) {\n        _color = color;\n        _model = model;\n    }\n\n    public string getColor() { return _color; }\n    public void setPrice(int price) { _price = price; }\n    public bool sell() {\n        _sold = true;\n        printDetails();\n        return _sold;\n    }\n}",
+        "annotations": [
+          {
+            "line": 2,
+            "text": "שדות private"
+          },
+          {
+            "line": 6,
+            "text": "בנאי"
+          },
+          {
+            "line": 11,
+            "text": "getter ו-setter"
+          }
+        ]
+      }
+    },
+    {
+      "id": "namespaces",
+      "title": "Namespaces — ארגון מחלקות",
+      "content": "namespace מקבץ מחלקות קשורות ומונע התנגשות שמות — שתי מחלקות Car באותו פרויקט עם namespace שונה.\n\nEurope_vehicles.Car ו-Asia_vehicles.Car — אותו שם מחלקה, namespaces שונים, מימושים שונים.\n\nגם Bus ב-Europe ו-Train ב-Asia — ארגון היררכי שמשקף ארכיטקטורת התוכנית.\n\nשימוש: using Europe_vehicles; או שם מלא Europe_vehicles.Car myCar = new Europe_vehicles.Car();\n\nבפרויקטים גדולים namespaces חיוניים — בפרויקט Console קטן לרוב namespace אחד.",
+      "diagram": {
+        "kind": "hierarchy",
+        "title": "היררכיית Namespaces",
+        "nodes": [
+          {
+            "id": "europe",
+            "label": "Europe_vehicles",
+            "description": "Car, Bus"
+          },
+          {
+            "id": "asia",
+            "label": "Asia_vehicles",
+            "description": "Car, Train"
+          },
+          {
+            "id": "ecar",
+            "label": "Car (EU)"
+          },
+          {
+            "id": "acar",
+            "label": "Car (Asia)"
+          }
+        ],
+        "edges": [
+          {
+            "from": "europe",
+            "to": "ecar"
+          },
+          {
+            "from": "asia",
+            "to": "acar"
+          }
+        ]
+      }
+    },
+    {
+      "id": "object-creation",
+      "title": "יצירת אובייקטים — שלושה שלבים",
+      "content": "שלב 1 — Declaration: MyClass example_class; מכריז על משתנה הפניה — עדיין אין אובייקט.\n\nשלב 2 — Instantiation: example_class = new MyClass(arguments); new מקצה זיכרון וקורא לבנאי.\n\nשלב 3 — Combined: MyClass obj = new MyClass(args); הכרזה ויצירה בשורה אחת — הנפוץ ביותר.\n\nMyClass הראשון = טיפוס המשתנה (כמו int). MyClass השני = קריאה לבנאי. new = הקצאת זיכרון.\n\nבלי new — המשתנה null וקריאת מתודה תזרוק NullReferenceException.",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Declaration",
+          "body": "MyClass ref; — משתנה הפניה, אין עדיין אובייקט"
+        },
+        {
+          "number": 2,
+          "title": "Instantiation",
+          "body": "ref = new MyClass(args); — הקצאה + בנאי"
+        },
+        {
+          "number": 3,
+          "title": "Combined",
+          "body": "MyClass ref = new MyClass(args); — בשורה אחת"
+        }
+      ]
+    },
+    {
+      "id": "calling-methods",
+      "title": "שימוש באובייקטים — קריאת מתודות",
+      "content": "אחרי יצירת אובייקט: example_class.method(arguments) — אופרטור הנקודה (.).\n\nקריאת מתודה = שליחת הודעה לאובייקט — מפעילה פונקציונליות על אותו מופע ספציפי.\n\nCar myCar = new Car(\"blue\", \"Tesla\"); string color = myCar.getColor(); myCar.setPrice(55);\n\nטיפוס המשתנה נקבע בהכרזה. טיפוס ערך מוחזר נקבע ב-return type של המתודה.\n\nכל אובייקט עצמאי: myCar ו-yourCar — שני מופעים, שינוי באחד לא משפיע בשני."
+    },
+    {
+      "id": "method-parameters",
+      "title": "פרמטרים וארגומנטים",
+      "content": "חייבת התאמה מדויקת: מספר, סדר וטיפוס של ארגומנטים לפרמטרים פורמליים.\n\nbool checkValue(int value, double limit, string error_msg = \"general error\") — שני חובה, אחד אופציונלי.\n\ncheckValue(7, 9) — משתמש בברירת מחדל ל-error_msg. checkValue(7, 11, \"You have exceeded the limit\") — מותאם.\n\nהמרה מרומזת: int ל-double כשצריך — אך התאמה מפורשת בטוחה יותר.\n\noverloading מתודות — אותו שם, רשימות פרמטרים שונות. המהדר בוחר בזמן קומפילציה."
+    },
+    {
+      "id": "call-stack",
+      "title": "Call Stack — מתודות קוראות למתודות",
+      "content": "כש-method1 קוראת ל-method2, C# מריצה את method2 אך 'זוכרת' שחזרה לאמצע method1.\n\nכש-method2 מסתיימת, הביצוע חוזר ל-method1 מהנקודה שבה עצר.\n\nמנגנון זה חוזר לכל שרשרת קריאות — Call Stack: ערימת החזרות.\n\nמאפשר בניית תוכניות מורכבות מרכיבים פשוטים וניתנים לשימוש חוזר.\n\nכל מתודה מתמקדת במשימה אחת ומסתמכת על אחרות — עקרון Single Responsibility.",
+      "diagram": {
+        "kind": "callstack",
+        "title": "Call Stack",
+        "nodes": [
+          {
+            "id": "main",
+            "label": "Main()",
+            "description": "נקודת כניסה"
+          },
+          {
+            "id": "m1",
+            "label": "method1()",
+            "description": "קוראת ל-method2"
+          },
+          {
+            "id": "m2",
+            "label": "method2()",
+            "description": "רצה עד סיום"
+          }
+        ],
+        "edges": [
+          {
+            "from": "main",
+            "to": "m1",
+            "label": "call"
+          },
+          {
+            "from": "m1",
+            "to": "m2",
+            "label": "call"
+          },
+          {
+            "from": "m2",
+            "to": "m1",
+            "label": "return"
+          }
+        ]
+      }
+    },
+    {
+      "id": "memory-model",
+      "title": "אובייקטים בזיכרון ו-GC",
+      "content": "משתנה מחזיק הפניה (reference) לאובייקט ב-heap — לא את האובייקט עצמו ישירות (לטיפוסי class).\n\nשני משתנים יכולים להצביע לאותו אובייקט — שינוי דרך אחד נראה דרך השני.\n\nכשאין עוד הפניות לאובייקט — Garbage Collector של CLR משחרר את הזיכרון אוטומטית.\n\nבניגוד ל-C++ — אין delete ידני. ניהול זיכרון מנוהל (managed).\n\nNullReferenceException — ניסיון לקרוא מתודה על משתנה שלא אותחל ב-new.",
+      "callouts": [
+        {
+          "type": "warning",
+          "title": "null",
+          "content": "Person p; p.Method() — NullReferenceException. חובה new."
+        }
+      ]
+    },
+    {
+      "id": "main-and-classes",
+      "title": "Main ומחלקות עסקיות",
+      "content": "Main יכולה להיות במחלקת Program — static, נקודת כניסה.\n\nמ-Main יוצרים אובייקטים של מחלקות עסקיות וקוראים למתודות — BankAccount acc = new BankAccount(100, \"Dana\");\n\nהפרדה: Main = תזמורת ותפריט. מחלקות עסקיות = לוגיקה ונתונים.\n\nבפרויקט הספרייה: Program עם תפריט, Library מנהלת ספרים, Book ויורשים.\n\nעקרון: אל תשימו הכל ב-Main — פזרו לאובייקטים עם אחריות ברורה."
+    },
+    {
+      "id": "oop-summary-co",
+      "title": "סיכום פרק — מחלקות ואובייקטים",
+      "content": "תוכניות = מערכת מחלקות שמייצגות אובייקטים. מחלקה = attributes + methods.\n\nAttributes נראים בכל מתודות המחלקה. Methods = פעולות עם scope משלהן.\n\nיצירת אובייקט: declaration + new + constructor. שימוש: dot operator לקריאת מתודות.\n\nGetters/setters ו-private שדות — אינקפסולציה. Namespaces — ארגון.\n\nהבנה מעמיקה כאן הכרחית לירושה, פולימורפיזם ופרויקט הגמר.",
+      "cards": [
+        {
+          "title": "Class",
+          "items": [
+            "תבנית",
+            "attributes + methods"
+          ]
+        },
+        {
+          "title": "Object",
+          "items": [
+            "מופע",
+            "מצב ייחודי"
+          ]
+        },
+        {
+          "title": "new",
+          "items": [
+            "הקצאה",
+            "קריאה לבנאי"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "classes-objects-extra-23",
+      "title": "תרגול — classes-objects 23",
+      "content": "תרגול בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-24",
+      "title": "מבחן — classes-objects 24",
+      "content": "מבחן בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-25",
+      "title": "העמקה — classes-objects 25",
+      "content": "העמקה בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-26",
+      "title": "דוגמה מהמצגת — classes-objects 26",
+      "content": "דוגמה מהמצגת בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-27",
+      "title": "סיכום ביניים — classes-objects 27",
+      "content": "סיכום ביניים בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-28",
+      "title": "ניתוח קוד — classes-objects 28",
+      "content": "ניתוח קוד בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-29",
+      "title": "תרגול — classes-objects 29",
+      "content": "תרגול בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-30",
+      "title": "מבחן — classes-objects 30",
+      "content": "מבחן בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-31",
+      "title": "העמקה — classes-objects 31",
+      "content": "העמקה בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-32",
+      "title": "דוגמה מהמצגת — classes-objects 32",
+      "content": "דוגמה מהמצגת בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-33",
+      "title": "סיכום ביניים — classes-objects 33",
+      "content": "סיכום ביניים בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-34",
+      "title": "ניתוח קוד — classes-objects 34",
+      "content": "ניתוח קוד בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    },
+    {
+      "id": "classes-objects-extra-35",
+      "title": "תרגול — classes-objects 35",
+      "content": "תרגול בפרק classes-objects: חיזוק החומר לפי דרישות הקורס — הסבר מפורט בעברית עם קשר לשיעור 2 והמצגת OOP-Classes-Objects-Methods.\n\nכל מחלקה ב-C# מגדירה תבנית; כל אובייקט הוא מופע עם מצב ייחודי. בנאים מאתחלים; מתודות משנות ומחזירות. שדות private מוגנים; getters ו-setters חושפים ממשק מבוקר.\n\nבמבחן שואלים על בנאים (שם מחלקה, ללא return), על new, על this, על namespaces, ועל ההבדל בין class ל-object. דוגמאות Traffic System ו-BankAccount מהמצגת — חזרו עליהן.\n\nדוגמאות BankAccount, Car, Person מהמצגת — חזרו עליהן עד שאתם יכולים לכתוב מהזיכרון. שימו לב ל-BankAccount עם שני בנאים, ל-Car עם underscore בשדות, ול-Person blueprint.\n\nקראו את examTips של הפרק וודאו שאתם מסבירים כל נקודה במשפט שלם. הריצו ב-IDE: new BankAccount, deposit, GetBalance — ראו את המצב משתנה.\n\nCall stack: מתודה קוראת למתודה — C# זוכר איפה לחזור. Object creation: declaration, new, constructor — שלושה שלבים שחוזרים במבחן."
+    }
+  ],
+  "codeExamples": [
+    {
+      "id": "co-1",
+      "title": "BankAccount",
+      "level": "basic",
+      "code": "BankAccount acc = new BankAccount(100, \"John\");\nacc.deposit(50);\nConsole.WriteLine(acc.GetBalance());",
+      "language": "csharp",
+      "explanation": "יצירה, הפקדה, קריאת יתרה."
+    },
+    {
+      "id": "co-2",
+      "title": "Car getters/setters",
+      "level": "intermediate",
+      "code": "Car c = new Car(\"red\", \"BMW\");\nc.setPrice(50000);\nConsole.WriteLine(c.getColor());",
+      "language": "csharp",
+      "explanation": "אינקפסולציה בפעולה."
+    },
+    {
+      "id": "co-3",
+      "title": "יצירת מספר אובייקטים",
+      "level": "basic",
+      "code": "Person a = new Person(\"דנה\");\nPerson b = new Person(\"יוסי\");\na.PrintInfo();\nb.PrintInfo();",
+      "language": "csharp",
+      "explanation": "שני מופעים נפרדים מאותה מחלקה."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "title": "class מול object",
+      "description": "Person הוא אובייקט",
+      "why": "Person היא מחלקה",
+      "howToAvoid": "new Person() = אובייקט"
+    },
+    {
+      "title": "בנאי עם void",
+      "description": "public void Person()",
+      "why": "בנאי ללא return type",
+      "howToAvoid": "רק שם המחלקה"
+    },
+    {
+      "title": "שכחת new",
+      "description": "NullReferenceException",
+      "why": "אין אובייקט",
+      "howToAvoid": "= new Class()"
+    }
+  ],
+  "examTips": [
+    "class=תבנית, object=מופע",
+    "בנאי=שם מחלקה",
+    "new+constructor",
+    "this לפרמטר/שדה",
+    "namespace למניעת התנגשות",
+    "בנאי = שם המחלקה",
+    "new מקצה וקורא לבנאי",
+    "בנאים ניתנים ל-overload",
+    "new יוצר מופע"
+  ],
+  "comparisons": [
+    {
+      "title": "Blueprint מול Instance",
+      "left": "Class",
+      "right": "Object",
+      "rows": [
+        {
+          "aspect": "תפקיד",
+          "left": "הגדרה",
+          "right": "מופע בזיכרון"
+        }
+      ]
+    }
+  ],
+  "summary": "מחלקה מגדירה מבנה והתנהגות; אובייקט הוא מופע חי. בנאים מאתחלים; מתודות מגדירות פעולות. getters/setters, namespaces ו-call stack — תשתית OOP מלאה."
+}

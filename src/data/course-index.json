@@ -1,0 +1,45 @@
+{
+  "title": "תכנות מתקדם ב-C#",
+  "description": "קורס אינטראקטיבי מלא ב-OOP, ירושה, פולימורפיזם, ממשקים, חריגות, קבצים ו-MySQL — מבוסס על חומרי הקורס הרשמיים",
+  "modules": [
+    {
+      "id": "fundamentals",
+      "title": "יסודות",
+      "description": "רענון, מחלקות, מתודות ואינקפסולציה",
+      "chapterIds": ["introduction", "classes-objects", "methods-encapsulation"]
+    },
+    {
+      "id": "oop-core",
+      "title": "OOP מרכזי",
+      "description": "ירושה, פולימורפיזם והמרות טיפוסים",
+      "chapterIds": ["inheritance", "polymorphism", "casting-relationships"]
+    },
+    {
+      "id": "advanced-oop",
+      "title": "OOP מתקדם",
+      "description": "מאפיינים, אופרטורים, ממשקים ומופשטות",
+      "chapterIds": ["properties", "operator-overloading", "interfaces-abstract"]
+    },
+    {
+      "id": "practical",
+      "title": "יישום מעשי",
+      "description": "חריגות, קבצים, מסדי נתונים ופרויקט גמר",
+      "chapterIds": ["exceptions", "files", "mysql", "library-project"]
+    }
+  ],
+  "chapters": [
+    { "id": "introduction", "title": "מבוא ורענון", "order": 1 },
+    { "id": "classes-objects", "title": "מחלקות ואובייקטים", "order": 2 },
+    { "id": "methods-encapsulation", "title": "מתודות ואינקפסולציה", "order": 3 },
+    { "id": "inheritance", "title": "ירושה", "order": 4 },
+    { "id": "polymorphism", "title": "פולימורפיזם", "order": 5 },
+    { "id": "casting-relationships", "title": "Casting ויחסי IS-A / HAS-A", "order": 6 },
+    { "id": "properties", "title": "מאפיינים (Properties)", "order": 7 },
+    { "id": "operator-overloading", "title": "העמסת אופרטורים", "order": 8 },
+    { "id": "interfaces-abstract", "title": "ממשקים ומחלקות מופשטות", "order": 9 },
+    { "id": "exceptions", "title": "חריגות וטיפול בשגיאות", "order": 10 },
+    { "id": "files", "title": "עבודה עם קבצים", "order": 11 },
+    { "id": "mysql", "title": "MySQL ו-ADO.NET", "order": 12 },
+    { "id": "library-project", "title": "פרויקט ספרייה", "order": 13 }
+  ]
+}

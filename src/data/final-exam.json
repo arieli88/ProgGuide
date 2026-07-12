@@ -1,0 +1,1861 @@
+[
+  {
+    "id": "exam-1",
+    "question": "מה יקרה אם מתודת Main חסרה?",
+    "options": [
+      {
+        "id": "a",
+        "text": "התוכנית תרוץ כרגיל"
+      },
+      {
+        "id": "b",
+        "text": "שגיאת קומפילציה — אין נקודת כניסה"
+      },
+      {
+        "id": "c",
+        "text": "שגיאת זמן ריצה בלבד"
+      },
+      {
+        "id": "d",
+        "text": "תיווצר תוכנית ללא פלט"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "לפי הקורס, Main היא נקודת הכניסה. בלעדיה אין קומפילציה תקינה.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "לפי הקורס, Main היא נקודת הכניסה. בלעדיה אין קומפילציה תקינה.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "introduction",
+    "chapterIds": [
+      "introduction"
+    ]
+  },
+  {
+    "id": "exam-2",
+    "question": "מה יודפס?\nint x=5; int y=0;\nif(x>3||y++>0) Console.WriteLine(y);",
+    "options": [
+      {
+        "id": "a",
+        "text": "0"
+      },
+      {
+        "id": "b",
+        "text": "1"
+      },
+      {
+        "id": "c",
+        "text": "שגיאת קומפילציה"
+      },
+      {
+        "id": "d",
+        "text": "חריגה"
+      }
+    ],
+    "correctId": "a",
+    "explanation": "בגלל short-circuit, y++ לא מתבצע כי x>3 כבר true.",
+    "wrongExplanations": {
+      "a": "בגלל short-circuit, y++ לא מתבצע כי x>3 כבר true.",
+      "b": "לא נכון לפי חומר הקורס.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "introduction",
+    "chapterIds": [
+      "introduction"
+    ],
+    "termsContext": [
+      {
+        "term": "Short-circuit",
+        "explanation": "ב-||: אם x>3 כבר true, y++>0 לא נבדק — y נשאר 0."
+      }
+    ],
+    "code": "int x = 5;\nint y = 0;\nif (x > 3 || y++ > 0)\n    Console.WriteLine(y);",
+    "detailedExplanation": "שלב 1: x=5, y=0.\nשלב 2: בודקים x>3 → true.\nשלב 3: בגלל || ו-short-circuit, הצד השני (y++>0) לא רץ — y לא משתנה.\nשלב 4: מדפיסים y → 0."
+  },
+  {
+    "id": "exam-3",
+    "question": "מה נכון לגבי short-circuit?",
+    "options": [
+      {
+        "id": "a",
+        "text": "שני הצדדים תמיד נבדקים"
+      },
+      {
+        "id": "b",
+        "text": "הצד השני לא יוערך אם הראשון קובע את התוצאה"
+      },
+      {
+        "id": "c",
+        "text": "רק עם |"
+      },
+      {
+        "id": "d",
+        "text": "רק בלולאות"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "זה עיקרון ה-short-circuit evaluation ב-C#.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "זה עיקרון ה-short-circuit evaluation ב-C#.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "introduction",
+    "chapterIds": [
+      "introduction"
+    ],
+    "termsContext": [
+      {
+        "term": "Short-circuit",
+        "explanation": "&&: אם הראשון false — השני לא נבדק. ||: אם הראשון true — השני לא נבדק."
+      }
+    ],
+    "detailedExplanation": "Short-circuit: הצד השני לא מוערך אם הראשון כבר קובע את התוצאה הסופית של && או ||.\n\nזה לא קשור ללולאות ולא דורש | בודד — זה התנהגות של && ו-||."
+  },
+  {
+    "id": "exam-4",
+    "question": "מה יודפס? Console.WriteLine(x++ + ++x); כש-x=5",
+    "options": [
+      {
+        "id": "a",
+        "text": "11"
+      },
+      {
+        "id": "b",
+        "text": "12"
+      },
+      {
+        "id": "c",
+        "text": "13"
+      },
+      {
+        "id": "d",
+        "text": "שגיאה"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "x++ מחזיר 5 ואז x=6; ++x הופך ל-7 ומחזיר 7; 5+7=12.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "x++ מחזיר 5 ואז x=6; ++x הופך ל-7 ומחזיר 7; 5+7=12.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "introduction",
+    "chapterIds": [
+      "introduction"
+    ],
+    "termsContext": [
+      {
+        "term": "Postfix/Prefix ++",
+        "explanation": "x++ מחזיר 5 ואז x=6. ++x מגדיל ל-7 ומחזיר 7. סכום: 5+7=12."
+      }
+    ],
+    "code": "int x = 5;\nConsole.WriteLine(x++ + ++x);",
+    "detailedExplanation": "התחלה: x = 5.\n\nשלב 1 — x++: מחזיר 5, x=6.\nשלב 2 — ++x: x=7, מחזיר 7.\nשלב 3: 5+7=12.\n\nx בסוף הביטוי הוא 7, אבל התשובה היא 12."
+  },
+  {
+    "id": "exam-5",
+    "question": "שאלת מחלקות 1: מה נכון על בנאי?",
+    "options": [
+      {
+        "id": "a",
+        "text": "מחזיר int"
+      },
+      {
+        "id": "b",
+        "text": "שם זהה למחלקה"
+      },
+      {
+        "id": "c",
+        "text": "חייב static"
+      },
+      {
+        "id": "d",
+        "text": "לא ניתן לעומס"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "בנאי חייב שם זהה למחלקה וללא return.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "classes-objects",
+    "chapterIds": [
+      "classes-objects"
+    ]
+  },
+  {
+    "id": "exam-6",
+    "question": "שאלת מחלקות 2: מה נכון על בנאי?",
+    "options": [
+      {
+        "id": "a",
+        "text": "מחזיר int"
+      },
+      {
+        "id": "b",
+        "text": "שם זהה למחלקה"
+      },
+      {
+        "id": "c",
+        "text": "חייב static"
+      },
+      {
+        "id": "d",
+        "text": "לא ניתן לעומס"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "בנאי חייב שם זהה למחלקה וללא return.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "classes-objects",
+    "chapterIds": [
+      "classes-objects"
+    ]
+  },
+  {
+    "id": "exam-7",
+    "question": "שאלת מחלקות 3: מה נכון על בנאי?",
+    "options": [
+      {
+        "id": "a",
+        "text": "מחזיר int"
+      },
+      {
+        "id": "b",
+        "text": "שם זהה למחלקה"
+      },
+      {
+        "id": "c",
+        "text": "חייב static"
+      },
+      {
+        "id": "d",
+        "text": "לא ניתן לעומס"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "בנאי חייב שם זהה למחלקה וללא return.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "classes-objects",
+    "chapterIds": [
+      "classes-objects"
+    ]
+  },
+  {
+    "id": "exam-8",
+    "question": "שאלת מחלקות 4: מה נכון על בנאי?",
+    "options": [
+      {
+        "id": "a",
+        "text": "מחזיר int"
+      },
+      {
+        "id": "b",
+        "text": "שם זהה למחלקה"
+      },
+      {
+        "id": "c",
+        "text": "חייב static"
+      },
+      {
+        "id": "d",
+        "text": "לא ניתן לעומס"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "בנאי חייב שם זהה למחלקה וללא return.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "בנאי חייב שם זהה למחלקה וללא return.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "classes-objects",
+    "chapterIds": [
+      "classes-objects"
+    ]
+  },
+  {
+    "id": "exam-13",
+    "question": "מה לא ניתן להוריש?",
+    "options": [
+      {
+        "id": "a",
+        "text": "שדות protected"
+      },
+      {
+        "id": "b",
+        "text": "מתודות virtual"
+      },
+      {
+        "id": "c",
+        "text": "בנאי"
+      },
+      {
+        "id": "d",
+        "text": "שדות public"
+      }
+    ],
+    "correctId": "c",
+    "explanation": "בנאי לא יורש — צריך להגדיר ביורש עם base.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "לא נכון לפי חומר הקורס.",
+      "c": "בנאי לא יורש — צריך להגדיר ביורש עם base.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "inheritance",
+    "chapterIds": [
+      "inheritance"
+    ]
+  },
+  {
+    "id": "exam-14",
+    "question": "תחביר ירושה ב-C#?",
+    "options": [
+      {
+        "id": "a",
+        "text": "extends Pet"
+      },
+      {
+        "id": "b",
+        "text": ": Pet"
+      },
+      {
+        "id": "c",
+        "text": "inherits Pet"
+      },
+      {
+        "id": "d",
+        "text": "from Pet"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "class Dog : Pet",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "class Dog : Pet",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "inheritance",
+    "chapterIds": [
+      "inheritance"
+    ]
+  },
+  {
+    "id": "exam-17",
+    "question": "Pet a = new Dog(); a.Speak() עם override — מה יודפס?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Animal"
+      },
+      {
+        "id": "b",
+        "text": "Dog"
+      },
+      {
+        "id": "c",
+        "text": "שגיאה"
+      },
+      {
+        "id": "d",
+        "text": "null"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "Dynamic dispatch לפי אובייקט בפועל.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "Dynamic dispatch לפי אובייקט בפועל.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "polymorphism",
+    "chapterIds": [
+      "polymorphism"
+    ],
+    "termsContext": [
+      {
+        "term": "override",
+        "explanation": "דריסת מימוש virtual/abstract ממחלקת בסיס. דורש חתימה זהה ומילת virtual בבסיס."
+      }
+    ]
+  },
+  {
+    "id": "exam-18",
+    "question": "override על מתודה לא virtual?",
+    "options": [
+      {
+        "id": "a",
+        "text": "עובד"
+      },
+      {
+        "id": "b",
+        "text": "שגיאת קומפילציה"
+      },
+      {
+        "id": "c",
+        "text": "hiding"
+      },
+      {
+        "id": "d",
+        "text": "ריצה בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "חייב virtual בבסיס.",
+    "wrongExplanations": {
+      "a": "לא נכון לפי חומר הקורס.",
+      "b": "חייב virtual בבסיס.",
+      "c": "לא נכון לפי חומר הקורס.",
+      "d": "לא נכון לפי חומר הקורס."
+    },
+    "difficulty": "medium",
+    "topicId": "polymorphism",
+    "chapterIds": [
+      "polymorphism"
+    ],
+    "termsContext": [
+      {
+        "term": "virtual",
+        "explanation": "מסמן מתודה במחלקת בסיס שניתן לדרוס ביורש. בלי virtual — overriding לא יוצר פולימורפיזם דינמי."
+      },
+      {
+        "term": "override",
+        "explanation": "דריסת מימוש virtual/abstract ממחלקת בסיס. דורש חתימה זהה ומילת virtual בבסיס."
+      }
+    ]
+  },
+  {
+    "id": "exam-9",
+    "question": "מהי אינקפסולציה לפי הקורס?",
+    "options": [
+      {
+        "id": "a",
+        "text": "חשיפת כל השדות כ-public"
+      },
+      {
+        "id": "b",
+        "text": "הסתרת נתונים פנימיים וגישה מבוקרת דרך מתודות"
+      },
+      {
+        "id": "c",
+        "text": "ירושה מרובה"
+      },
+      {
+        "id": "d",
+        "text": "העמסת אופרטורים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+    "wrongExplanations": {
+      "a": "זה ההפך.",
+      "b": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+      "c": "נושא אחר.",
+      "d": "נושא אחר."
+    },
+    "difficulty": "medium",
+    "topicId": "methods-encapsulation",
+    "chapterIds": [
+      "methods-encapsulation"
+    ]
+  },
+  {
+    "id": "exam-10",
+    "question": "מהי אינקפסולציה לפי הקורס?",
+    "options": [
+      {
+        "id": "a",
+        "text": "חשיפת כל השדות כ-public"
+      },
+      {
+        "id": "b",
+        "text": "הסתרת נתונים פנימיים וגישה מבוקרת דרך מתודות"
+      },
+      {
+        "id": "c",
+        "text": "ירושה מרובה"
+      },
+      {
+        "id": "d",
+        "text": "העמסת אופרטורים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+    "wrongExplanations": {
+      "a": "זה ההפך.",
+      "b": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+      "c": "נושא אחר.",
+      "d": "נושא אחר."
+    },
+    "difficulty": "medium",
+    "topicId": "methods-encapsulation",
+    "chapterIds": [
+      "methods-encapsulation"
+    ]
+  },
+  {
+    "id": "exam-11",
+    "question": "מהי אינקפסולציה לפי הקורס?",
+    "options": [
+      {
+        "id": "a",
+        "text": "חשיפת כל השדות כ-public"
+      },
+      {
+        "id": "b",
+        "text": "הסתרת נתונים פנימיים וגישה מבוקרת דרך מתודות"
+      },
+      {
+        "id": "c",
+        "text": "ירושה מרובה"
+      },
+      {
+        "id": "d",
+        "text": "העמסת אופרטורים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+    "wrongExplanations": {
+      "a": "זה ההפך.",
+      "b": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+      "c": "נושא אחר.",
+      "d": "נושא אחר."
+    },
+    "difficulty": "medium",
+    "topicId": "methods-encapsulation",
+    "chapterIds": [
+      "methods-encapsulation"
+    ]
+  },
+  {
+    "id": "exam-12",
+    "question": "מהי אינקפסולציה לפי הקורס?",
+    "options": [
+      {
+        "id": "a",
+        "text": "חשיפת כל השדות כ-public"
+      },
+      {
+        "id": "b",
+        "text": "הסתרת נתונים פנימיים וגישה מבוקרת דרך מתודות"
+      },
+      {
+        "id": "c",
+        "text": "ירושה מרובה"
+      },
+      {
+        "id": "d",
+        "text": "העמסת אופרטורים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+    "wrongExplanations": {
+      "a": "זה ההפך.",
+      "b": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+      "c": "נושא אחר.",
+      "d": "נושא אחר."
+    },
+    "difficulty": "medium",
+    "topicId": "methods-encapsulation",
+    "chapterIds": [
+      "methods-encapsulation"
+    ]
+  },
+  {
+    "id": "exam-15",
+    "question": "מה מייצגת מילת המפתח protected?",
+    "options": [
+      {
+        "id": "a",
+        "text": "נגיש רק בתוך המחלקה"
+      },
+      {
+        "id": "b",
+        "text": "נגיש למחלקה וליורשים"
+      },
+      {
+        "id": "c",
+        "text": "נגיש מכל מקום"
+      },
+      {
+        "id": "d",
+        "text": "נגיש רק ליורשים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "protected = המחלקה + יורשים.",
+    "wrongExplanations": {
+      "a": "זה private.",
+      "b": "protected = המחלקה + יורשים.",
+      "c": "זה public.",
+      "d": "גם המחלקה עצמה."
+    },
+    "difficulty": "medium",
+    "topicId": "inheritance",
+    "chapterIds": [
+      "inheritance"
+    ]
+  },
+  {
+    "id": "exam-16",
+    "question": "מה מייצגת מילת המפתח protected?",
+    "options": [
+      {
+        "id": "a",
+        "text": "נגיש רק בתוך המחלקה"
+      },
+      {
+        "id": "b",
+        "text": "נגיש למחלקה וליורשים"
+      },
+      {
+        "id": "c",
+        "text": "נגיש מכל מקום"
+      },
+      {
+        "id": "d",
+        "text": "נגיש רק ליורשים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "protected = המחלקה + יורשים.",
+    "wrongExplanations": {
+      "a": "זה private.",
+      "b": "protected = המחלקה + יורשים.",
+      "c": "זה public.",
+      "d": "גם המחלקה עצמה."
+    },
+    "difficulty": "medium",
+    "topicId": "inheritance",
+    "chapterIds": [
+      "inheritance"
+    ]
+  },
+  {
+    "id": "exam-19",
+    "question": "מה ההבדל בין Overloading ל-Overriding?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין הבדל"
+      },
+      {
+        "id": "b",
+        "text": "Overloading = חתימות שונות; Override = דריסת מימוש בירושה"
+      },
+      {
+        "id": "c",
+        "text": "שניהם דורשים static"
+      },
+      {
+        "id": "d",
+        "text": "רק ב-interfaces"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "Overload = compile-time; Override = runtime polymorphism.",
+    "wrongExplanations": {
+      "a": "יש הבדל.",
+      "b": "Overload = compile-time; Override = runtime polymorphism.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "polymorphism",
+    "chapterIds": [
+      "polymorphism"
+    ]
+  },
+  {
+    "id": "exam-20",
+    "question": "מה ההבדל בין Overloading ל-Overriding?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין הבדל"
+      },
+      {
+        "id": "b",
+        "text": "Overloading = חתימות שונות; Override = דריסת מימוש בירושה"
+      },
+      {
+        "id": "c",
+        "text": "שניהם דורשים static"
+      },
+      {
+        "id": "d",
+        "text": "רק ב-interfaces"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "Overload = compile-time; Override = runtime polymorphism.",
+    "wrongExplanations": {
+      "a": "יש הבדל.",
+      "b": "Overload = compile-time; Override = runtime polymorphism.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "polymorphism",
+    "chapterIds": [
+      "polymorphism"
+    ]
+  },
+  {
+    "id": "exam-21",
+    "question": "מה ההבדל בין IS-A ל-HAS-A?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין"
+      },
+      {
+        "id": "b",
+        "text": "IS-A = ירושה; HAS-A = הרכבה (מחזיק אובייקט אחר)"
+      },
+      {
+        "id": "c",
+        "text": "שניהם ירושה"
+      },
+      {
+        "id": "d",
+        "text": "שניהם ממשק"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+    "wrongExplanations": {
+      "a": "יש.",
+      "b": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "casting-relationships",
+    "chapterIds": [
+      "casting-relationships"
+    ]
+  },
+  {
+    "id": "exam-22",
+    "question": "מה ההבדל בין IS-A ל-HAS-A?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין"
+      },
+      {
+        "id": "b",
+        "text": "IS-A = ירושה; HAS-A = הרכבה (מחזיק אובייקט אחר)"
+      },
+      {
+        "id": "c",
+        "text": "שניהם ירושה"
+      },
+      {
+        "id": "d",
+        "text": "שניהם ממשק"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+    "wrongExplanations": {
+      "a": "יש.",
+      "b": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "casting-relationships",
+    "chapterIds": [
+      "casting-relationships"
+    ]
+  },
+  {
+    "id": "exam-23",
+    "question": "מה ההבדל בין IS-A ל-HAS-A?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין"
+      },
+      {
+        "id": "b",
+        "text": "IS-A = ירושה; HAS-A = הרכבה (מחזיק אובייקט אחר)"
+      },
+      {
+        "id": "c",
+        "text": "שניהם ירושה"
+      },
+      {
+        "id": "d",
+        "text": "שניהם ממשק"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+    "wrongExplanations": {
+      "a": "יש.",
+      "b": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "casting-relationships",
+    "chapterIds": [
+      "casting-relationships"
+    ]
+  },
+  {
+    "id": "exam-24",
+    "question": "מה ההבדל בין IS-A ל-HAS-A?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין"
+      },
+      {
+        "id": "b",
+        "text": "IS-A = ירושה; HAS-A = הרכבה (מחזיק אובייקט אחר)"
+      },
+      {
+        "id": "c",
+        "text": "שניהם ירושה"
+      },
+      {
+        "id": "d",
+        "text": "שניהם ממשק"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+    "wrongExplanations": {
+      "a": "יש.",
+      "b": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "casting-relationships",
+    "chapterIds": [
+      "casting-relationships"
+    ]
+  },
+  {
+    "id": "exam-25",
+    "question": "מה יתרון auto-property { get; set; }?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין גישה"
+      },
+      {
+        "id": "b",
+        "text": "תחביר קצר — הקומפיילר יוצר backing field"
+      },
+      {
+        "id": "c",
+        "text": "חייב validation"
+      },
+      {
+        "id": "d",
+        "text": "static בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פשטות — שדה גיבוי אוטומטי.",
+    "wrongExplanations": {
+      "a": "יש גישה.",
+      "b": "פשטות — שדה גיבוי אוטומטי.",
+      "c": "לא חובה.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "properties",
+    "chapterIds": [
+      "properties"
+    ]
+  },
+  {
+    "id": "exam-26",
+    "question": "מה יתרון auto-property { get; set; }?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין גישה"
+      },
+      {
+        "id": "b",
+        "text": "תחביר קצר — הקומפיילר יוצר backing field"
+      },
+      {
+        "id": "c",
+        "text": "חייב validation"
+      },
+      {
+        "id": "d",
+        "text": "static בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פשטות — שדה גיבוי אוטומטי.",
+    "wrongExplanations": {
+      "a": "יש גישה.",
+      "b": "פשטות — שדה גיבוי אוטומטי.",
+      "c": "לא חובה.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "properties",
+    "chapterIds": [
+      "properties"
+    ]
+  },
+  {
+    "id": "exam-27",
+    "question": "מה יתרון auto-property { get; set; }?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין גישה"
+      },
+      {
+        "id": "b",
+        "text": "תחביר קצר — הקומפיילר יוצר backing field"
+      },
+      {
+        "id": "c",
+        "text": "חייב validation"
+      },
+      {
+        "id": "d",
+        "text": "static בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פשטות — שדה גיבוי אוטומטי.",
+    "wrongExplanations": {
+      "a": "יש גישה.",
+      "b": "פשטות — שדה גיבוי אוטומטי.",
+      "c": "לא חובה.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "properties",
+    "chapterIds": [
+      "properties"
+    ]
+  },
+  {
+    "id": "exam-28",
+    "question": "מה יתרון auto-property { get; set; }?",
+    "options": [
+      {
+        "id": "a",
+        "text": "אין גישה"
+      },
+      {
+        "id": "b",
+        "text": "תחביר קצר — הקומפיילר יוצר backing field"
+      },
+      {
+        "id": "c",
+        "text": "חייב validation"
+      },
+      {
+        "id": "d",
+        "text": "static בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פשטות — שדה גיבוי אוטומטי.",
+    "wrongExplanations": {
+      "a": "יש גישה.",
+      "b": "פשטות — שדה גיבוי אוטומטי.",
+      "c": "לא חובה.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "properties",
+    "chapterIds": [
+      "properties"
+    ]
+  },
+  {
+    "id": "exam-29",
+    "question": "אופרטור מועמס חייב להיות:",
+    "options": [
+      {
+        "id": "a",
+        "text": "private instance"
+      },
+      {
+        "id": "b",
+        "text": "public static"
+      },
+      {
+        "id": "c",
+        "text": "virtual"
+      },
+      {
+        "id": "d",
+        "text": "protected"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "חוק C# — public static.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "חוק C# — public static.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "operator-overloading",
+    "chapterIds": [
+      "operator-overloading"
+    ]
+  },
+  {
+    "id": "exam-30",
+    "question": "אופרטור מועמס חייב להיות:",
+    "options": [
+      {
+        "id": "a",
+        "text": "private instance"
+      },
+      {
+        "id": "b",
+        "text": "public static"
+      },
+      {
+        "id": "c",
+        "text": "virtual"
+      },
+      {
+        "id": "d",
+        "text": "protected"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "חוק C# — public static.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "חוק C# — public static.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "operator-overloading",
+    "chapterIds": [
+      "operator-overloading"
+    ]
+  },
+  {
+    "id": "exam-31",
+    "question": "אופרטור מועמס חייב להיות:",
+    "options": [
+      {
+        "id": "a",
+        "text": "private instance"
+      },
+      {
+        "id": "b",
+        "text": "public static"
+      },
+      {
+        "id": "c",
+        "text": "virtual"
+      },
+      {
+        "id": "d",
+        "text": "protected"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "חוק C# — public static.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "חוק C# — public static.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "operator-overloading",
+    "chapterIds": [
+      "operator-overloading"
+    ]
+  },
+  {
+    "id": "exam-32",
+    "question": "אופרטור מועמס חייב להיות:",
+    "options": [
+      {
+        "id": "a",
+        "text": "private instance"
+      },
+      {
+        "id": "b",
+        "text": "public static"
+      },
+      {
+        "id": "c",
+        "text": "virtual"
+      },
+      {
+        "id": "d",
+        "text": "protected"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "חוק C# — public static.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "חוק C# — public static.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "operator-overloading",
+    "chapterIds": [
+      "operator-overloading"
+    ]
+  },
+  {
+    "id": "exam-33",
+    "question": "האם ניתן ליצור מופע של interface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "כן עם new"
+      },
+      {
+        "id": "b",
+        "text": "לא — רק מימוש במחלקה"
+      },
+      {
+        "id": "c",
+        "text": "כן תמיד"
+      },
+      {
+        "id": "d",
+        "text": "רק static"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "ממשק = חוזה, לא אובייקט.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "ממשק = חוזה, לא אובייקט.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "interfaces-abstract",
+    "chapterIds": [
+      "interfaces-abstract"
+    ]
+  },
+  {
+    "id": "exam-34",
+    "question": "האם ניתן ליצור מופע של interface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "כן עם new"
+      },
+      {
+        "id": "b",
+        "text": "לא — רק מימוש במחלקה"
+      },
+      {
+        "id": "c",
+        "text": "כן תמיד"
+      },
+      {
+        "id": "d",
+        "text": "רק static"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "ממשק = חוזה, לא אובייקט.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "ממשק = חוזה, לא אובייקט.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "interfaces-abstract",
+    "chapterIds": [
+      "interfaces-abstract"
+    ]
+  },
+  {
+    "id": "exam-35",
+    "question": "האם ניתן ליצור מופע של interface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "כן עם new"
+      },
+      {
+        "id": "b",
+        "text": "לא — רק מימוש במחלקה"
+      },
+      {
+        "id": "c",
+        "text": "כן תמיד"
+      },
+      {
+        "id": "d",
+        "text": "רק static"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "ממשק = חוזה, לא אובייקט.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "ממשק = חוזה, לא אובייקט.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "interfaces-abstract",
+    "chapterIds": [
+      "interfaces-abstract"
+    ]
+  },
+  {
+    "id": "exam-36",
+    "question": "האם ניתן ליצור מופע של interface?",
+    "options": [
+      {
+        "id": "a",
+        "text": "כן עם new"
+      },
+      {
+        "id": "b",
+        "text": "לא — רק מימוש במחלקה"
+      },
+      {
+        "id": "c",
+        "text": "כן תמיד"
+      },
+      {
+        "id": "d",
+        "text": "רק static"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "ממשק = חוזה, לא אובייקט.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "ממשק = חוזה, לא אובייקט.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "interfaces-abstract",
+    "chapterIds": [
+      "interfaces-abstract"
+    ]
+  },
+  {
+    "id": "exam-37",
+    "question": "מה תפקיד try/catch?",
+    "options": [
+      {
+        "id": "a",
+        "text": "קומפילציה"
+      },
+      {
+        "id": "b",
+        "text": "טיפול בחריגות בזמן ריצה"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "קבצים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "לוכד exceptions.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "לוכד exceptions.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "exceptions",
+    "chapterIds": [
+      "exceptions"
+    ]
+  },
+  {
+    "id": "exam-38",
+    "question": "מה תפקיד try/catch?",
+    "options": [
+      {
+        "id": "a",
+        "text": "קומפילציה"
+      },
+      {
+        "id": "b",
+        "text": "טיפול בחריגות בזמן ריצה"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "קבצים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "לוכד exceptions.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "לוכד exceptions.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "exceptions",
+    "chapterIds": [
+      "exceptions"
+    ]
+  },
+  {
+    "id": "exam-39",
+    "question": "מה תפקיד try/catch?",
+    "options": [
+      {
+        "id": "a",
+        "text": "קומפילציה"
+      },
+      {
+        "id": "b",
+        "text": "טיפול בחריגות בזמן ריצה"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "קבצים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "לוכד exceptions.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "לוכד exceptions.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "exceptions",
+    "chapterIds": [
+      "exceptions"
+    ]
+  },
+  {
+    "id": "exam-40",
+    "question": "מה תפקיד try/catch?",
+    "options": [
+      {
+        "id": "a",
+        "text": "קומפילציה"
+      },
+      {
+        "id": "b",
+        "text": "טיפול בחריגות בזמן ריצה"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "קבצים"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "לוכד exceptions.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "לוכד exceptions.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "exceptions",
+    "chapterIds": [
+      "exceptions"
+    ]
+  },
+  {
+    "id": "exam-41",
+    "question": "StreamReader משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "כתיבה"
+      },
+      {
+        "id": "b",
+        "text": "קריאת טקסט מקובץ"
+      },
+      {
+        "id": "c",
+        "text": "מסד נתונים"
+      },
+      {
+        "id": "d",
+        "text": "ירושה"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "קריאה שורה-שורה.",
+    "wrongExplanations": {
+      "a": "Writer.",
+      "b": "קריאה שורה-שורה.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "files",
+    "chapterIds": [
+      "files"
+    ]
+  },
+  {
+    "id": "exam-42",
+    "question": "StreamReader משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "כתיבה"
+      },
+      {
+        "id": "b",
+        "text": "קריאת טקסט מקובץ"
+      },
+      {
+        "id": "c",
+        "text": "מסד נתונים"
+      },
+      {
+        "id": "d",
+        "text": "ירושה"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "קריאה שורה-שורה.",
+    "wrongExplanations": {
+      "a": "Writer.",
+      "b": "קריאה שורה-שורה.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "files",
+    "chapterIds": [
+      "files"
+    ]
+  },
+  {
+    "id": "exam-43",
+    "question": "StreamReader משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "כתיבה"
+      },
+      {
+        "id": "b",
+        "text": "קריאת טקסט מקובץ"
+      },
+      {
+        "id": "c",
+        "text": "מסד נתונים"
+      },
+      {
+        "id": "d",
+        "text": "ירושה"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "קריאה שורה-שורה.",
+    "wrongExplanations": {
+      "a": "Writer.",
+      "b": "קריאה שורה-שורה.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "files",
+    "chapterIds": [
+      "files"
+    ]
+  },
+  {
+    "id": "exam-44",
+    "question": "StreamReader משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "כתיבה"
+      },
+      {
+        "id": "b",
+        "text": "קריאת טקסט מקובץ"
+      },
+      {
+        "id": "c",
+        "text": "מסד נתונים"
+      },
+      {
+        "id": "d",
+        "text": "ירושה"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "קריאה שורה-שורה.",
+    "wrongExplanations": {
+      "a": "Writer.",
+      "b": "קריאה שורה-שורה.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "files",
+    "chapterIds": [
+      "files"
+    ]
+  },
+  {
+    "id": "exam-45",
+    "question": "MySqlConnection משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "קריאת קבצים"
+      },
+      {
+        "id": "b",
+        "text": "חיבור למסד MySQL"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "GUI בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פתיחת connection.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "פתיחת connection.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "mysql",
+    "chapterIds": [
+      "mysql"
+    ]
+  },
+  {
+    "id": "exam-46",
+    "question": "MySqlConnection משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "קריאת קבצים"
+      },
+      {
+        "id": "b",
+        "text": "חיבור למסד MySQL"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "GUI בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פתיחת connection.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "פתיחת connection.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "mysql",
+    "chapterIds": [
+      "mysql"
+    ]
+  },
+  {
+    "id": "exam-47",
+    "question": "MySqlConnection משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "קריאת קבצים"
+      },
+      {
+        "id": "b",
+        "text": "חיבור למסד MySQL"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "GUI בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פתיחת connection.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "פתיחת connection.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "mysql",
+    "chapterIds": [
+      "mysql"
+    ]
+  },
+  {
+    "id": "exam-48",
+    "question": "MySqlConnection משמש ל:",
+    "options": [
+      {
+        "id": "a",
+        "text": "קריאת קבצים"
+      },
+      {
+        "id": "b",
+        "text": "חיבור למסד MySQL"
+      },
+      {
+        "id": "c",
+        "text": "ירושה"
+      },
+      {
+        "id": "d",
+        "text": "GUI בלבד"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "פתיחת connection.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "פתיחת connection.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "mysql",
+    "chapterIds": [
+      "mysql"
+    ]
+  },
+  {
+    "id": "exam-49",
+    "question": "Book במערכת הספרייה — תפקיד?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ממשק"
+      },
+      {
+        "id": "b",
+        "text": "מחלקת בסיס לסוגי ספרים"
+      },
+      {
+        "id": "c",
+        "text": "רק Main"
+      },
+      {
+        "id": "d",
+        "text": "SQL"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "היררכיית ספרים.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "היררכיית ספרים.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "library-project",
+    "chapterIds": [
+      "library-project"
+    ]
+  },
+  {
+    "id": "exam-50",
+    "question": "Book במערכת הספרייה — תפקיד?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ממשק"
+      },
+      {
+        "id": "b",
+        "text": "מחלקת בסיס לסוגי ספרים"
+      },
+      {
+        "id": "c",
+        "text": "רק Main"
+      },
+      {
+        "id": "d",
+        "text": "SQL"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "היררכיית ספרים.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "היררכיית ספרים.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "library-project",
+    "chapterIds": [
+      "library-project"
+    ]
+  },
+  {
+    "id": "exam-51",
+    "question": "Book במערכת הספרייה — תפקיד?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ממשק"
+      },
+      {
+        "id": "b",
+        "text": "מחלקת בסיס לסוגי ספרים"
+      },
+      {
+        "id": "c",
+        "text": "רק Main"
+      },
+      {
+        "id": "d",
+        "text": "SQL"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "היררכיית ספרים.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "היררכיית ספרים.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "library-project",
+    "chapterIds": [
+      "library-project"
+    ]
+  },
+  {
+    "id": "exam-52",
+    "question": "Book במערכת הספרייה — תפקיד?",
+    "options": [
+      {
+        "id": "a",
+        "text": "ממשק"
+      },
+      {
+        "id": "b",
+        "text": "מחלקת בסיס לסוגי ספרים"
+      },
+      {
+        "id": "c",
+        "text": "רק Main"
+      },
+      {
+        "id": "d",
+        "text": "SQL"
+      }
+    ],
+    "correctId": "b",
+    "explanation": "היררכיית ספרים.",
+    "wrongExplanations": {
+      "a": "לא.",
+      "b": "היררכיית ספרים.",
+      "c": "לא.",
+      "d": "לא."
+    },
+    "difficulty": "medium",
+    "topicId": "library-project",
+    "chapterIds": [
+      "library-project"
+    ]
+  }
+]

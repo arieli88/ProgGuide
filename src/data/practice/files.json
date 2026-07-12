@@ -1,0 +1,587 @@
+{
+  "chapterId": "files",
+  "multipleChoice": [
+    {
+      "id": "fi-q01",
+      "question": "StreamReader משמש ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "כתיבה"
+        },
+        {
+          "id": "b",
+          "text": "קריאת טקסט מקובץ"
+        },
+        {
+          "id": "c",
+          "text": "מסד נתונים"
+        },
+        {
+          "id": "d",
+          "text": "ירושה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "קריאה שורה-שורה.",
+      "wrongExplanations": {
+        "a": "Writer.",
+        "b": "קריאה שורה-שורה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q02",
+      "question": "StreamWriter משמש ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "קריאה"
+        },
+        {
+          "id": "b",
+          "text": "כתיבת טקסט לקובץ"
+        },
+        {
+          "id": "c",
+          "text": "SQL"
+        },
+        {
+          "id": "d",
+          "text": "cast"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "כתיבה לקובץ.",
+      "wrongExplanations": {
+        "a": "Reader.",
+        "b": "כתיבה לקובץ.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q03",
+      "question": "using (StreamReader sr = ...) — למה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מהירות"
+        },
+        {
+          "id": "b",
+          "text": "סגירה אוטומטית של הקובץ (Dispose)"
+        },
+        {
+          "id": "c",
+          "text": "קומפילציה"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "משאבים משתחררים.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "משאבים משתחררים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q04",
+      "question": "File.Exists(path) מחזיר:",
+      "options": [
+        {
+          "id": "a",
+          "text": "void"
+        },
+        {
+          "id": "b",
+          "text": "bool"
+        },
+        {
+          "id": "c",
+          "text": "string"
+        },
+        {
+          "id": "d",
+          "text": "File"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בודק קיום.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "בודק קיום.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q05",
+      "question": "קריאת CSV — בקורס:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק SQL"
+        },
+        {
+          "id": "b",
+          "text": "פיצול שורות ושדות (Split)"
+        },
+        {
+          "id": "c",
+          "text": "רק binary"
+        },
+        {
+          "id": "d",
+          "text": "לא נלמד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "עיבוד שורות טקסט.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "עיבוד שורות טקסט.",
+        "c": "לא.",
+        "d": "נלמד."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q06",
+      "question": "נתיב קובץ — Path.Combine?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחרוזת אחת בלבד"
+        },
+        {
+          "id": "b",
+          "text": "בניית נתיב בצורה בטוחה"
+        },
+        {
+          "id": "c",
+          "text": "מחיקה"
+        },
+        {
+          "id": "d",
+          "text": "SQL"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שילוב תיקיות.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "שילוב תיקיות.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q07",
+      "question": "FileNotFoundException — מתי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "קובץ לא קיים בקריאה"
+        },
+        {
+          "id": "b",
+          "text": "חלוקה ב-0"
+        },
+        {
+          "id": "c",
+          "text": "null"
+        },
+        {
+          "id": "d",
+          "text": "override"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "קובץ חסר.",
+      "wrongExplanations": {
+        "a": "קובץ חסר.",
+        "b": "לא.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q08",
+      "question": "Append vs Write בכתיבה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "זהים"
+        },
+        {
+          "id": "b",
+          "text": "Append מוסיף לסוף; Write עלול לדרוס"
+        },
+        {
+          "id": "c",
+          "text": "רק קריאה"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "AppendText מוסיף.",
+      "wrongExplanations": {
+        "a": "שונה.",
+        "b": "AppendText מוסיף.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q09",
+      "question": "Directory.CreateDirectory?",
+      "options": [
+        {
+          "id": "a",
+          "text": "קורא קובץ"
+        },
+        {
+          "id": "b",
+          "text": "יוצר תיקייה"
+        },
+        {
+          "id": "c",
+          "text": "SQL"
+        },
+        {
+          "id": "d",
+          "text": "cast"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "יצירת תיקייה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "יצירת תיקייה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q10",
+      "question": "ReadLine() מחזיר:",
+      "options": [
+        {
+          "id": "a",
+          "text": "int"
+        },
+        {
+          "id": "b",
+          "text": "string או null בסוף"
+        },
+        {
+          "id": "c",
+          "text": "bool"
+        },
+        {
+          "id": "d",
+          "text": "void"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שורה או null.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "שורה או null.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q11",
+      "question": "Stream — מהות?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק מסד נתונים"
+        },
+        {
+          "id": "b",
+          "text": "זרם נתונים לקריאה/כתיבה"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "interface בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בסיס ל-FileStream וכו'.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "בסיס ל-FileStream וכו'.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q12",
+      "question": "try/catch בקריאת קובץ — למה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא צריך"
+        },
+        {
+          "id": "b",
+          "text": "קובץ חסר/הרשאות — חריגות"
+        },
+        {
+          "id": "c",
+          "text": "מהירות"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שגיאות I/O.",
+      "wrongExplanations": {
+        "a": "מומלץ.",
+        "b": "שגיאות I/O.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q13",
+      "question": "File.ReadAllText?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק שורה"
+        },
+        {
+          "id": "b",
+          "text": "קורא את כל הקובץ למחרוזת"
+        },
+        {
+          "id": "c",
+          "text": "כותב"
+        },
+        {
+          "id": "d",
+          "text": "SQL"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "קריאה מלאה.",
+      "wrongExplanations": {
+        "a": "ReadLine.",
+        "b": "קריאה מלאה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q14",
+      "question": "Dispose ב-using?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא קשור"
+        },
+        {
+          "id": "b",
+          "text": "משחרר משאבי קובץ"
+        },
+        {
+          "id": "c",
+          "text": "קומפילציה"
+        },
+        {
+          "id": "d",
+          "text": "ירושה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "סגירת handle.",
+      "wrongExplanations": {
+        "a": "קשור.",
+        "b": "סגירת handle.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    },
+    {
+      "id": "fi-q15",
+      "question": "נתיב יחסי מול מוחלט?",
+      "options": [
+        {
+          "id": "a",
+          "text": "זהים"
+        },
+        {
+          "id": "b",
+          "text": "יחסי לתיקיית עבודה; מוחלט מהשורש"
+        },
+        {
+          "id": "c",
+          "text": "רק מוחלט"
+        },
+        {
+          "id": "d",
+          "text": "רק SQL"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שני סוגי נתיבים.",
+      "wrongExplanations": {
+        "a": "שונה.",
+        "b": "שני סוגי נתיבים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "files"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "files-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    },
+    {
+      "id": "files-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "files"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "files-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "files"
+    },
+    {
+      "id": "files-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "files"
+    },
+    {
+      "id": "files-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "files"
+    }
+  ]
+}

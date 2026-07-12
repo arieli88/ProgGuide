@@ -1,0 +1,587 @@
+{
+  "chapterId": "exceptions",
+  "multipleChoice": [
+    {
+      "id": "ex-q01",
+      "question": "מה תפקיד try/catch?",
+      "options": [
+        {
+          "id": "a",
+          "text": "קומפילציה"
+        },
+        {
+          "id": "b",
+          "text": "טיפול בחריגות בזמן ריצה"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "קבצים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "לוכד exceptions.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "לוכד exceptions.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q02",
+      "question": "finally רץ:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק בשגיאה"
+        },
+        {
+          "id": "b",
+          "text": "תמיד — גם אחרי catch או return"
+        },
+        {
+          "id": "c",
+          "text": "לעולם לא"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-try"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "finally תמיד (כמעט).",
+      "wrongExplanations": {
+        "a": "גם בהצלחה.",
+        "b": "finally תמיד (כמעט).",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q03",
+      "question": "int.Parse על \"abc\" — מה קורה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0"
+        },
+        {
+          "id": "b",
+          "text": "FormatException"
+        },
+        {
+          "id": "c",
+          "text": "קומפילציה"
+        },
+        {
+          "id": "d",
+          "text": "null"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חריגה בזמן ריצה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "חריגה בזמן ריצה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q04",
+      "question": "TryParse מול Parse?",
+      "options": [
+        {
+          "id": "a",
+          "text": "זהים"
+        },
+        {
+          "id": "b",
+          "text": "TryParse מחזיר bool בלי לזרוק"
+        },
+        {
+          "id": "c",
+          "text": "Parse בטוח יותר"
+        },
+        {
+          "id": "d",
+          "text": "רק Java"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "TryParse — bool + out.",
+      "wrongExplanations": {
+        "a": "שונה.",
+        "b": "TryParse — bool + out.",
+        "c": "ההפך.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q05",
+      "question": "DivideByZeroException — מתי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "חיבור"
+        },
+        {
+          "id": "b",
+          "text": "חלוקה ב-0"
+        },
+        {
+          "id": "c",
+          "text": "קומפילציה"
+        },
+        {
+          "id": "d",
+          "text": "קריאת קובץ"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חלוקה במספר שלם ב-0.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "חלוקה במספר שלם ב-0.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q06",
+      "question": "throw new Exception() — מה עושה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מתעלם"
+        },
+        {
+          "id": "b",
+          "text": "זורק חריגה"
+        },
+        {
+          "id": "c",
+          "text": "return"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "זריקת exception.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "זריקת exception.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q07",
+      "question": "catch (Exception ex) — ex מכיל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "קוד מקור"
+        },
+        {
+          "id": "b",
+          "text": "מידע על החריגה"
+        },
+        {
+          "id": "c",
+          "text": "רק מספר"
+        },
+        {
+          "id": "d",
+          "text": "null תמיד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Message, StackTrace וכו'.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "Message, StackTrace וכו'.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q08",
+      "question": "IndexOutOfRangeException — מתי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "גישה למערך מחוץ לטווח"
+        },
+        {
+          "id": "b",
+          "text": "קומפילציה"
+        },
+        {
+          "id": "c",
+          "text": "null"
+        },
+        {
+          "id": "d",
+          "text": "ירושה"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "אינדקס לא חוקי.",
+      "wrongExplanations": {
+        "a": "אינדקס לא חוקי.",
+        "b": "לא.",
+        "c": "NullRef אחר.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q09",
+      "question": "NullReferenceException — מתי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "קריאה על null"
+        },
+        {
+          "id": "b",
+          "text": "חלוקה"
+        },
+        {
+          "id": "c",
+          "text": "try"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "אובייקט null.",
+      "wrongExplanations": {
+        "a": "אובייקט null.",
+        "b": "לא.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q10",
+      "question": "למה לא catch ריק (בלי טיפול)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מומלץ"
+        },
+        {
+          "id": "b",
+          "text": "מסתיר באגים — קשה לדבג"
+        },
+        {
+          "id": "c",
+          "text": "חובה"
+        },
+        {
+          "id": "d",
+          "text": "מהיר"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "לפחות לוג או טיפול.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "לפחות לוג או טיפול.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q11",
+      "question": "using עם קבצים — קשור ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "ירושה"
+        },
+        {
+          "id": "b",
+          "text": " IDisposable — שחרור משאבים"
+        },
+        {
+          "id": "c",
+          "text": "פולימורפיזם"
+        },
+        {
+          "id": "d",
+          "text": "ממשקים בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "using מבטיח Dispose.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "using מבטיח Dispose.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q12",
+      "question": "חריגה שלא נתפסת?",
+      "options": [
+        {
+          "id": "a",
+          "text": "נעלמת"
+        },
+        {
+          "id": "b",
+          "text": "עולה במחסנית — עלולה לקרוס את התוכנית"
+        },
+        {
+          "id": "c",
+          "text": "הופכת ל-0"
+        },
+        {
+          "id": "d",
+          "text": "קומפילציה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Unhandled exception.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "Unhandled exception.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q13",
+      "question": "catch ספציפי לפני catch כללי — למה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא משנה"
+        },
+        {
+          "id": "b",
+          "text": "לתפוס טיפוסים ספציפיים לפני Exception"
+        },
+        {
+          "id": "c",
+          "text": "חובה"
+        },
+        {
+          "id": "d",
+          "text": "מהירות"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "סדר catch חשוב.",
+      "wrongExplanations": {
+        "a": "משנה.",
+        "b": "סדר catch חשוב.",
+        "c": "לא חובה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q14",
+      "question": "FormatException — דוגמה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "חלוקה ב-0"
+        },
+        {
+          "id": "b",
+          "text": "המרת מחרוזת לא תקינה למספר"
+        },
+        {
+          "id": "c",
+          "text": "null"
+        },
+        {
+          "id": "d",
+          "text": "קבצים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Parse כושל.",
+      "wrongExplanations": {
+        "a": "Divide.",
+        "b": "Parse כושל.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "ex-q15",
+      "question": "try/catch/finally — finally אחרי return ב-try?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא רץ"
+        },
+        {
+          "id": "b",
+          "text": "רץ לפני ה-return בפועל"
+        },
+        {
+          "id": "c",
+          "text": "שגיאה"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-catch"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "finally לפני יציאה מהפונקציה.",
+      "wrongExplanations": {
+        "a": "רץ.",
+        "b": "finally לפני יציאה מהפונקציה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "exceptions"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "exceptions-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "exceptions"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "exceptions-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "exceptions"
+    },
+    {
+      "id": "exceptions-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "exceptions"
+    }
+  ]
+}

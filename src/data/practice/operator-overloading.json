@@ -1,0 +1,793 @@
+{
+  "chapterId": "operator-overloading",
+  "multipleChoice": [
+    {
+      "id": "exam3-03",
+      "question": "מהו Immutability בהעמסת אופרטורים?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא ניתן לשנות אופרטור"
+        },
+        {
+          "id": "b",
+          "text": "אופרטור לא ישנה את פרמטרי הקלט"
+        },
+        {
+          "id": "c",
+          "text": "ממשקים בלי משתנים"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן להעמיס >"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "best practice: להחזיר אובייקט חדש, לא לשנות אופרנדים.",
+      "wrongExplanations": {
+        "a": "הגדרה לא נכונה.",
+        "b": "best practice: להחזיר אובייקט חדש, לא לשנות אופרנדים.",
+        "c": "נושא אחר.",
+        "d": "ניתן להעמיס השוואות בזוגות."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-04",
+      "question": "איזה אופרטור לא ניתן להעמיס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "=="
+        },
+        {
+          "id": "b",
+          "text": ". (גישה לחבר)"
+        },
+        {
+          "id": "c",
+          "text": ">>"
+        },
+        {
+          "id": "d",
+          "text": "!"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אופרטור הנקודה הוא מובנה ולא ניתן להעמסה.",
+      "wrongExplanations": {
+        "a": "== ניתן בזוג עם !=.",
+        "b": "אופרטור הנקודה הוא מובנה ולא ניתן להעמסה.",
+        "c": ">> ניתן.",
+        "d": "! אונארי ניתן."
+      },
+      "difficulty": "easy",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-06",
+      "question": "אופרטורים אונאריים (++ , !) — מה נכון?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שני פרמטרים"
+        },
+        {
+          "id": "b",
+          "text": "static עם פרמטר יחיד מסוג המחלקה"
+        },
+        {
+          "id": "c",
+          "text": "לא ניתן לטיפוסים מובנים"
+        },
+        {
+          "id": "d",
+          "text": "חייבים להחזיר bool"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אונארי = פרמטר אחד, static, מסוג המחלקה.",
+      "wrongExplanations": {
+        "a": "זה בינארי.",
+        "b": "אונארי = פרמטר אחד, static, מסוג המחלקה.",
+        "c": "מדובר בהעמסה למחלקות.",
+        "d": "לא חובה bool."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-09",
+      "question": "בדיקת null ב-== מותאם — מה מומלץ?",
+      "options": [
+        {
+          "id": "a",
+          "text": "is null או ReferenceEquals"
+        },
+        {
+          "id": "b",
+          "text": "try-catch"
+        },
+        {
+          "id": "c",
+          "text": "המרה למחרוזת"
+        },
+        {
+          "id": "d",
+          "text": "השוואת GetHashCode ל-null"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "ReferenceEquals עוקף את ההעמסה ומונע רקורסיה.",
+      "wrongExplanations": {
+        "a": "ReferenceEquals עוקף את ההעמסה ומונע רקורסיה.",
+        "b": "לא פותר רקורסיה.",
+        "c": "לא קשור.",
+        "d": "GetHashCode על null יזרוק."
+      },
+      "difficulty": "hard",
+      "topicId": "operator-overloading",
+      "termsContext": [
+        {
+          "term": "ReferenceEquals",
+          "explanation": "בודק זהות הפניה (אותו אובייקט בזיכרון). משמש ב-operator== מותאם כדי למנוע רקורסיה עם null."
+        }
+      ]
+    },
+    {
+      "id": "exam3-11",
+      "question": "העמסת + בינארי — מה עושה המהדר?",
+      "options": [
+        {
+          "id": "a",
+          "text": "משנה קדימות"
+        },
+        {
+          "id": "b",
+          "text": "בוחר מתודה לפי טיפוסי פרמטרים בקומפילציה"
+        },
+        {
+          "id": "c",
+          "text": "כל שני טיפוסים"
+        },
+        {
+          "id": "d",
+          "text": "משתמש ב-Object.Equals"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "כמו overloading — נפתר בזמן קומפילציה לפי חתימה.",
+      "wrongExplanations": {
+        "a": "קדימות לא משתנה.",
+        "b": "כמו overloading — נפתר בזמן קומפילציה לפי חתימה.",
+        "c": "לא דינמי כך.",
+        "d": "לא קשור."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-15",
+      "question": "Vector operator *(Vector v, int scalar) — מה נכון?",
+      "code": "public static Vector operator * (Vector v, int scalar) {\n    return new Vector(v.X * scalar, v.Y * scalar);\n}",
+      "options": [
+        {
+          "id": "a",
+          "text": "5 * myVector יעבוד"
+        },
+        {
+          "id": "b",
+          "text": "myVector * 5 יחזיר Vector חדש"
+        },
+        {
+          "id": "c",
+          "text": "חייב string"
+        },
+        {
+          "id": "d",
+          "text": "scalar חייב const"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "סדר הפרמטרים כפי שהוגדר — Vector ראשון.",
+      "wrongExplanations": {
+        "a": "הסדר הפוך לא מוגדר.",
+        "b": "סדר הפרמטרים כפי שהוגדר — Vector ראשון.",
+        "c": "לא נכון.",
+        "d": "לא נדרש const."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-20",
+      "question": "אילו אופרטורים חובה בזוגות?",
+      "options": [
+        {
+          "id": "a",
+          "text": "+ ו-"
+        },
+        {
+          "id": "b",
+          "text": "< ו->"
+        },
+        {
+          "id": "c",
+          "text": "* ו-/"
+        },
+        {
+          "id": "d",
+          "text": "++ ו--"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "< דורש >, <= דורש >=, == דורש !=.",
+      "wrongExplanations": {
+        "a": "לא חובה.",
+        "b": "< דורש >, <= דורש >=, == דורש !=.",
+        "c": "לא חובה.",
+        "d": "לא חובה."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-22",
+      "question": "למה operator+ שמשנה p1 הוא גרוע?",
+      "code": "public static Point operator + (Point p1, Point p2) {\n    p1.X += p2.X;\n    p1.Y += p2.Y;\n    return p1;\n}",
+      "options": [
+        {
+          "id": "a",
+          "text": "חייב bool"
+        },
+        {
+          "id": "b",
+          "text": "משנה את p1 במקום אובייקט חדש"
+        },
+        {
+          "id": "c",
+          "text": "צריך ref"
+        },
+        {
+          "id": "d",
+          "text": "לא עם auto-properties"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Immutability — p1+X לא אמור לשנות את p1.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "Immutability — p1+X לא אמור לשנות את p1.",
+        "c": "לא נדרש.",
+        "d": "לא קשור."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-24",
+      "question": "עם == מותאם, מה לדרוס ל-HashSet?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ToString"
+        },
+        {
+          "id": "b",
+          "text": "GetHashCode"
+        },
+        {
+          "id": "c",
+          "text": "Dispose"
+        },
+        {
+          "id": "d",
+          "text": "CompareTo"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "עקביות: ==, Equals, GetHashCode חייבים להתאים.",
+      "wrongExplanations": {
+        "a": "לא קשור.",
+        "b": "עקביות: ==, Equals, GetHashCode חייבים להתאים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading",
+      "termsContext": [
+        {
+          "term": "GetHashCode",
+          "explanation": "מחזיר hash code לאובייקט. חייב להיות עקבי עם Equals ו-== מותאם."
+        }
+      ]
+    },
+    {
+      "id": "exam3-25",
+      "question": "סכנה ב-if (obj == null) בתוך ==?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שגיאת קומפילציה"
+        },
+        {
+          "id": "b",
+          "text": "רקורסיה אינסופית → StackOverflow"
+        },
+        {
+          "id": "c",
+          "text": "יוצר מופע"
+        },
+        {
+          "id": "d",
+          "text": "מפר static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "הקריאה ל-== מפעילה שוב את האופרטור.",
+      "wrongExplanations": {
+        "a": "הקומפילציה עוברת.",
+        "b": "הקריאה ל-== מפעילה שוב את האופרטור.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "hard",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "exam3-27",
+      "question": "העמסת אופרטור — חובה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "public virtual"
+        },
+        {
+          "id": "b",
+          "text": "public static"
+        },
+        {
+          "id": "c",
+          "text": "private static"
+        },
+        {
+          "id": "d",
+          "text": "protected internal"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "כל אופרטור מועמס חייב להיות public static.",
+      "wrongExplanations": {
+        "a": "לא virtual.",
+        "b": "כל אופרטור מועמס חייב להיות public static.",
+        "c": "חייב public.",
+        "d": "לא."
+      },
+      "difficulty": "easy",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q16",
+      "question": "אופרטור מועמס חייב להיות:",
+      "options": [
+        {
+          "id": "a",
+          "text": "private instance"
+        },
+        {
+          "id": "b",
+          "text": "public static"
+        },
+        {
+          "id": "c",
+          "text": "virtual"
+        },
+        {
+          "id": "d",
+          "text": "protected"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חוק C# — public static.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "חוק C# — public static.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q17",
+      "question": "אופרטור . (נקודה) — ניתן להעמסה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כן"
+        },
+        {
+          "id": "b",
+          "text": "לא — מובנה"
+        },
+        {
+          "id": "c",
+          "text": "רק ב-struct"
+        },
+        {
+          "id": "d",
+          "text": "רק עם override"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "גישה לחבר — לא ניתן להעמסה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "גישה לחבר — לא ניתן להעמסה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q18",
+      "question": "== מותאם — מה עוד כדאי לדרוס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ToString בלבד"
+        },
+        {
+          "id": "b",
+          "text": "Equals ו-GetHashCode"
+        },
+        {
+          "id": "c",
+          "text": "Main"
+        },
+        {
+          "id": "d",
+          "text": "Finalize"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "עקביות — ==, Equals, GetHashCode.",
+      "wrongExplanations": {
+        "a": "לא מספיק.",
+        "b": "עקביות — ==, Equals, GetHashCode.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q19",
+      "question": "Immutability בהעמסה — מה נכון?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לשנות את האופרנד הראשון"
+        },
+        {
+          "id": "b",
+          "text": "להחזיר אובייקט חדש בלי לשנות קלט"
+        },
+        {
+          "id": "c",
+          "text": "להחזיר void"
+        },
+        {
+          "id": "d",
+          "text": "למחוק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "p1+p2 לא אמור לשנות את p1.",
+      "wrongExplanations": {
+        "a": "רע.",
+        "b": "p1+p2 לא אמור לשנות את p1.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q20",
+      "question": "אופרטור ++ אונארי — כמה פרמטרים?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0"
+        },
+        {
+          "id": "b",
+          "text": "1 (מסוג המחלקה)"
+        },
+        {
+          "id": "c",
+          "text": "2"
+        },
+        {
+          "id": "d",
+          "text": "3"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אונארי = פרמטר יחיד.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "אונארי = פרמטר יחיד.",
+        "c": "בינארי.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q21",
+      "question": "חובת זוגות: == דורש:",
+      "options": [
+        {
+          "id": "a",
+          "text": "+"
+        },
+        {
+          "id": "b",
+          "text": "!="
+        },
+        {
+          "id": "c",
+          "text": "*"
+        },
+        {
+          "id": "d",
+          "text": "&&"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "== ו-!= בזוג.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "== ו-!= בזוג.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q22",
+      "question": "if (obj == null) בתוך == מותאם — סכנה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "אין"
+        },
+        {
+          "id": "b",
+          "text": "רקורסיה אינסופית"
+        },
+        {
+          "id": "c",
+          "text": "מהירות"
+        },
+        {
+          "id": "d",
+          "text": "קומפילציה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "השוואה ל-null קוראת שוב ל-==.",
+      "wrongExplanations": {
+        "a": "יש.",
+        "b": "השוואה ל-null קוראת שוב ל-==.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q23",
+      "question": "ReferenceEquals לבדיקת null ב-==?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא מומלץ"
+        },
+        {
+          "id": "b",
+          "text": "מומלץ — עוקף ההעמסה"
+        },
+        {
+          "id": "c",
+          "text": "חובה"
+        },
+        {
+          "id": "d",
+          "text": "רק Java"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מונע רקורסיה.",
+      "wrongExplanations": {
+        "a": "ההפך.",
+        "b": "מונע רקורסיה.",
+        "c": "לא חובה אך מומלץ.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q24",
+      "question": "Vector * scalar — סדר פרמטרים?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא משנה"
+        },
+        {
+          "id": "b",
+          "text": "כפי שהוגדר — Vector ראשון"
+        },
+        {
+          "id": "c",
+          "text": "scalar תמיד ראשון"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "5*v לא יעבוד אם הוגדר v*5 בלבד.",
+      "wrongExplanations": {
+        "a": "משנה.",
+        "b": "5*v לא יעבוד אם הוגדר v*5 בלבד.",
+        "c": "לא.",
+        "d": "ניתן."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "op-q25",
+      "question": "העמסת + בינארית — מתי נבחרת?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ריצה"
+        },
+        {
+          "id": "b",
+          "text": "קומפילציה לפי טיפוסי האופרנדים"
+        },
+        {
+          "id": "c",
+          "text": "אקראי"
+        },
+        {
+          "id": "d",
+          "text": "GC"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "compile-time resolution.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "compile-time resolution.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "operator-overloading"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "operator-overloading-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "operator-overloading"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "operator-overloading-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "operator-overloading"
+    },
+    {
+      "id": "operator-overloading-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "operator-overloading"
+    }
+  ]
+}

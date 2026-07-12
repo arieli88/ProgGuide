@@ -1,0 +1,639 @@
+{
+  "id": "introduction",
+  "title": "מבוא ורענון",
+  "subtitle": "יסודות C#, קומפילציה, טיפוסים, בקרת זרימה ומערכים",
+  "order": 1,
+  "prerequisites": [],
+  "sources": [
+    "שיעור 1 - רענון/lecture1.pptx"
+  ],
+  "estimatedMinutes": 75,
+  "introduction": {
+    "what": "פרק הרענון מכסה את יסודות C# כפי שנלמדו בשיעור 1: מקמפל מול מפרש, תהליך הקומפילציה ב-.NET (C#→IL→CLR), Visual Studio, טיפוסים, משתנים, ביטויים, קלט/פלט, תנאים, לולאות, scope ומערכים — ברמת מצגת מלאה.",
+    "why": "קורס תכנות מתקדם בונה ישירות על ידע זה. שאלות מבחן על short-circuit, x++/++x, CLR ו-Main חוזרות שוב ושוב — והבנה מעמיקה כאן חוסכת טעויות בכל הפרקים הבאים.",
+    "when": "בתחילת כל פרויקט Console, בכל קוד שקורא קלט, מבצע חישובים, בוחר מסלול ב-if/switch, או עובד עם מערכים."
+  },
+  "sections": [
+    {
+      "id": "course-goals",
+      "title": "מטרות הקורס",
+      "content": "קורס תכנות מתקדם ב-C# בונה על ידע בסיסי ומעמיק את היכולות שלכם לעולם מקצועי.\n\nנלמד תכנות מונחה עצמים — ירושה, פולימורפיזם, ממשקים ומחלקות מופשטות.\n\nנשלב חיבור למסדי נתונים (MySQL) ונבנה פרויקט ספרייה שמיישם את כל העקרונות.\n\nפרק הרענון מוודא שכולם על אותו קו לפני שנכנסים ל-OOP.",
+      "callouts": [
+        {
+          "type": "info",
+          "title": "מבנה הקורס",
+          "content": "שיעור 1 = רענון. שיעורים 2–7 = OOP. שיעורים 8–10 = חריגות, קבצים, MySQL. פרויקט = סיכום."
+        }
+      ]
+    },
+    {
+      "id": "recap-topics",
+      "title": "סיכום נושאי הקורס הקודם",
+      "content": "המצגת פותחת ברשימת נושאים מהקורס הקודם: מקמפלים ומפרשים, תהליך קומפילציה ב-C#, Visual Studio, טיפוסי נתונים, משתנים וביטויים, בקרת זרימה ומערכים.\n\nכל נושא אלה הוא תשתית — בלי שליטה בהם קשה להבין מחלקות, מתודות וחריגות.\n\nבמבחן מצפים שתזכרו את ההבדל בין שגיאת קומפילציה לשגיאת ריצה, ואת התנהגות אופרטורים לוגיים.",
+      "cards": [
+        {
+          "title": "קומפילציה",
+          "items": [
+            "מקמפל מול מפרש",
+            "C# → IL → CLR",
+            "שגיאות תחביר מוקדם"
+          ]
+        },
+        {
+          "title": "נתונים",
+          "items": [
+            "int, double, bool",
+            "string, char",
+            "const ומשתנים"
+          ]
+        },
+        {
+          "title": "זרימה",
+          "items": [
+            "if/else, switch",
+            "while, for, do-while",
+            "מערכים ו-scope"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compilation-overview",
+      "title": "מקמפל מול מפרש",
+      "content": "מקמפל (Compiler) מתרגם את כל קוד המקור לפני ההרצה. שגיאות תחביר מתגלות מראש — התוכנית לא תרוץ עד שמתקנים.\n\nמפרש (Interpreter) מתרגם ומריץ שורה-שורה בזמן ריצה. שגיאה עלולה להופיע רק כשמגיעים לשורה הבעייתית.\n\nב-C# אנחנו עובדים עם קומפילציה — זה מאפשר לתפוס באגים מוקדם ולייצר קוד יעיל יותר.\n\nשאלה קלאסית: מה קורה עם שגיאת תחביר? במקמפל — נתפס לפני הרצה. במפרש — רק כשמגיעים לשורה.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "לזכור",
+          "content": "שגיאת תחביר = קומפילציה. חריגה בזמן ריצה = Exception."
+        }
+      ],
+      "table": {
+        "headers": [
+          "גישה",
+          "מתי מתגלות שגיאות",
+          "יתרון"
+        ],
+        "rows": [
+          [
+            "מקמפל",
+            "לפני הרצה",
+            "בטיחות ויעילות"
+          ],
+          [
+            "מפרש",
+            "בזמן ריצה",
+            "גמישות, איטי יותר"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "dotnet-pipeline",
+      "title": "תהליך הקומפילציה ב-.NET",
+      "content": "שלב 1: קוד C# נכתב על ידי המפתח — קוד קריא לאדם.\n\nשלב 2: הקומפיילר מייצר IL (Intermediate Language) — קוד ביניים שאינו תלוי במעבד ספציפי.\n\nשלב 3: CLR (Common Language Runtime) מתרגם IL לקוד מכונה בזמן ריצה (JIT) ומריץ את התוכנית.\n\nיתרונות: ניידות בין מערכות עם .NET, ניהול זיכרון אוטומטי (GC), אבטחה מנוהלת.\n\nחסרונות: נדרש Runtime מותקן, עומס קל מ-JIT.",
+      "callouts": [
+        {
+          "type": "info",
+          "title": "CLR",
+          "content": "לא 'מקמפל' C# ל-IL — זה תפקיד הקומפיילר. CLR מריץ IL ומנהל זיכרון."
+        },
+        {
+          "type": "exam",
+          "title": "שלושה שלבים",
+          "content": "C# → IL (קומפילציה) → מכונה (CLR/JIT בזמן ריצה)"
+        }
+      ],
+      "diagram": {
+        "kind": "pipeline",
+        "title": "תהליך הקומפילציה ב-.NET",
+        "nodes": [
+          {
+            "id": "csharp",
+            "label": "C# Source",
+            "description": "קוד המקור"
+          },
+          {
+            "id": "il",
+            "label": "IL",
+            "description": "קוד ביניים — קומפילציה"
+          },
+          {
+            "id": "clr",
+            "label": "CLR / JIT",
+            "description": "תרגום לקוד מכונה בזמן ריצה"
+          },
+          {
+            "id": "native",
+            "label": "Native Code",
+            "description": "הרצה על המעבד"
+          }
+        ]
+      }
+    },
+    {
+      "id": "visual-studio",
+      "title": "Visual Studio — סביבת הפיתוח",
+      "content": "פרויקט Console חדש יוצר Solution עם namespace ומחלקת Program — שניהם ניתנים לשינוי שם.\n\nSolution Explorer (View → Solution Explorer) מציג את כל הקבצים. Class View מציג מחלקות.\n\nקיצורי מקשים חשובים: F6 לבנייה, F5 להרצה עם דיבוג, Ctrl+F5 להרצה בלי דיבוג.\n\nחלון Error List בתחתית מציג שגיאות קומפילציה, אזהרות ובעיות ריצה.",
+      "steps": [
+        {
+          "number": 1,
+          "title": "יצירת פרויקט",
+          "body": "File → New → Console App. Visual Studio יוצר Program עם Main."
+        },
+        {
+          "number": 2,
+          "title": "כתיבת קוד",
+          "body": "בחלון העורך הראשי — כאן כותבים את לוגיקת התוכנית."
+        },
+        {
+          "number": 3,
+          "title": "בנייה והרצה",
+          "body": "F6 לקומפילציה. F5 להרצה. שגיאות מופיעות ב-Error List."
+        }
+      ]
+    },
+    {
+      "id": "main-entry",
+      "title": "נקודת כניסה — Main",
+      "content": "כל תוכנית Console חייבת מתודת Main כנקודת כניסה — static void Main או Main עם פרמטרים.\n\nבלי Main — שגיאת קומפילציה: אין נקודת התחלה לתוכנית. זו לא שגיאת ריצה.\n\nVisual Studio יוצרת אוטומטית מחלקת Program עם Main בפרויקט Console חדש.\n\nMain היא static — נקראת בלי ליצור אובייקט Program.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "Main חסרה",
+          "content": "שגיאת קומפילציה — לא שגיאת ריצה."
+        }
+      ]
+    },
+    {
+      "id": "types",
+      "title": "טיפוסי נתונים",
+      "content": "int — מספרים שלמים (3, -45). double — ממשיים (3.14, 2.99e8). bool — true/false.\n\nchar — תו בודד במרכאות בודדות ('a'). string — מחרוזת במרכאות כפולות (\"hello\").\n\nvoid — 'ללא ערך' — משמש למתודות שלא מחזירות תוצאה.\n\nconst יוצר קבוע שלא ניתן לשנות אחרי אתחול. מקובל לכתוב שמות const באותיות גדולות.",
+      "table": {
+        "headers": [
+          "טיפוס",
+          "דוגמה",
+          "שימוש"
+        ],
+        "rows": [
+          [
+            "int",
+            "132, -45",
+            "מספרים שלמים"
+          ],
+          [
+            "double",
+            "3.14159",
+            "מספרים ממשיים"
+          ],
+          [
+            "bool",
+            "true, false",
+            "תנאים לוגיים"
+          ],
+          [
+            "string",
+            "\"hello\"",
+            "טקסט"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "variables-expressions",
+      "title": "משתנים וביטויים",
+      "content": "הצהרה: int x, y; או int z = 5, k = 15 - 22; — ניתן לאתחל בביטוי.\n\nביטויים משלבים משתנים, קבועים ואופרטורים. z = z + 1 ו-z++ שקולים להגדלת z ב-1.\n\nשרשור מחרוזות: \"hello\" + \"world\" → \"helloworld\". \"4\" + 5 → \"45\" (המרה מרומזת ל-string).\n\nביטויים מורכבים: double e1 = (2.1 + w2) * 3.5 — סוגריים קובעים סדר פעולות.",
+      "callouts": [
+        {
+          "type": "warning",
+          "title": "שרשור מול חיבור",
+          "content": "\"4\" + 5 מדפיס 45, לא 9. להמרה מפורשת: int.Parse(\"4\") + 5"
+        }
+      ]
+    },
+    {
+      "id": "type-conversion",
+      "title": "המרות טיפוסים",
+      "content": "המרה מפורשת (casting): int i = (int)(10.3 * x) — חותך את החלק העשרוני.\n\ndouble j = (double)x / 2.4 — המרה ל-double מונעת חלוקה שלמים.\n\nהמרה מרומזת ל-string: \"4\" + 5 → \"45\" — המספר הופך למחרוזת.\n\nזהירות: המרות אוטומטיות עלולות ליצור תוצאות לא צפויות אם התכוונתם לחיבור מתמטי."
+    },
+    {
+      "id": "increment",
+      "title": "Postfix ו-Prefix — x++ ו-++x",
+      "content": "x++ (postfix): מחזיר את הערך הנוכחי, ואז מגדיל את x ב-1.\n\n++x (prefix): מגדיל את x ב-1, ואז מחזיר את הערך החדש.\n\nבביטוי x++ + ++x עם x=5: קודם x++ מחזיר 5 (x הופך ל-6), אחר כך ++x מגדיל ל-7 ומחזיר 7. התוצאה: 12.\n\nהערכה היא משמאל לימין — סדר האופרנדים קובע. x בסוף הביטוי הוא 7.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "שאלת קלאסית",
+          "content": "x=5 → x++ + ++x = 12, לא 11 ולא 14."
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "התחלה",
+          "body": "x = 5"
+        },
+        {
+          "number": 2,
+          "title": "x++ (postfix)",
+          "body": "מחזיר 5, אחר כך x = 6"
+        },
+        {
+          "number": 3,
+          "title": "++x (prefix)",
+          "body": "x = 7, מחזיר 7"
+        },
+        {
+          "number": 4,
+          "title": "חיבור",
+          "body": "5 + 7 = 12 — זו התשובה במבחן"
+        }
+      ],
+      "inlineCode": {
+        "title": "דוגמת increment",
+        "code": "int x = 5;\nConsole.WriteLine(x++ + ++x);",
+        "annotations": [
+          {
+            "line": 1,
+            "text": "x מתחיל ב-5"
+          },
+          {
+            "line": 2,
+            "text": "postfix מחזיר 5, prefix מחזיר 7 → סה\"כ 12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "io",
+      "title": "קלט ופלט",
+      "content": "Console.ReadLine() תמיד מחזיר string. להמרה: Convert.ToInt32, Convert.ToDouble, int.Parse.\n\nint.Parse על קלט לא מספרי זורק חריגה. TryParse עדיף לקלט משתמש — מחזיר bool ו-out.\n\nConsole.WriteLine מוסיף מעבר שורה. Console.Write לא. שניהם תומכים בשרשור עם +.\n\nדוגמה: Console.WriteLine(\"4\" + \"005\") → 4005. Console.WriteLine(\"4\" + 005) → 45."
+    },
+    {
+      "id": "boolean",
+      "title": "ביטויים בוליאניים",
+      "content": "ביטוי בוליאני מעריך ל-true או false — משמש ב-if, while, for.\n\nאופרטורים יחסיים: ==, !=, <, <=, >, >=.\n\nאופרטורים לוגיים: && (AND — שני התנאים), || (OR — לפחות אחד), ! (NOT — היפוך).\n\nדוגמה: if (age >= 18 && hasLicense) — שני התנאים חייבים להיות true."
+    },
+    {
+      "id": "short-circuit",
+      "title": "Short-circuit evaluation",
+      "content": "ב-&&: אם התנאי הראשון false — השני לא נבדק בכלל.\n\nב-||: אם התנאי הראשון true — השני לא נבדק בכלל.\n\nדוגמה מהמבחן: int x=5, y=0; if(x>3 || y++>0) — y++ לא רץ כי x>3 כבר true. y נשאר 0.\n\nשונה מ-& ו-| שתמיד מעריכים שני הצדדים — כולל side effects כמו y++.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "y++ ב-||",
+          "content": "אם הצד הראשון true — y++ לא מתבצע!"
+        },
+        {
+          "type": "tip",
+          "title": "שימוש מעשי",
+          "content": "short-circuit חוסך חישוב — אבל גם מסתיר side effects."
+        }
+      ],
+      "diagram": {
+        "kind": "flow",
+        "title": "Short-circuit ב-||",
+        "nodes": [
+          {
+            "id": "start",
+            "label": "בדיקת x > 3"
+          },
+          {
+            "id": "true",
+            "label": "true → דילוג על y++"
+          },
+          {
+            "id": "false",
+            "label": "false → בודק y++ > 0"
+          },
+          {
+            "id": "end",
+            "label": "הדפסת y"
+          }
+        ],
+        "edges": [
+          {
+            "from": "start",
+            "to": "true",
+            "label": "x>3"
+          },
+          {
+            "from": "start",
+            "to": "false",
+            "label": "x≤3"
+          },
+          {
+            "from": "true",
+            "to": "end"
+          },
+          {
+            "from": "false",
+            "to": "end"
+          }
+        ]
+      },
+      "inlineCode": {
+        "code": "int x = 5, y = 0;\nif (x > 3 || y++ > 0)\n    Console.WriteLine(y);",
+        "annotations": [
+          {
+            "line": 3,
+            "text": "מדפיס 0 — y++ לא רץ"
+          }
+        ]
+      }
+    },
+    {
+      "id": "control-if",
+      "title": "if/else ו-switch",
+      "content": "if/else לבחירה בין מסלולים. ניתן לקנן if — מומלץ סוגריים {} גם לשורה בודדת.\n\nדוגמת מס: if (wages <= MAX) tax = RATE * wages; else tax = RATE * MAX;\n\nswitch משווה ערך יחיד למקרים רבים — case עם break. default תופס ערכים שלא התאימו.\n\nFall-through במכוון: case \"APRIL\": case \"JUNE\": — אותו קוד לכמה ערכים (ללא break ביניהם)."
+    },
+    {
+      "id": "loops-while-for",
+      "title": "לולאות while ו-for",
+      "content": "while — בודק תנאי לפני כל איטרציה. שכחת לעדכן משתנה → לולאה אינסופית.\n\nfor — אתחול, תנאי ועדכון בשורה אחת: for(cent=LOW; cent<=HIGH; cent++) — קריא יותר.\n\nלולאות מקוננות: for(i) { for(j) } — הלולאה הפנימית מסיימת את כל האיטרציות לכל איטרציה חיצונית.\n\nדוגמה: הדפסת משולש כוכביות — j רץ מ-1 עד i בכל איטרציה של i.",
+      "steps": [
+        {
+          "number": 1,
+          "title": "אתחול",
+          "body": "for: statement1 רץ פעם אחת לפני הלולאה"
+        },
+        {
+          "number": 2,
+          "title": "תנאי",
+          "body": "נבדק לפני כל איטרציה — false יוצא מהלולאה"
+        },
+        {
+          "number": 3,
+          "title": "גוף",
+          "body": "הקוד שרץ כשהתנאי true"
+        },
+        {
+          "number": 4,
+          "title": "עדכון",
+          "body": "statement2 רץ אחרי כל איטרציה"
+        }
+      ]
+    },
+    {
+      "id": "loops-do-break",
+      "title": "do-while ו-break",
+      "content": "do-while — הגוף רץ לפחות פעם אחת, התנאי נבדק אחרי הגוף. מתאים לאימות קלט.\n\nbreak — יוצא מהלולאה מיד, גם אם התנאי עדיין true. שימושי בחיפוש או תנאי שגיאה.\n\nbreak ב-switch — מונע fall-through לא רצוי.\n\nשאלה במבחן: איזו לולאה מבטיחה הרצה לפחות פעם אחת? do-while.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "do-while",
+          "content": "הלולאה היחידה שמבטיחה הרצה לפחות פעם אחת."
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "title": "Scope וטווח חיים",
+      "content": "משתנה מקומי נגיש רק בבלוק שבו הוגדר — הבלוק הפנימי ביותר.\n\nלא ניתן להגדיר int u פעמיים באותו בלוק — שגיאת קומפילציה (redefinition).\n\nint v בתוך if — נגיש רק ב-if. v אחר ב-else — משתנה נפרד.\n\nמשתנה חיצוני (y, x) נגיש בכל הבלוקים — אבל לא להיפך."
+    },
+    {
+      "id": "arrays",
+      "title": "מערכים",
+      "content": "מערך = אוסף מסודר באינדקסים. אינדקסים מתחילים מ-0 — תמיד!\n\nint[] arr = new int[9] — אינדקסים תקינים: 0 עד 8. arr[9] → IndexOutOfRangeException.\n\nLength מחזיר גודל. בלולאת for: i < arr.Length — לא i <= Length.\n\nיתרונות: אחסון יעיל, איטרציה קלה, גישה ישירה לפי אינדקס.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "אינדקס 9 במערך 9",
+          "content": "שגיאת ריצה — IndexOutOfRangeException."
+        }
+      ]
+    },
+    {
+      "id": "arrays-advanced",
+      "title": "מערכים — Length ולולאות",
+      "content": "תמיד השתמשו ב-Length במקום גודל קבוע בקוד — כך המערך יכול להשתנות.\n\nfor (int i = 0; i < counts.Length; i++) counts[i] = i * 10 — דפוס סטנדרטי.\n\nקריאה: int num = arr[6]. כתיבה: arr[15] = \"red\" — אם האינדקס בטווח.\n\nבדיקת גבולות לפני גישה מונעת חריגות בזמן ריצה."
+    },
+    {
+      "id": "exam-review-intro",
+      "title": "סיכום מבחן — נקודות חמה",
+      "content": "שאלות מבחן חוזרות בפרק הרענון מתמקדות בשלושה מוקדים: תהליך הקומפילציה (C#→IL→CLR), התנהגות אופרטורים (short-circuit, increment), ומבני בקרה (לולאות, מערכים).\n\nכשאתם רואים שאלה על x++ + ++x — עקבו שלב-שלב משמאל לימין. postfix מחזיר ערך ישן, prefix מגדיל ואז מחזיר.\n\nכשאתם רואים שאלה על || או && עם y++ — בדקו אם הצד הראשון כבר קובע את התוצאה. אם כן, הצד השני לא מוערך.\n\nהבחינו תמיד בין שגיאת קומפילציה (תחביר, Main חסרה) לבין חריגת ריצה (אינדקס מערך, Parse על טקסט).\n\nפרק זה הוא הבסיס — שליטה כאן חוסכת טעויות בכל פרקי OOP, חריגות, קבצים ו-MySQL בהמשך.",
+      "callouts": [
+        {
+          "type": "exam",
+          "title": "שלושת המוקדים",
+          "content": "קומפילציה, אופרטורים, בקרת זרימה — חזרו עליהם לפני המבחן."
+        }
+      ],
+      "table": {
+        "headers": [
+          "נושא",
+          "טעות נפוצה",
+          "תשובה נכונה"
+        ],
+        "rows": [
+          [
+            "Increment",
+            "x++ + ++x = 11",
+            "x=5 → 12"
+          ],
+          [
+            "Short-circuit",
+            "y++ תמיד רץ",
+            "ב-|| אם true ראשון — לא"
+          ],
+          [
+            "מערך",
+            "אינדקס 9 בגודל 9",
+            "אינדקסים 0–8 בלבד"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "intro-practice-1",
+      "title": "תרגול מבחן — קומפילציה ו-Main",
+      "content": "שאלה 1: מה קורה אם חסרה מתודת Main בפרויקט Console? תשובה: שגיאת קומפילציה — לא שגיאת ריצה. התוכנית לא תיבנה.\n\nשאלה 2: מי מתרגם C# ל-IL? הקומפיילר. מי מריץ IL? CLR עם JIT. אל תכתבו ש-CLR מקמפל C#.\n\nשאלה 3: מה היתרון של קומפילציה על פני פרשנות? גילוי שגיאות תחביר לפני הרצה, וביצועים טובים יותר.\n\nשאלה 4: האם F5 ו-Ctrl+F5 זהים? לא — F5 עם דיבוג, Ctrl+F5 בלי.\n\nתרגלו לענות במשפט מלא — כך תזכרו במבחן."
+    },
+    {
+      "id": "intro-practice-2",
+      "title": "תרגול מבחן — אופרטורים ולולאות",
+      "content": "חשבו בראש: int x=5; מה יודפס מ-x++ + ++x? עקבו: 5 + 7 = 12. x בסוף 7.\n\nint x=5, y=0; if (x>3 || y++>0) — y נשאר 0. short-circuit.\n\nאיזו לולאה רצה לפחות פעם אחת? do-while.\n\nמערך int[9] — אינדקס אחרון? 8. arr[9] — IndexOutOfRangeException.\n\nכתבו דוגמה משלכם לכל נקודה — למידה אקטיבית.",
+      "callouts": [
+        {
+          "type": "tip",
+          "title": "תרגול",
+          "content": "הריצו כל דוגמה ב-Visual Studio ואמתו."
+        }
+      ]
+    },
+    {
+      "id": "intro-practice-3",
+      "title": "תרגול מבחן — מערכים ו-scope",
+      "content": "scope: משתנה בתוך if — נגיש רק ב-if. משתנה באותו שם ב-if ו-else — שני משתנים נפרדים.\n\nלא ניתן int u פעמיים באותו בלוק — redefinition.\n\nלולאת for על מערך: i < arr.Length — לא <=.\n\nLength מחזיר גודל, לא אינדקס אחרון.\n\nסיכום פרק: אתם מוכנים ל-OOP כששולטים ביסודות אלה."
+    },
+    {
+      "id": "intro-final-review",
+      "title": "סיכום סופי — פרק הרענון",
+      "content": "פרק הרענון מכסה: מקמפל מול מפרש, C#→IL→CLR, Visual Studio, טיפוסים, משתנים, המרות, increment, קלט/פלט, בוליאנים, short-circuit, if/switch, לולאות, scope ומערכים.\n\nכל נושא בנוי על הקודם: בלי טיפוסים אין משתנים; בלי בוליאנים אין תנאים; בלי תנאים אין לולאות מורכבות.\n\nהמבחן בודק הבנה, לא שינון: יודעים להסביר למה y++ לא רץ, למה x++ + ++x = 12, ולמה Main חסרה = קומפילציה.\n\nהמשיכו לשיעור 2 — OOP — עם בסיס יציב. פרק זה הוא השקעה שחוסכת זמן בכל שאר הקורס.\n\nבהצלחה — תרגלו, הריצו קוד, ושאלו שאלות כשמשהו לא ברור.",
+      "callouts": [
+        {
+          "type": "info",
+          "title": "הבא בתור",
+          "content": "שיעור 2 — מחלקות ואובייקטים."
+        }
+      ]
+    },
+    {
+      "id": "intro-constants",
+      "title": "קבועים ו-literals",
+      "content": "const יוצר ערך שלא משתנה אחרי אתחול — MAX_WAGE, LOW_TEMP במצגת.\n\nלiterals: 3, 3.14, 'a', \"hello\", true, false — ערכים בקוד.\n\nמקובל שמות const באותיות גדולות — קריאות.\n\nconst שונה מ-readonly — בקורס בעיקר const.\n\nשימוש ב-const לטבלאות המרה ולגבולות לולאה — מונע שינוי בטעות."
+    },
+    {
+      "id": "intro-nested-if",
+      "title": "if מקונן — best practices",
+      "content": "if בתוך if — מותר, אך עלול להיות קשה לקריאה.\n\nהשתמשו ב-{} תמיד — גם לשורה אחת.\n\nשקלו early return או switch לפשט.\n\nדוגמת מס במצגת — if/else ברור עם סוגריים.\n\nבמבחן: מה מודפס — עקבו בזהירות על הענפים."
+    },
+    {
+      "id": "intro-string-ops",
+      "title": "מחרוזות — פעולות נפוצות",
+      "content": "שרשור עם + : \"hello\" + \"world\".\n\nהמרה מרומזת: \"4\" + 5 → \"45\".\n\nLength (מאוחר יותר על string) — במצגת שרשור בסיסי.\n\nConsole.WriteLine עם + — נפוץ להדפסה.\n\nזהירות מבלבול עם חיבור מספרי."
+    },
+    {
+      "id": "intro-logical-ops",
+      "title": "אופרטורים לוגיים — טבלת אמת",
+      "content": "&&: true רק אם שניהם true.\n\n||: true אם לפחות אחד true.\n\n!: היפוך.\n\nshort-circuit משנה התנהגות כשיש side effects.\n\n& ו-| — בלי short-circuit, נדיר בקורס.",
+      "table": {
+        "headers": [
+          "A",
+          "B",
+          "A&&B",
+          "A||B"
+        ],
+        "rows": [
+          [
+            "T",
+            "T",
+            "T",
+            "T"
+          ],
+          [
+            "T",
+            "F",
+            "F",
+            "T"
+          ],
+          [
+            "F",
+            "F",
+            "F",
+            "F"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "intro-while-pitfalls",
+      "title": "מלכודות while",
+      "content": "שכחת לעדכן משתנה — לולאה אינסופית.\n\nתנאי שתמיד true — באג לוגי.\n\ncent = cent + 1.0 במצגת — חובה.\n\nbreak ליציאה מוקדמת — חיפוש במערך.\n\ndo-while לקלט — לפחות פעם אחת."
+    }
+  ],
+  "codeExamples": [
+    {
+      "id": "intro-1",
+      "title": "Short-circuit",
+      "level": "basic",
+      "code": "int x = 5, y = 0;\nif (x > 3 || y++ > 0)\n    Console.WriteLine(y);",
+      "language": "csharp",
+      "explanation": "y++ לא רץ — מדפיס 0.",
+      "lineByLine": [
+        {
+          "line": 1,
+          "text": "אתחול x=5, y=0"
+        },
+        {
+          "line": 2,
+          "text": "x>3 true → short-circuit, y++ לא מתבצע"
+        },
+        {
+          "line": 3,
+          "text": "מדפיס 0"
+        }
+      ]
+    },
+    {
+      "id": "intro-2",
+      "title": "Increment",
+      "level": "medium",
+      "code": "int x = 5;\nConsole.WriteLine(x++ + ++x);",
+      "language": "csharp",
+      "explanation": "5 + 7 = 12"
+    },
+    {
+      "id": "intro-3",
+      "title": "Short-circuit עם ||",
+      "level": "intermediate",
+      "code": "int x = 5, y = 0;\nif (x > 3 || y++ > 0)\n    Console.WriteLine(y); // 0",
+      "language": "csharp",
+      "explanation": "y++ לא רץ כי x>3 כבר true."
+    },
+    {
+      "id": "intro-4",
+      "title": "x++ + ++x",
+      "level": "intermediate",
+      "code": "int x = 5;\nConsole.WriteLine(x++ + ++x); // 12",
+      "language": "csharp",
+      "explanation": "5 + 7 = 12. x בסוף הביטוי הוא 7."
+    }
+  ],
+  "commonMistakes": [
+    {
+      "title": "בלבול ++",
+      "description": "חושבים ש-x++ + ++x = 11",
+      "why": "סדר הערכה משמאל לימין",
+      "howToAvoid": "עקבו שלב-שלב: postfix אז prefix"
+    },
+    {
+      "title": "short-circuit",
+      "description": "מצפים ש-y++ ירוץ ב-||",
+      "why": "הצד הראשון כבר true",
+      "howToAvoid": "זכרו: || מדלג אם true, && מדלג אם false"
+    },
+    {
+      "title": "אינדקס מערך",
+      "description": "arr[9] במערך בגודל 9",
+      "why": "אינדקסים 0-8",
+      "howToAvoid": "i < arr.Length"
+    }
+  ],
+  "examTips": [
+    "C# → IL (קומפילציה) → CLR/JIT (ריצה)",
+    "x=5 → x++ + ++x = 12",
+    "short-circuit: y++ ב-|| לא רץ אם x>3",
+    "do-while רץ לפחות פעם אחת",
+    "Main חסרה = שגיאת קומפילציה",
+    "CLR מריץ IL — לא ממיר C# ל-IL",
+    "short-circuit: y++ ב-|| עלול לא לרוץ",
+    "x++ + ++x עם x=5 → 12",
+    "אין Main → שגיאת קומפילציה",
+    "מערך[9] בגודל 9 → אינדקסים 0-8",
+    "const לא ניתן לשינוי",
+    "CLR מריץ IL ומנהל זיכרון — לא רק 'מקמפל'",
+    "x++ + ++x — סדר ההערכה חשוב למבחן",
+    "מערך בגודל 9: אינדקסים 0-8 בלבד"
+  ],
+  "comparisons": [
+    {
+      "title": "מקמפל מול מפרש",
+      "left": "Compiler",
+      "right": "Interpreter",
+      "rows": [
+        {
+          "aspect": "שגיאות",
+          "left": "לפני הרצה",
+          "right": "בזמן ריצה"
+        },
+        {
+          "aspect": "ביצועים",
+          "left": "מהיר יותר",
+          "right": "איטי יותר"
+        }
+      ]
+    }
+  ],
+  "summary": "פרק הרענון מכסה את יסודות C#: קומפילציה (C#→IL→CLR), טיפוסים, משתנים, short-circuit, increment, תנאים, לולאות, scope ומערכים — תשתית לכל הקורס."
+}

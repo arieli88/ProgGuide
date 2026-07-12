@@ -1,0 +1,587 @@
+{
+  "chapterId": "mysql",
+  "multipleChoice": [
+    {
+      "id": "db-q01",
+      "question": "MySqlConnection משמש ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "קריאת קבצים"
+        },
+        {
+          "id": "b",
+          "text": "חיבור למסד MySQL"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "GUI בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "פתיחת connection.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "פתיחת connection.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q02",
+      "question": "ConnectionString מכיל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק סיסמה"
+        },
+        {
+          "id": "b",
+          "text": "שרת, מסד, משתמש, סיסמה וכו'"
+        },
+        {
+          "id": "c",
+          "text": "רק קוד C#"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "פרטי התחברות.",
+      "wrongExplanations": {
+        "a": "לא רק.",
+        "b": "פרטי התחברות.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q03",
+      "question": "ExecuteReader משמש ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "INSERT"
+        },
+        {
+          "id": "b",
+          "text": "שאילתות SELECT — קריאת שורות"
+        },
+        {
+          "id": "c",
+          "text": "מחיקת קבצים"
+        },
+        {
+          "id": "d",
+          "text": "cast"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Reader לתוצאות.",
+      "wrongExplanations": {
+        "a": "NonQuery.",
+        "b": "Reader לתוצאות.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q04",
+      "question": "ExecuteNonQuery משמש ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "SELECT"
+        },
+        {
+          "id": "b",
+          "text": "INSERT/UPDATE/DELETE — ללא תוצאות קריאה"
+        },
+        {
+          "id": "c",
+          "text": "קריאת קובץ"
+        },
+        {
+          "id": "d",
+          "text": "override"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "פקודות ללא result set.",
+      "wrongExplanations": {
+        "a": "Reader.",
+        "b": "פקודות ללא result set.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q05",
+      "question": "SqlParameter / פרמטרים — למה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מהירות"
+        },
+        {
+          "id": "b",
+          "text": "מניעת SQL Injection"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "קבצים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ערכים מופרדים מהפקודה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "ערכים מופרדים מהפקודה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q06",
+      "question": "using עם Connection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא צריך"
+        },
+        {
+          "id": "b",
+          "text": "סגירת חיבור אוטומטית"
+        },
+        {
+          "id": "c",
+          "text": "רק Java"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Dispose לחיבור.",
+      "wrongExplanations": {
+        "a": "מומלץ.",
+        "b": "Dispose לחיבור.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q07",
+      "question": "Reader.Read() מחזיר:",
+      "options": [
+        {
+          "id": "a",
+          "text": "string"
+        },
+        {
+          "id": "b",
+          "text": "bool — האם יש שורה הבאה"
+        },
+        {
+          "id": "c",
+          "text": "void"
+        },
+        {
+          "id": "d",
+          "text": "int תמיד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "התקדמות בשורות.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "התקדמות בשורות.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q08",
+      "question": "Repository pattern בקורס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא מוזכר"
+        },
+        {
+          "id": "b",
+          "text": "שכבת גישה לנתונים מופרדת"
+        },
+        {
+          "id": "c",
+          "text": "רק GUI"
+        },
+        {
+          "id": "d",
+          "text": "ירושה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "הפרדה לוגיקה-נתונים.",
+      "wrongExplanations": {
+        "a": "מוזכר.",
+        "b": "הפרדה לוגיקה-נתונים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q09",
+      "question": "SELECT * FROM — מתי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "תמיד"
+        },
+        {
+          "id": "b",
+          "text": "שאילתת שליפה"
+        },
+        {
+          "id": "c",
+          "text": "רק קבצים"
+        },
+        {
+          "id": "d",
+          "text": "רק catch"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שליפת נתונים.",
+      "wrongExplanations": {
+        "a": "לא תמיד.",
+        "b": "שליפת נתונים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q10",
+      "question": "Open() על Connection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "סוגר"
+        },
+        {
+          "id": "b",
+          "text": "פותח חיבור"
+        },
+        {
+          "id": "c",
+          "text": "מוחק"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "לפני פקודות.",
+      "wrongExplanations": {
+        "a": "ההפך.",
+        "b": "לפני פקודות.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q11",
+      "question": "חריגה בחיבור DB — לטפל ב:",
+      "options": [
+        {
+          "id": "a",
+          "text": "להתעלם"
+        },
+        {
+          "id": "b",
+          "text": "try/catch — חיבור כושל"
+        },
+        {
+          "id": "c",
+          "text": "רק finally"
+        },
+        {
+          "id": "d",
+          "text": "לא"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שגיאות רשת/הרשאות.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "שגיאות רשת/הרשאות.",
+        "c": "לא מספיק.",
+        "d": "כן."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q12",
+      "question": "GetString על Reader?",
+      "options": [
+        {
+          "id": "a",
+          "text": "int"
+        },
+        {
+          "id": "b",
+          "text": "קריאת עמודה מסוג string"
+        },
+        {
+          "id": "c",
+          "text": "void"
+        },
+        {
+          "id": "d",
+          "text": "connection"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "לפי שם/אינדקס עמודה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "לפי שם/אינדקס עמודה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q13",
+      "question": "ADO.NET בקורס — מה זה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שפת SQL"
+        },
+        {
+          "id": "b",
+          "text": "API לגישה למסדי נתונים מ-C#"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "קבצים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ספריית גישה לנתונים.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "ספריית גישה לנתונים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q14",
+      "question": "INSERT דורש:",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reader"
+        },
+        {
+          "id": "b",
+          "text": "ExecuteNonQuery (בדרך כלל)"
+        },
+        {
+          "id": "c",
+          "text": "ReadLine"
+        },
+        {
+          "id": "d",
+          "text": "cast"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שינוי נתונים.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "שינוי נתונים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    },
+    {
+      "id": "db-q15",
+      "question": "למה לסגור Reader ו-Connection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא חובה"
+        },
+        {
+          "id": "b",
+          "text": "משאבים מוגבלים — דליפות"
+        },
+        {
+          "id": "c",
+          "text": "מהירות"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "using/Dispose.",
+      "wrongExplanations": {
+        "a": "חשוב.",
+        "b": "using/Dispose.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "mysql"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "mysql-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "mysql"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "mysql-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "mysql"
+    },
+    {
+      "id": "mysql-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "mysql"
+    }
+  ]
+}

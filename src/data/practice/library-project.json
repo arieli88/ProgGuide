@@ -1,0 +1,587 @@
+{
+  "chapterId": "library-project",
+  "multipleChoice": [
+    {
+      "id": "lib-q01",
+      "question": "Book במערכת הספרייה — תפקיד?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ממשק"
+        },
+        {
+          "id": "b",
+          "text": "מחלקת בסיס לסוגי ספרים"
+        },
+        {
+          "id": "c",
+          "text": "רק Main"
+        },
+        {
+          "id": "d",
+          "text": "SQL"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "היררכיית ספרים.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "היררכיית ספרים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q02",
+      "question": "PaperBook ו-DigitalBook — יחס ל-Book?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HAS-A"
+        },
+        {
+          "id": "b",
+          "text": "IS-A (יורשים)"
+        },
+        {
+          "id": "c",
+          "text": "ממשק"
+        },
+        {
+          "id": "d",
+          "text": "אין"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ירושה.",
+      "wrongExplanations": {
+        "a": "הרכבה.",
+        "b": "ירושה.",
+        "c": "לא.",
+        "d": "יש."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q03",
+      "question": "Library מחזיקה מערך Book[] — יחס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IS-A"
+        },
+        {
+          "id": "b",
+          "text": "HAS-A"
+        },
+        {
+          "id": "c",
+          "text": "override"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "הספרייה מכילה ספרים.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "הספרייה מכילה ספרים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q04",
+      "question": "GetPrice() polymorphic — למה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "static"
+        },
+        {
+          "id": "b",
+          "text": "מחיר שונה לסוג ספר"
+        },
+        {
+          "id": "c",
+          "text": "קבצים"
+        },
+        {
+          "id": "d",
+          "text": "SQL"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "override/virtual לפי סוג.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "override/virtual לפי סוג.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q05",
+      "question": "תפריט Console בפרויקט — לולאה:",
+      "options": [
+        {
+          "id": "a",
+          "text": "while true עם switch"
+        },
+        {
+          "id": "b",
+          "text": "רק for"
+        },
+        {
+          "id": "c",
+          "text": "אין תפריט"
+        },
+        {
+          "id": "d",
+          "text": "רק SQL"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "תפריט אינטראקטיבי.",
+      "wrongExplanations": {
+        "a": "תפריט אינטראקטיבי.",
+        "b": "לא.",
+        "c": "יש.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q06",
+      "question": "הוספת ספר לספרייה — דורש:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק קריאה"
+        },
+        {
+          "id": "b",
+          "text": "אובייקט Book (או יורש) במערך/רשימה"
+        },
+        {
+          "id": "c",
+          "text": "מחיקת DB"
+        },
+        {
+          "id": "d",
+          "text": "cast בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אחסון אובייקטים.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "אחסון אובייקטים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q07",
+      "question": "חיפוש ספר לפי ISBN/שם —:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק SQL"
+        },
+        {
+          "id": "b",
+          "text": "לולאה על המערך"
+        },
+        {
+          "id": "c",
+          "text": "לא בפרויקט"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חיפוש בקולקציה.",
+      "wrongExplanations": {
+        "a": "לא חובה.",
+        "b": "חיפוש בקולקציה.",
+        "c": "יש.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q08",
+      "question": "מחלקה מופשטת Book עם GetPrice abstract?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא בפרויקט"
+        },
+        {
+          "id": "b",
+          "text": "יכולה לאלץ כל יורש לממש מחיר"
+        },
+        {
+          "id": "c",
+          "text": "רק interface"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "abstract method.",
+      "wrongExplanations": {
+        "a": "יכולה.",
+        "b": "abstract method.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q09",
+      "question": "פרויקט ספרייה — OOP מדגים:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק קבצים"
+        },
+        {
+          "id": "b",
+          "text": "ירושה, פולימורפיזם, encapsulation"
+        },
+        {
+          "id": "c",
+          "text": "רק SQL"
+        },
+        {
+          "id": "d",
+          "text": "רק exceptions"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שילוב עקרונות.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "שילוב עקרונות.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q10",
+      "question": "DigitalBook — שדה ייחודי לדוגמה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "softCover"
+        },
+        {
+          "id": "b",
+          "text": "file_size"
+        },
+        {
+          "id": "c",
+          "text": "race"
+        },
+        {
+          "id": "d",
+          "text": "connectionString"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "גודל קובץ.",
+      "wrongExplanations": {
+        "a": "PaperBook.",
+        "b": "גודל קובץ.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q11",
+      "question": "PaperBook — שדה ייחודי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "file_size"
+        },
+        {
+          "id": "b",
+          "text": "softCover (כריכה)"
+        },
+        {
+          "id": "c",
+          "text": "ISBN בלבד בבסיס"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מאפיין כריכה.",
+      "wrongExplanations": {
+        "a": "Digital.",
+        "b": "מאפיין כריכה.",
+        "c": "יכול בבסיס.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q12",
+      "question": "מערך Book[] עם Paper ו-Digital —:",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא חוקי"
+        },
+        {
+          "id": "b",
+          "text": "פולימורפיזם — מערך של בסיס"
+        },
+        {
+          "id": "c",
+          "text": "רק HAS-A"
+        },
+        {
+          "id": "d",
+          "text": "SQL"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אותו מערך ליורשים.",
+      "wrongExplanations": {
+        "a": "חוקי.",
+        "b": "אותו מערך ליורשים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q13",
+      "question": "Main בפרויקט — תפקיד?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק DB"
+        },
+        {
+          "id": "b",
+          "text": "יצירת אובייקטים והרצת תפריט"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "interface"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "נקודת כניסה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "נקודת כניסה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q14",
+      "question": "Properties על Book (Title, Pages)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא"
+        },
+        {
+          "id": "b",
+          "text": "כן — encapsulation"
+        },
+        {
+          "id": "c",
+          "text": "רק public fields"
+        },
+        {
+          "id": "d",
+          "text": "רק static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מאפיינים לנתונים.",
+      "wrongExplanations": {
+        "a": "כן.",
+        "b": "מאפיינים לנתונים.",
+        "c": "לא מומלץ.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    },
+    {
+      "id": "lib-q15",
+      "question": "סיכום פרויקט למבחן — חשוב:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק SQL"
+        },
+        {
+          "id": "b",
+          "text": "היררכיה, מערך פולימורפי, תפריט"
+        },
+        {
+          "id": "c",
+          "text": "רק Java"
+        },
+        {
+          "id": "d",
+          "text": "רק files"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מבנה OOP מלא.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "מבנה OOP מלא.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "library-project"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "library-project-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "library-project"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "library-project-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "library-project"
+    },
+    {
+      "id": "library-project-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "library-project"
+    }
+  ]
+}

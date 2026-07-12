@@ -1,0 +1,589 @@
+{
+  "chapterId": "properties",
+  "multipleChoice": [
+    {
+      "id": "exam3-01",
+      "question": "מהו 'שדה גיבוי' (backing field) בהקשר של מאפיינים ב-C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "משתנה public שמאחסן נתונים"
+        },
+        {
+          "id": "b",
+          "text": "משתנה private שמאחסן את הנתונים בפועל"
+        },
+        {
+          "id": "c",
+          "text": "מילת מפתח לאיפוס"
+        },
+        {
+          "id": "d",
+          "text": "ערך מ-GetHashCode"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שדה הגיבוי הוא משתנה private מאחורי get/set ידני.",
+      "wrongExplanations": {
+        "a": "הנתונים לא פומביים ישירות.",
+        "b": "שדה הגיבוי הוא משתנה private מאחורי get/set ידני.",
+        "c": "לא קשור לאיפוס.",
+        "d": "GetHashCode לא שומר ערך מאפיין."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "exam3-08",
+      "question": "למה Encapsulation יתרון של Properties?",
+      "options": [
+        {
+          "id": "a",
+          "text": "הכל public"
+        },
+        {
+          "id": "b",
+          "text": "שער גישה עם אימות לפני אחסון"
+        },
+        {
+          "id": "c",
+          "text": "הצפנה אוטומטית"
+        },
+        {
+          "id": "d",
+          "text": "מונע ירושה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "set יכול לבדוק ערך לפני שמירה בשדה פרטי.",
+      "wrongExplanations": {
+        "a": "ההפך — מגן על פרטיות.",
+        "b": "set יכול לבדוק ערך לפני שמירה בשדה פרטי.",
+        "c": "לא מצפין.",
+        "d": "לא קשור."
+      },
+      "difficulty": "easy",
+      "topicId": "properties"
+    },
+    {
+      "id": "exam3-14",
+      "question": "תחביר auto-property עם ברירת מחדל?",
+      "options": [
+        {
+          "id": "a",
+          "text": "public string Name { get; set; } = \"Unknown\";"
+        },
+        {
+          "id": "b",
+          "text": "public string Name { get; set; (\"Unknown\"); }"
+        },
+        {
+          "id": "c",
+          "text": "public string Name = \"Unknown\" { get; set; }"
+        },
+        {
+          "id": "d",
+          "text": "default Name = \"Unknown\";"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "השמה אחרי הסוגריים מאתחלת ערך ברירת מחדל.",
+      "wrongExplanations": {
+        "a": "השמה אחרי הסוגריים מאתחלת ערך ברירת מחדל.",
+        "b": "תחביר שגוי.",
+        "c": "תחביר שגוי.",
+        "d": "לא קיים."
+      },
+      "difficulty": "easy",
+      "topicId": "properties"
+    },
+    {
+      "id": "exam3-17",
+      "question": "איזה בלוק מראה property עם validation?",
+      "code": "// A\npublic int Age { get; set; if (value > 0) age = value; }\n\n// B\nprivate int _age;\npublic int Age {\n    get { return _age; }\n    set { if (value >= 0) _age = value; }\n}",
+      "options": [
+        {
+          "id": "a",
+          "text": "Option A"
+        },
+        {
+          "id": "b",
+          "text": "Option B"
+        },
+        {
+          "id": "c",
+          "text": "Option C"
+        },
+        {
+          "id": "d",
+          "text": "Option D"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Option B: שדה _age פרטי + set עם בדיקה.",
+      "wrongExplanations": {
+        "a": "תחביר לא חוקי.",
+        "b": "Option B: שדה _age פרטי + set עם בדיקה.",
+        "c": "expression-bodied לא setter מלא.",
+        "d": "לא חוקי."
+      },
+      "difficulty": "hard",
+      "topicId": "properties"
+    },
+    {
+      "id": "exam3-18",
+      "question": "מטרת value ב-setter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ערך נוכחי בשדה"
+        },
+        {
+          "id": "b",
+          "text": "פרמטר מרומז של הערך המוקצה"
+        },
+        {
+          "id": "c",
+          "text": "המרה למחרוזת"
+        },
+        {
+          "id": "d",
+          "text": "ברירת מחדל"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "value הוא מה שהוקצה: obj.Prop = 5 → value הוא 5.",
+      "wrongExplanations": {
+        "a": "זה הערך החדש, לא הישן.",
+        "b": "value הוא מה שהוקצה: obj.Prop = 5 → value הוא 5.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "easy",
+      "topicId": "properties"
+    },
+    {
+      "id": "exam3-26",
+      "question": "public int Score { get; private set; } — מה נכון?",
+      "code": "public int Score { get; private set; }",
+      "options": [
+        {
+          "id": "a",
+          "text": "read-only לכולם כולל המחלקה"
+        },
+        {
+          "id": "b",
+          "text": "ניתן לעדכן מבחוץ"
+        },
+        {
+          "id": "c",
+          "text": "קריאה מבחוץ, עדכון רק בתוך המחלקה"
+        },
+        {
+          "id": "d",
+          "text": "דורש backing field ידני"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "private set = רק המחלקה כותבת; כולם קוראים.",
+      "wrongExplanations": {
+        "a": "המחלקה יכולה לכתוב.",
+        "b": "לא ניתן מבחוץ.",
+        "c": "private set = רק המחלקה כותבת; כולם קוראים.",
+        "d": "auto-property מספיק."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q07",
+      "question": "מה יתרון auto-property { get; set; }?",
+      "options": [
+        {
+          "id": "a",
+          "text": "אין גישה"
+        },
+        {
+          "id": "b",
+          "text": "תחביר קצר — הקומפיילר יוצר backing field"
+        },
+        {
+          "id": "c",
+          "text": "חייב validation"
+        },
+        {
+          "id": "d",
+          "text": "static בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "פשטות — שדה גיבוי אוטומטי.",
+      "wrongExplanations": {
+        "a": "יש גישה.",
+        "b": "פשטות — שדה גיבוי אוטומטי.",
+        "c": "לא חובה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q08",
+      "question": "read-only property — איך?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק get"
+        },
+        {
+          "id": "b",
+          "text": "get בלבד (או private set)"
+        },
+        {
+          "id": "c",
+          "text": "רק set"
+        },
+        {
+          "id": "d",
+          "text": "void"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "get ללא set, או set פרטי.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "get ללא set, או set פרטי.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q09",
+      "question": "Property מול שדה public — מה עדיף לפי הקורס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שדה public תמיד"
+        },
+        {
+          "id": "b",
+          "text": "Property — אפשר validation ושינוי מימוש"
+        },
+        {
+          "id": "c",
+          "text": "אין הבדל"
+        },
+        {
+          "id": "d",
+          "text": "שדה static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "encapsulation דרך property.",
+      "wrongExplanations": {
+        "a": "לא מומלץ.",
+        "b": "encapsulation דרך property.",
+        "c": "יש הבדל.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q10",
+      "question": "init-only setter (C# 9+) — לא בחומר בסיסי; מה נפוץ בקורס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "set עם בדיקה בערך"
+        },
+        {
+          "id": "b",
+          "text": "get/set מלאים עם validation"
+        },
+        {
+          "id": "c",
+          "text": "רק fields"
+        },
+        {
+          "id": "d",
+          "text": "רק abstract"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בקורס: set עם if (value >= 0) וכו'.",
+      "wrongExplanations": {
+        "a": "לא בחומר.",
+        "b": "בקורס: set עם if (value >= 0) וכו'.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q11",
+      "question": "Name { get; set; } = \"Unknown\" — מה קורה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שגיאה"
+        },
+        {
+          "id": "b",
+          "text": "ברירת מחדל Unknown לכל מופע חדש"
+        },
+        {
+          "id": "c",
+          "text": "static"
+        },
+        {
+          "id": "d",
+          "text": "רק בבנאי"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אתחול property בערך ברירת מחדל.",
+      "wrongExplanations": {
+        "a": "חוקי.",
+        "b": "אתחול property בערך ברירת מחדל.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q12",
+      "question": "למה לא לחשוף שדה public ישירות?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מהיר יותר"
+        },
+        {
+          "id": "b",
+          "text": "אין שליטה על ערכים לא חוקיים"
+        },
+        {
+          "id": "c",
+          "text": "חובה"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-Java"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "set יכול לאמת — שדה לא.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "set יכול לאמת — שדה לא.",
+        "c": "לא חובה.",
+        "d": "גם C#."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q13",
+      "question": "get בלבד עם private set — מי יכול לכתוב?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כולם"
+        },
+        {
+          "id": "b",
+          "text": "רק קוד בתוך המחלקה"
+        },
+        {
+          "id": "c",
+          "text": "אף אחד"
+        },
+        {
+          "id": "d",
+          "text": "רק Main"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "private set = רק המחלקה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "private set = רק המחלקה.",
+        "c": "המחלקה כן.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q14",
+      "question": "expression-bodied property: public int X => _x;",
+      "options": [
+        {
+          "id": "a",
+          "text": "set בלבד"
+        },
+        {
+          "id": "b",
+          "text": "get בלבד (קריאה)"
+        },
+        {
+          "id": "c",
+          "text": "בנאי"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "=> מגדיר get בלבד.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "=> מגדיר get בלבד.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    },
+    {
+      "id": "prop-q15",
+      "question": "Property יכול להחזיר computed value?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא"
+        },
+        {
+          "id": "b",
+          "text": "כן — get מחשב ערך (למשל שטח מרוחב*גובה)"
+        },
+        {
+          "id": "c",
+          "text": "רק set"
+        },
+        {
+          "id": "d",
+          "text": "רק static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "get לא חייב להחזיר שדה — יכול לחשב.",
+      "wrongExplanations": {
+        "a": "כן.",
+        "b": "get לא חייב להחזיר שדה — יכול לחשב.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "properties"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "properties-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "properties"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "properties-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "properties"
+    },
+    {
+      "id": "properties-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "properties"
+    }
+  ]
+}

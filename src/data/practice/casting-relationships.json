@@ -1,0 +1,587 @@
+{
+  "chapterId": "casting-relationships",
+  "multipleChoice": [
+    {
+      "id": "cast-q01",
+      "question": "מה ההבדל בין IS-A ל-HAS-A?",
+      "options": [
+        {
+          "id": "a",
+          "text": "אין"
+        },
+        {
+          "id": "b",
+          "text": "IS-A = ירושה; HAS-A = הרכבה (מחזיק אובייקט אחר)"
+        },
+        {
+          "id": "c",
+          "text": "שניהם ירושה"
+        },
+        {
+          "id": "d",
+          "text": "שניהם ממשק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+      "wrongExplanations": {
+        "a": "יש.",
+        "b": "IS-A: Car is a Vehicle. HAS-A: Car has an Engine.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q02",
+      "question": "Upcasting (למשל Dog ל-Pet) — האם בטוח?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא, תמיד נכשל"
+        },
+        {
+          "id": "b",
+          "text": "כן — תמיד חוקי"
+        },
+        {
+          "id": "c",
+          "text": "רק עם as"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "כל Dog הוא Pet — upcast בטוח.",
+      "wrongExplanations": {
+        "a": "ההפך.",
+        "b": "כל Dog הוא Pet — upcast בטוח.",
+        "c": "לא חובה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q03",
+      "question": "Downcasting (Pet ל-Dog) — מה הסיכון?",
+      "options": [
+        {
+          "id": "a",
+          "text": "אין"
+        },
+        {
+          "id": "b",
+          "text": "עלול להיכשל אם האובייקט לא Dog בפועל"
+        },
+        {
+          "id": "c",
+          "text": "תמיד עובד"
+        },
+        {
+          "id": "d",
+          "text": "שגיאת קומפילציה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "צריך לוודא טיפוס — is/as.",
+      "wrongExplanations": {
+        "a": "יש סיכון.",
+        "b": "צריך לוודא טיפוס — is/as.",
+        "c": "לא תמיד.",
+        "d": "קומפילציה עוברת."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q04",
+      "question": "מה עושה אופרטור is?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מבצע cast"
+        },
+        {
+          "id": "b",
+          "text": "בודק אם אובייקט מסוג מסוים"
+        },
+        {
+          "id": "c",
+          "text": "יוצר אובייקט"
+        },
+        {
+          "id": "d",
+          "text": "מוחק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "is מחזיר bool — בדיקת טיפוס.",
+      "wrongExplanations": {
+        "a": "זה as.",
+        "b": "is מחזיר bool — בדיקת טיפוס.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q05",
+      "question": "מה עושה אופרטור as?",
+      "options": [
+        {
+          "id": "a",
+          "text": "תמיד זורק חריגה"
+        },
+        {
+          "id": "b",
+          "text": "מנסה cast — מחזיר null אם נכשל"
+        },
+        {
+          "id": "c",
+          "text": "בודק bool בלבד"
+        },
+        {
+          "id": "d",
+          "text": "static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "as בטוח יותר — null במקום exception.",
+      "wrongExplanations": {
+        "a": "זה cast ישיר.",
+        "b": "as בטוח יותר — null במקום exception.",
+        "c": "זה is.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q06",
+      "question": "Car has Engine — איזה יחס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IS-A"
+        },
+        {
+          "id": "b",
+          "text": "HAS-A (הרכבה)"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "ממשק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "הרכבה = חלק מתוך שלם.",
+      "wrongExplanations": {
+        "a": "לא ירושה.",
+        "b": "הרכבה = חלק מתוך שלם.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q07",
+      "question": "Dog : Animal — איזה יחס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HAS-A"
+        },
+        {
+          "id": "b",
+          "text": "IS-A"
+        },
+        {
+          "id": "c",
+          "text": "ממשק"
+        },
+        {
+          "id": "d",
+          "text": "אין"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ירושה = IS-A.",
+      "wrongExplanations": {
+        "a": "ההפך.",
+        "b": "ירושה = IS-A.",
+        "c": "לא.",
+        "d": "יש."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q08",
+      "question": "(Dog)d — מה זה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "בדיקה"
+        },
+        {
+          "id": "b",
+          "text": "Cast מפורש (explicit)"
+        },
+        {
+          "id": "c",
+          "text": "is"
+        },
+        {
+          "id": "d",
+          "text": "namespace"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "סוגריים = cast מפורש.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "סוגריים = cast מפורש.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q09",
+      "question": "למה בודקים עם is לפני downcast?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא חובה"
+        },
+        {
+          "id": "b",
+          "text": "למנוע InvalidCastException"
+        },
+        {
+          "id": "c",
+          "text": "להאיץ"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-Java"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מניעת cast שגוי בזמן ריצה.",
+      "wrongExplanations": {
+        "a": "מומלץ.",
+        "b": "מניעת cast שגוי בזמן ריצה.",
+        "c": "לא.",
+        "d": "גם ב-C#."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q10",
+      "question": "Pet p = new Dog(); — איזה casting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Downcasting"
+        },
+        {
+          "id": "b",
+          "text": "Upcasting (Dog ל-Pet)"
+        },
+        {
+          "id": "c",
+          "text": "אין"
+        },
+        {
+          "id": "d",
+          "text": "רק explicit"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מיורש לבסיס = upcast.",
+      "wrongExplanations": {
+        "a": "ההפך.",
+        "b": "מיורש לבסיס = upcast.",
+        "c": "יש.",
+        "d": "implicit."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q11",
+      "question": "HAS-A מומש בדרך כלל עם:",
+      "options": [
+        {
+          "id": "a",
+          "text": "ירושה בלבד"
+        },
+        {
+          "id": "b",
+          "text": "שדה שמחזיק אובייקט אחר"
+        },
+        {
+          "id": "c",
+          "text": "override"
+        },
+        {
+          "id": "d",
+          "text": "abstract"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שדה/מאפיין מסוג המחלקה המוחזקת.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "שדה/מאפיין מסוג המחלקה המוחזקת.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q12",
+      "question": "InvalidCastException — מתי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "בקומפילציה"
+        },
+        {
+          "id": "b",
+          "text": "כש-cast בזמן ריצה לא חוקי"
+        },
+        {
+          "id": "c",
+          "text": "תמיד"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "cast כושל ב-runtime.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "cast כושל ב-runtime.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q13",
+      "question": "מערך Animal[] עם Dog — דורש downcast ל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "תמיד"
+        },
+        {
+          "id": "b",
+          "text": "כשצריך מתודות שרק ב-Dog"
+        },
+        {
+          "id": "c",
+          "text": "לעולם לא"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-interfaces"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "רפרנס Animal לא 'רואה' מתודות Dog.",
+      "wrongExplanations": {
+        "a": "לא תמיד.",
+        "b": "רפרנס Animal לא 'רואה' מתודות Dog.",
+        "c": "לפעמים כן.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q14",
+      "question": "IS-A מאפשר:",
+      "options": [
+        {
+          "id": "a",
+          "text": "הרכבה"
+        },
+        {
+          "id": "b",
+          "text": "השמה: יורש במקום בסיס"
+        },
+        {
+          "id": "c",
+          "text": "רק HAS-A"
+        },
+        {
+          "id": "d",
+          "text": "רק static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Dog dog = ...; Animal a = dog;",
+      "wrongExplanations": {
+        "a": "הרכבה.",
+        "b": "Dog dog = ...; Animal a = dog;",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "cast-q15",
+      "question": "Library HAS-A Book[] — יחס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IS-A"
+        },
+        {
+          "id": "b",
+          "text": "HAS-A"
+        },
+        {
+          "id": "c",
+          "text": "ירושה"
+        },
+        {
+          "id": "d",
+          "text": "override"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ספרייה מחזיקה ספרים — לא יורשת מספר.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "ספרייה מחזיקה ספרים — לא יורשת מספר.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "casting-relationships"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "casting-relationships-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "casting-relationships"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "casting-relationships-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "casting-relationships"
+    },
+    {
+      "id": "casting-relationships-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "casting-relationships"
+    }
+  ]
+}

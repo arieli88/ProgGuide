@@ -1,0 +1,587 @@
+{
+  "chapterId": "inheritance",
+  "multipleChoice": [
+    {
+      "id": "inh-m1",
+      "question": "מה לא ניתן להוריש?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שדות protected"
+        },
+        {
+          "id": "b",
+          "text": "מתודות virtual"
+        },
+        {
+          "id": "c",
+          "text": "בנאי"
+        },
+        {
+          "id": "d",
+          "text": "שדות public"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "בנאי לא יורש — צריך להגדיר ביורש עם base.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "לא נכון לפי חומר הקורס.",
+        "c": "בנאי לא יורש — צריך להגדיר ביורש עם base.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-m2",
+      "question": "תחביר ירושה ב-C#?",
+      "options": [
+        {
+          "id": "a",
+          "text": "extends Pet"
+        },
+        {
+          "id": "b",
+          "text": ": Pet"
+        },
+        {
+          "id": "c",
+          "text": "inherits Pet"
+        },
+        {
+          "id": "d",
+          "text": "from Pet"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "class Dog : Pet",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "class Dog : Pet",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q03",
+      "question": "מה מייצגת מילת המפתח protected?",
+      "options": [
+        {
+          "id": "a",
+          "text": "נגיש רק בתוך המחלקה"
+        },
+        {
+          "id": "b",
+          "text": "נגיש למחלקה וליורשים"
+        },
+        {
+          "id": "c",
+          "text": "נגיש מכל מקום"
+        },
+        {
+          "id": "d",
+          "text": "נגיש רק ליורשים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "protected = המחלקה + יורשים.",
+      "wrongExplanations": {
+        "a": "זה private.",
+        "b": "protected = המחלקה + יורשים.",
+        "c": "זה public.",
+        "d": "גם המחלקה עצמה."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q04",
+      "question": "מה תפקיד :base(...) בבנאי יורש?",
+      "options": [
+        {
+          "id": "a",
+          "text": "קורא למתודה static"
+        },
+        {
+          "id": "b",
+          "text": "קורא לבנאי של מחלקת הבסיס"
+        },
+        {
+          "id": "c",
+          "text": "מוחק את הבסיס"
+        },
+        {
+          "id": "d",
+          "text": "יוצר ממשק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "base מפעיל בנאי של מחלקת האב לפני אתחול היורש.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "base מפעיל בנאי של מחלקת האב לפני אתחול היורש.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q05",
+      "question": "class Dog : Pet — מה אומר ה-IS-A?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dog HAS-A Pet"
+        },
+        {
+          "id": "b",
+          "text": "Dog IS-A Pet (כלב הוא סוג של חיה)"
+        },
+        {
+          "id": "c",
+          "text": "Pet IS-A Dog"
+        },
+        {
+          "id": "d",
+          "text": "אין קשר"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ירושה = יחס IS-A.",
+      "wrongExplanations": {
+        "a": "זה HAS-A.",
+        "b": "ירושה = יחס IS-A.",
+        "c": "ההפך.",
+        "d": "יש קשר."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q06",
+      "question": "האם C# תומך בירושה מרובה ממחלקות? (class X : A, B)",
+      "options": [
+        {
+          "id": "a",
+          "text": "כן"
+        },
+        {
+          "id": "b",
+          "text": "לא — ירושה יחידה ממחלקה"
+        },
+        {
+          "id": "c",
+          "text": "רק ב-interfaces"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-struct"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "C# — single inheritance ממחלקה אחת.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "C# — single inheritance ממחלקה אחת.",
+        "c": "ממשקים כן, לא מחלקות.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q07",
+      "question": "בנאי של מחלקת בסיס — האם יורש אותו אוטומטית?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כן, תמיד"
+        },
+        {
+          "id": "b",
+          "text": "לא — בנאים לא יורשים; צריך :base()"
+        },
+        {
+          "id": "c",
+          "text": "רק אם public"
+        },
+        {
+          "id": "d",
+          "text": "רק אם virtual"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בנאים לא יורשים — חייבים לקרוא במפורש אם נדרש.",
+      "wrongExplanations": {
+        "a": "לא אוטומטי.",
+        "b": "בנאים לא יורשים — חייבים לקרוא במפורש אם נדרש.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q08",
+      "question": "מה קורה אם יורש לא קורא ל-base() ובבסיס אין בנאי ברירת מחדל?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רץ כרגיל"
+        },
+        {
+          "id": "b",
+          "text": "שגיאת קומפילציה"
+        },
+        {
+          "id": "c",
+          "text": "NullReference"
+        },
+        {
+          "id": "d",
+          "text": "יוצר בנאי ריק"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חייב קריאה לבנאי מתאים של הבסיס.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "חייב קריאה לבנאי מתאים של הבסיס.",
+        "c": "לא בקומפילציה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q09",
+      "question": "DigitalBook : Book — איזה סוג ירושה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רב-שלבית"
+        },
+        {
+          "id": "b",
+          "text": "חד-שלבית (יורש ישירות מ-Book)"
+        },
+        {
+          "id": "c",
+          "text": "ממשק בלבד"
+        },
+        {
+          "id": "d",
+          "text": "אין ירושה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "יורש ישירות ממחלקת אב אחת.",
+      "wrongExplanations": {
+        "a": "יכול להיות multi-level אחרת.",
+        "b": "יורש ישירות ממחלקת אב אחת.",
+        "c": "לא.",
+        "d": "יש."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q10",
+      "question": "Fiction : PaperBook : Book — כמה רמות ירושה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "1"
+        },
+        {
+          "id": "b",
+          "text": "2"
+        },
+        {
+          "id": "c",
+          "text": "3"
+        },
+        {
+          "id": "d",
+          "text": "אין הגבלה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Fiction→PaperBook→Book = שתי רמות ירושה.",
+      "wrongExplanations": {
+        "a": "יותר.",
+        "b": "Fiction→PaperBook→Book = שתי רמות ירושה.",
+        "c": "זה מספר המחלקות.",
+        "d": "יש הגבלה מעשית."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q11",
+      "question": "שדה protected בבסיס — מי יכול לגשת?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כולם"
+        },
+        {
+          "id": "b",
+          "text": "רק הבסיס"
+        },
+        {
+          "id": "c",
+          "text": "הבסיס והיורשים"
+        },
+        {
+          "id": "d",
+          "text": "רק Main"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "protected לבסיס וליורשים.",
+      "wrongExplanations": {
+        "a": "לא public.",
+        "b": "גם יורשים.",
+        "c": "protected לבסיס וליורשים.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q12",
+      "question": "מה מטרת ירושה לפי הקורס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "להאט תוכנית"
+        },
+        {
+          "id": "b",
+          "text": "שימוש חוזר בקוד והרחבה (DRY)"
+        },
+        {
+          "id": "c",
+          "text": "להחליף ממשקים"
+        },
+        {
+          "id": "d",
+          "text": "למנוע פולימורפיזם"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "DRY + הרחבה + היררכיית IS-A.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "DRY + הרחבה + היררכיית IS-A.",
+        "c": "ממשקים נפרד.",
+        "d": "מאפשרת פולימורפיזם."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q13",
+      "question": "class Cat : Animal — Cat מקבל:",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק שדות חדשים"
+        },
+        {
+          "id": "b",
+          "text": "שדות ומתודות מ-Animal + יכול להוסיף"
+        },
+        {
+          "id": "c",
+          "text": "רק מתודות static"
+        },
+        {
+          "id": "d",
+          "text": "רק ממשקים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "יורש members של הבסיס (לפי visibility).",
+      "wrongExplanations": {
+        "a": "לא רק חדשים.",
+        "b": "יורש members של הבסיס (לפי visibility).",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q14",
+      "question": "האם private בבסיס נגיש ליורש?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כן"
+        },
+        {
+          "id": "b",
+          "text": "לא — private רק במחלקה המגדירה"
+        },
+        {
+          "id": "c",
+          "text": "רק עם protected"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "private לא עובר ליורשים.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "private לא עובר ליורשים.",
+        "c": "protected כן.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inh-q15",
+      "question": "מה נכון על בנאי יורש?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שם שונה מהמחלקה"
+        },
+        {
+          "id": "b",
+          "text": "שם זהה למחלקה היורשת, ללא return"
+        },
+        {
+          "id": "c",
+          "text": "חייב להחזיר void"
+        },
+        {
+          "id": "d",
+          "text": "לא יכול לקבל פרמטרים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "כמו כל בנאי — שם = שם המחלקה.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "כמו כל בנאי — שם = שם המחלקה.",
+        "c": "אין return type.",
+        "d": "יכול."
+      },
+      "difficulty": "medium",
+      "topicId": "inheritance"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "inheritance-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "inheritance"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "inheritance-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "inheritance"
+    },
+    {
+      "id": "inheritance-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "inheritance"
+    }
+  ]
+}

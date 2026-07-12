@@ -1,0 +1,587 @@
+{
+  "chapterId": "methods-encapsulation",
+  "multipleChoice": [
+    {
+      "id": "me-q01",
+      "question": "מהי אינקפסולציה לפי הקורס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "חשיפת כל השדות כ-public"
+        },
+        {
+          "id": "b",
+          "text": "הסתרת נתונים פנימיים וגישה מבוקרת דרך מתודות"
+        },
+        {
+          "id": "c",
+          "text": "ירושה מרובה"
+        },
+        {
+          "id": "d",
+          "text": "העמסת אופרטורים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+      "wrongExplanations": {
+        "a": "זה ההפך.",
+        "b": "אינקפסולציה = הסתרת state והחשפת ממשק (getters/setters).",
+        "c": "נושא אחר.",
+        "d": "נושא אחר."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q02",
+      "question": "למה משתמשים בשדות private?",
+      "options": [
+        {
+          "id": "a",
+          "text": "כדי שהקומפיילר ירוץ מהר יותר"
+        },
+        {
+          "id": "b",
+          "text": "כדי למנוע שינוי ישיר לנתונים מבחוץ"
+        },
+        {
+          "id": "c",
+          "text": "כי C# מחייב"
+        },
+        {
+          "id": "d",
+          "text": "רק במחלקות static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "private מגן על הנתונים — שינוי רק דרך מתודות מאושרות.",
+      "wrongExplanations": {
+        "a": "לא קשור לביצועים.",
+        "b": "private מגן על הנתונים — שינוי רק דרך מתודות מאושרות.",
+        "c": "לא חובה תמיד.",
+        "d": "לא נכון."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q03",
+      "question": "מה תפקיד Getter (למשל getName())?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מעדכן ערך בשדה"
+        },
+        {
+          "id": "b",
+          "text": "מחזיר ערך של שדה בלי לשנות אותו"
+        },
+        {
+          "id": "c",
+          "text": "יוצר אובייקט חדש"
+        },
+        {
+          "id": "d",
+          "text": "מוחק שדה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Getter = קריאה בלבד (accessor).",
+      "wrongExplanations": {
+        "a": "זה Setter.",
+        "b": "Getter = קריאה בלבד (accessor).",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q04",
+      "question": "מה תפקיד Setter (למשל setAge(int age))?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר bool"
+        },
+        {
+          "id": "b",
+          "text": "מעדכן ערך של שדה (עם אפשרות לאימות)"
+        },
+        {
+          "id": "c",
+          "text": "קורא לבנאי"
+        },
+        {
+          "id": "d",
+          "text": "מגדיר מתודה static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Setter = עדכון מבוקר (mutator), לרוב void.",
+      "wrongExplanations": {
+        "a": "לא חייב bool.",
+        "b": "Setter = עדכון מבוקר (mutator), לרוב void.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q05",
+      "question": "מתי ניתן לעשות Overloading למתודות?",
+      "options": [
+        {
+          "id": "a",
+          "text": "רק לבנאים"
+        },
+        {
+          "id": "b",
+          "text": "כשיש חתימות שונות (מספר/סוג פרמטרים)"
+        },
+        {
+          "id": "c",
+          "text": "רק במחלקות sealed"
+        },
+        {
+          "id": "d",
+          "text": "רק עם override"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Overloading = אותו שם, פרמטרים שונים — נפתר בזמן קומפילציה.",
+      "wrongExplanations": {
+        "a": "גם למתודות רגילות.",
+        "b": "Overloading = אותו שם, פרמטרים שונים — נפתר בזמן קומפילציה.",
+        "c": "לא.",
+        "d": "override זה נושא אחר."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q06",
+      "question": "משתנה שמוגדר בתוך מתודה — היכן הוא נגיש?",
+      "options": [
+        {
+          "id": "a",
+          "text": "בכל התוכנית"
+        },
+        {
+          "id": "b",
+          "text": "רק בתוך אותה מתודה (scope מקומי)"
+        },
+        {
+          "id": "c",
+          "text": "בכל המחלקות"
+        },
+        {
+          "id": "d",
+          "text": "רק ב-Main"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "משתני מקומיים קיימים רק בתוך הבלוק שבו הוגדרו.",
+      "wrongExplanations": {
+        "a": "לא גלובלי.",
+        "b": "משתני מקומיים קיימים רק בתוך הבלוק שבו הוגדרו.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q07",
+      "question": "מתודה עם return type void — מה היא מחזירה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0"
+        },
+        {
+          "id": "b",
+          "text": "null"
+        },
+        {
+          "id": "c",
+          "text": "כלום — אין ערך מוחזר"
+        },
+        {
+          "id": "d",
+          "text": "string ריק"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "void = אין return value (או return; בלבד).",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "לא.",
+        "c": "void = אין return value (או return; בלבד).",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q08",
+      "question": "איך קוראים למתודה static של המחלקה Math?",
+      "options": [
+        {
+          "id": "a",
+          "text": "דרך אובייקט: new Math().Abs()"
+        },
+        {
+          "id": "b",
+          "text": "ישירות על שם המחלקה: Math.Abs()"
+        },
+        {
+          "id": "c",
+          "text": "רק מתוך Main"
+        },
+        {
+          "id": "d",
+          "text": "לא ניתן ב-C#"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "static נקרא דרך שם המחלקה, לא דורש מופע.",
+      "wrongExplanations": {
+        "a": "Math לא מיועד ל-new.",
+        "b": "static נקרא דרך שם המחלקה, לא דורש מופע.",
+        "c": "לא.",
+        "d": "כן ניתן."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q09",
+      "question": "במתודת deposit(int amount) — מהו amount?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שדה של המחלקה"
+        },
+        {
+          "id": "b",
+          "text": "פרמטר פורמלי (formal parameter)"
+        },
+        {
+          "id": "c",
+          "text": "ערך מוחזר"
+        },
+        {
+          "id": "d",
+          "text": "קבוע גלובלי"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "amount הוא פרמטר שהמתודה מקבלת בקריאה.",
+      "wrongExplanations": {
+        "a": "שדה אחר (balance).",
+        "b": "amount הוא פרמטר שהמתודה מקבלת בקריאה.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q10",
+      "question": "מתודה שמחזירה int חייבת לכלול:",
+      "options": [
+        {
+          "id": "a",
+          "text": "return עם ערך מסוג int"
+        },
+        {
+          "id": "b",
+          "text": "void"
+        },
+        {
+          "id": "c",
+          "text": "static בלבד"
+        },
+        {
+          "id": "d",
+          "text": "פרמטר אחד בלבד"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "חייב return שמתאים לטיפוס המוחזר.",
+      "wrongExplanations": {
+        "a": "חייב return שמתאים לטיפוס המוחזר.",
+        "b": "void לא מחזיר.",
+        "c": "לא חובה.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q11",
+      "question": "מתודה במחלקה יכולה לגשת לשדות private של אותה מחלקה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "לא"
+        },
+        {
+          "id": "b",
+          "text": "כן — מתודות באותה מחלקה רואות private"
+        },
+        {
+          "id": "c",
+          "text": "רק אם static"
+        },
+        {
+          "id": "d",
+          "text": "רק בבנאי"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "private נגיש לכל חברי המחלקה, כולל מתודות.",
+      "wrongExplanations": {
+        "a": "ההפך.",
+        "b": "private נגיש לכל חברי המחלקה, כולל מתודות.",
+        "c": "לא.",
+        "d": "לא רק בבנאי."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q12",
+      "question": "מה קורה אם קוראים למתודה עם פרמטרים לא תואמים?",
+      "options": [
+        {
+          "id": "a",
+          "text": "המרה אוטומטית תמיד"
+        },
+        {
+          "id": "b",
+          "text": "שגיאת קומפילציה (לרוב)"
+        },
+        {
+          "id": "c",
+          "text": "ריצה עם null"
+        },
+        {
+          "id": "d",
+          "text": "נבחרת מתודה אקראית"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "חייב התאמה במספר, סדר וטיפוס הפרמטרים.",
+      "wrongExplanations": {
+        "a": "לא תמיד.",
+        "b": "חייב התאמה במספר, סדר וטיפוס הפרמטרים.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q13",
+      "question": "למה משתמשים בקידומת _ לשדות (כמו _name)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "חובה של C#"
+        },
+        {
+          "id": "b",
+          "text": "מוסכמה להבדיל בין שדה לפרמטר/משתנה מקומי"
+        },
+        {
+          "id": "c",
+          "text": "מגדיר static"
+        },
+        {
+          "id": "d",
+          "text": "מציין public"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מוסכמת שמות — מבהירה שזה שדה פרטי של המחלקה.",
+      "wrongExplanations": {
+        "a": "לא חובה.",
+        "b": "מוסכמת שמות — מבהירה שזה שדה פרטי של המחלקה.",
+        "c": "לא.",
+        "d": "ההפך."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q14",
+      "question": "מתודה אחת קוראת לשנייה — מה מנהל את החזרה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "המתודה הראשונה בלבד"
+        },
+        {
+          "id": "b",
+          "text": "Call Stack — חוזרים למקום הקריאה"
+        },
+        {
+          "id": "c",
+          "text": "GC"
+        },
+        {
+          "id": "d",
+          "text": "CLR בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "מחסנית קריאות — כל return חוזר לקריאה הקודמת.",
+      "wrongExplanations": {
+        "a": "לא.",
+        "b": "מחסנית קריאות — כל return חוזר לקריאה הקודמת.",
+        "c": "ניהול זיכרון.",
+        "d": "לא מספיק."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "me-q15",
+      "question": "איזה משפט על getters/setters נכון לפי הקורס?",
+      "options": [
+        {
+          "id": "a",
+          "text": "הם חובה בכל מחלקה"
+        },
+        {
+          "id": "b",
+          "text": "הם מספקים גישה מבוקרת לנתונים פרטיים"
+        },
+        {
+          "id": "c",
+          "text": "הם תמיד static"
+        },
+        {
+          "id": "d",
+          "text": "הם מחליפים בנאים"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "ממשק נקי לנתונים — encapsulation.",
+      "wrongExplanations": {
+        "a": "לא חובה (יש Properties).",
+        "b": "ממשק נקי לנתונים — encapsulation.",
+        "c": "לא.",
+        "d": "לא."
+      },
+      "difficulty": "medium",
+      "topicId": "methods-encapsulation"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "methods-encapsulation-o1",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o2",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o3",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o4",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o5",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o6",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o7",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o8",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o9",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-o10",
+      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
+      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
+      "hint": "השתמשו בדוגמאות מהתרגול",
+      "topicId": "methods-encapsulation"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "methods-encapsulation-c1",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "נתחו קוד מהתרגול בפרק זה.",
+      "solution": "לפי follow-through בקוד",
+      "explanation": "עקבו אחרי הזרימה שורה שורה.",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-c2",
+      "type": "complete",
+      "title": "השלם קוד",
+      "prompt": "השלימו את החלק החסר לפי החומר.",
+      "starterCode": "// your code",
+      "solution": "// solution",
+      "explanation": "לפי דוגמת הקורס.",
+      "topicId": "methods-encapsulation"
+    },
+    {
+      "id": "methods-encapsulation-c3",
+      "type": "write",
+      "title": "כתוב מתודה",
+      "prompt": "כתבו מתודה פשוטה לפי הדרישות בחומר.",
+      "solution": "void Example() { }",
+      "explanation": "בדקו חתימה וטיפוס מוחזר.",
+      "topicId": "methods-encapsulation"
+    }
+  ]
+}

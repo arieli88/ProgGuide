@@ -1,0 +1,633 @@
+{
+  "chapterId": "introduction",
+  "multipleChoice": [
+    {
+      "id": "intro-m1",
+      "question": "מה יקרה אם מתודת Main חסרה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "התוכנית תרוץ כרגיל"
+        },
+        {
+          "id": "b",
+          "text": "שגיאת קומפילציה — אין נקודת כניסה"
+        },
+        {
+          "id": "c",
+          "text": "שגיאת זמן ריצה בלבד"
+        },
+        {
+          "id": "d",
+          "text": "תיווצר תוכנית ללא פלט"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "לפי הקורס, Main היא נקודת הכניסה. בלעדיה אין קומפילציה תקינה.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "לפי הקורס, Main היא נקודת הכניסה. בלעדיה אין קומפילציה תקינה.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m2",
+      "question": "מה יודפס?\nint x=5; int y=0;\nif(x>3||y++>0) Console.WriteLine(y);",
+      "options": [
+        {
+          "id": "a",
+          "text": "0"
+        },
+        {
+          "id": "b",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "text": "שגיאת קומפילציה"
+        },
+        {
+          "id": "d",
+          "text": "חריגה"
+        }
+      ],
+      "correctId": "a",
+      "explanation": "בגלל short-circuit, y++ לא מתבצע כי x>3 כבר true.",
+      "wrongExplanations": {
+        "a": "בגלל short-circuit, y++ לא מתבצע כי x>3 כבר true.",
+        "b": "לא נכון לפי חומר הקורס.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction",
+      "termsContext": [
+        {
+          "term": "Short-circuit",
+          "explanation": "ב-||: אם x>3 כבר true, y++>0 לא נבדק — y נשאר 0."
+        }
+      ],
+      "code": "int x = 5;\nint y = 0;\nif (x > 3 || y++ > 0)\n    Console.WriteLine(y);",
+      "detailedExplanation": "שלב 1: x=5, y=0.\nשלב 2: בודקים x>3 → true.\nשלב 3: בגלל || ו-short-circuit, הצד השני (y++>0) לא רץ — y לא משתנה.\nשלב 4: מדפיסים y → 0.\n\nאם היה && במקום ||, או אם x היה 2, y++ היה רץ ו-y היה 1."
+    },
+    {
+      "id": "intro-m3",
+      "question": "מה נכון לגבי short-circuit?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שני הצדדים תמיד נבדקים"
+        },
+        {
+          "id": "b",
+          "text": "הצד השני לא יוערך אם הראשון קובע את התוצאה"
+        },
+        {
+          "id": "c",
+          "text": "רק עם |"
+        },
+        {
+          "id": "d",
+          "text": "רק בלולאות"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "זה עיקרון ה-short-circuit evaluation ב-C#.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "זה עיקרון ה-short-circuit evaluation ב-C#.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction",
+      "termsContext": [
+        {
+          "term": "Short-circuit",
+          "explanation": "&&: אם הראשון false — השני לא נבדק. ||: אם הראשון true — השני לא נבדק."
+        },
+        {
+          "term": "&& / ||",
+          "explanation": "אופרטורים לוגיים עם short-circuit. שונה מ-& ו-| שתמיד בודקים שני הצדדים."
+        }
+      ],
+      "detailedExplanation": "Short-circuit evaluation: המהדר מפסיק להעריך ביטוי לוגי ברגע שהתוצאה כבר ידועה.\n\nדוגמה עם &&: if (false && expensive()) — expensive לא נקרא.\nדוגמה עם ||: if (true || expensive()) — expensive לא נקרא.\n\nחשוב במבחן: side effects (y++, קריאות מתודה) עלולים לא לקרות!"
+    },
+    {
+      "id": "intro-m4",
+      "question": "מה יודפס? Console.WriteLine(x++ + ++x); כש-x=5",
+      "options": [
+        {
+          "id": "a",
+          "text": "11"
+        },
+        {
+          "id": "b",
+          "text": "12"
+        },
+        {
+          "id": "c",
+          "text": "13"
+        },
+        {
+          "id": "d",
+          "text": "שגיאה"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "x++ מחזיר 5 ואז x=6; ++x הופך ל-7 ומחזיר 7; 5+7=12.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "x++ מחזיר 5 ואז x=6; ++x הופך ל-7 ומחזיר 7; 5+7=12.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction",
+      "termsContext": [
+        {
+          "term": "Postfix/Prefix ++",
+          "explanation": "x++ מחזיר 5 ואז x=6. ++x מגדיל ל-7 ומחזיר 7. סכום: 5+7=12."
+        }
+      ],
+      "code": "int x = 5;\nConsole.WriteLine(x++ + ++x);",
+      "detailedExplanation": "התחלה: x = 5.\n\nשלב 1 — x++ (postfix): מחזיר 5, אחר כך x הופך ל-6.\nשלב 2 — ++x (prefix): מגדיל x מ-6 ל-7, מחזיר 7.\nשלב 3 — חיבור: 5 + 7 = 12.\n\nטעות נפוצה: לחשוב ששניהם רואים 5 (11) או ששניהם רואים 7 (14). הסדר משמאל לימין קובע."
+    },
+    {
+      "id": "intro-m5",
+      "question": "מה תפקיד ה-CLR?",
+      "options": [
+        {
+          "id": "a",
+          "text": "המרת C# ל-IL"
+        },
+        {
+          "id": "b",
+          "text": "הרצת IL וניהול זיכרון"
+        },
+        {
+          "id": "c",
+          "text": "בדיקת תחביר"
+        },
+        {
+          "id": "d",
+          "text": "יצירת exe בלבד"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "IL נוצר בקומפילציה; CLR מריץ בזמן ריצה.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "IL נוצר בקומפילציה; CLR מריץ בזמן ריצה.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction",
+      "termsContext": [
+        {
+          "term": "CLR",
+          "explanation": "מריץ IL בזמן ריצה (JIT), מנהל זיכרון ו-GC — לא ממיר C# ל-IL."
+        },
+        {
+          "term": "IL",
+          "explanation": "נוצר בקומפילציה על ידי הקומפיילר של C#, לא על ידי CLR."
+        }
+      ],
+      "detailedExplanation": "תהליך .NET לפי הקורס:\n1) C# → קומפילציה → IL (קוד ביניים).\n2) CLR → JIT → קוד מכונה בזמן ריצה.\n3) CLR גם מנהל זיכרון (Garbage Collection) ואבטחה.\n\nתשובה א' שגויה: המרת C# ל-IL נעשית בקומפילציה, לא ב-CLR."
+    },
+    {
+      "id": "intro-m6",
+      "question": "מה יודפס? Console.WriteLine(\"4\"+5);",
+      "options": [
+        {
+          "id": "a",
+          "text": "9"
+        },
+        {
+          "id": "b",
+          "text": "45"
+        },
+        {
+          "id": "c",
+          "text": "שגיאה"
+        },
+        {
+          "id": "d",
+          "text": "4 5"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "שרשור מחרוזת — 5 הופך ל\"5\".",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "שרשור מחרוזת — 5 הופך ל\"5\".",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction",
+      "code": "Console.WriteLine(\"4\"+5);"
+    },
+    {
+      "id": "intro-m7",
+      "question": "איזה טיפוס מתאים למספר שלם?",
+      "options": [
+        {
+          "id": "a",
+          "text": "double"
+        },
+        {
+          "id": "b",
+          "text": "bool"
+        },
+        {
+          "id": "c",
+          "text": "int"
+        },
+        {
+          "id": "d",
+          "text": "void"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "int מייצג שלמים.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "לא נכון לפי חומר הקורס.",
+        "c": "int מייצג שלמים.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m8",
+      "question": "מה קורה בגישה ל-array[9] במערך בגודל 9?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ערך 0"
+        },
+        {
+          "id": "b",
+          "text": "IndexOutOfRangeException"
+        },
+        {
+          "id": "c",
+          "text": "הרחבה אוטומטית"
+        },
+        {
+          "id": "d",
+          "text": "null"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "אינדקסים 0-8 בלבד.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "אינדקסים 0-8 בלבד.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m9",
+      "question": "מה ההבדל בין Write ל-WriteLine?",
+      "options": [
+        {
+          "id": "a",
+          "text": "אין הבדל"
+        },
+        {
+          "id": "b",
+          "text": "WriteLine מוסיף מעבר שורה"
+        },
+        {
+          "id": "c",
+          "text": "Write רק למספרים"
+        },
+        {
+          "id": "d",
+          "text": "WriteLine רק למחרוזות"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "WriteLine מסיים בשורה חדשה.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "WriteLine מסיים בשורה חדשה.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m10",
+      "question": "const string X = \"a\"; X = \"b\"; — מה קורה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "עובד"
+        },
+        {
+          "id": "b",
+          "text": "שגיאת קומפילציה"
+        },
+        {
+          "id": "c",
+          "text": "שגיאת ריצה"
+        },
+        {
+          "id": "d",
+          "text": "מדפיס b"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "לא ניתן לשנות const.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "לא ניתן לשנות const.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m11",
+      "question": "איזה לולאה מבטיחה הרצה לפחות פעם אחת?",
+      "options": [
+        {
+          "id": "a",
+          "text": "while"
+        },
+        {
+          "id": "b",
+          "text": "for"
+        },
+        {
+          "id": "c",
+          "text": "do-while"
+        },
+        {
+          "id": "d",
+          "text": "אף אחת"
+        }
+      ],
+      "correctId": "c",
+      "explanation": "do-while בודק תנאי אחרי הגוף.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "לא נכון לפי חומר הקורס.",
+        "c": "do-while בודק תנאי אחרי הגוף.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m12",
+      "question": "מה תפקיד break בלולאה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "דילוג לאיטרציה הבאה"
+        },
+        {
+          "id": "b",
+          "text": "יציאה מיידית מהלולאה"
+        },
+        {
+          "id": "c",
+          "text": "עצירת התוכנית"
+        },
+        {
+          "id": "d",
+          "text": "חזרה ל-Main"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "break יוצא מהלולאה הקרובה.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "break יוצא מהלולאה הקרובה.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m13",
+      "question": "switch ללא break בין case-ים — מה זה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "שגיאה תמיד"
+        },
+        {
+          "id": "b",
+          "text": "fall-through מכוון"
+        },
+        {
+          "id": "c",
+          "text": "רק ב-default"
+        },
+        {
+          "id": "d",
+          "text": "לא קיים ב-C#"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "בקורס הודגם fall-through בין חודשים.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "בקורס הודגם fall-through בין חודשים.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-m14",
+      "question": "int.Parse על קלט לא מספרי — מה קורה?",
+      "options": [
+        {
+          "id": "a",
+          "text": "מחזיר 0"
+        },
+        {
+          "id": "b",
+          "text": "חריגה"
+        },
+        {
+          "id": "c",
+          "text": "מחזיר null"
+        },
+        {
+          "id": "d",
+          "text": "מתעלם"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "Parse זורק חריגה; TryParse עדיף לקלט משתמש.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "Parse זורק חריגה; TryParse עדיף לקלט משתמש.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction",
+      "termsContext": [
+        {
+          "term": "TryParse",
+          "explanation": "מנסה המרה ומחזיר bool. משתמש ב-out לערך — לא זורק חריגה על קלט לא תקין."
+        }
+      ]
+    },
+    {
+      "id": "intro-m15",
+      "question": "מה נכון על טווח חיים של משתנה מקומי?",
+      "options": [
+        {
+          "id": "a",
+          "text": "נגיש בכל המחלקה"
+        },
+        {
+          "id": "b",
+          "text": "נגיש רק בבלוק שבו הוגדר"
+        },
+        {
+          "id": "c",
+          "text": "נגיש בכל הפרויקט"
+        },
+        {
+          "id": "d",
+          "text": "תמיד static"
+        }
+      ],
+      "correctId": "b",
+      "explanation": "scope מקומי מוגבל לבלוק.",
+      "wrongExplanations": {
+        "a": "לא נכון לפי חומר הקורס.",
+        "b": "scope מקומי מוגבל לבלוק.",
+        "c": "לא נכון לפי חומר הקורס.",
+        "d": "לא נכון לפי חומר הקורס."
+      },
+      "difficulty": "medium",
+      "topicId": "introduction"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "intro-o1",
+      "question": "הסבר את שלושת שלבי ההרצה ב-.NET לפי הקורס.",
+      "sampleAnswer": "C# → IL בקומפילציה → CLR מתרגם ומריץ בזמן ריצה עם ניהול זיכרון.",
+      "hint": "מקור, ביניים, ריצה",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o2",
+      "question": "מה ההבדל בין שגיאת תחביר לשגיאת זמן ריצה?",
+      "sampleAnswer": "תחביר נתפסת בקומפילציה; ריצה קורית בזמן הרצה (למשל חלוקה ב-0).",
+      "hint": "מתי מתגלות",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o3",
+      "question": "מתי משתמשים ב-switch במקום if/else?",
+      "sampleAnswer": "כשמשווים משתנה יחיד לערכים רבים — קוד נקי יותר.",
+      "hint": "השוואה מרובה",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o4",
+      "question": "הסבר short-circuit עם דוגמה.",
+      "sampleAnswer": "ב-&& אם התנאי הראשון false, השני לא רץ; חוסך חישוב ומונע side effects.",
+      "hint": "&& או ||",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o5",
+      "question": "למה Length עדיף על מספר קבוע בלולאת מערך?",
+      "sampleAnswer": "אם גודל המערך משתנה, הקוד נשאר נכון.",
+      "hint": "תחזוקה",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o6",
+      "question": "מה ההבדל בין המרה מפורשת למרומזת?",
+      "sampleAnswer": "מפורשת: (int)10.3; מרומזת: שרשור עם string.",
+      "hint": "cast",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o7",
+      "question": "מה קורה ב-do-while כשהתנאי false מההתחלה?",
+      "sampleAnswer": "הגוף רץ פעם אחת ואז נבדק התנאי.",
+      "hint": "לפחות פעם",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o8",
+      "question": "הסבר משתנה מקומי מול שדה במחלקה (הכנה ל-OOP).",
+      "sampleAnswer": "מקומי — רק בבלוק; שדה — שייך לאובייקט/מחלקה.",
+      "hint": "scope",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o9",
+      "question": "מה תפקיד const?",
+      "sampleAnswer": "ערך קבוע שלא ניתן לשנות אחרי אתחול.",
+      "hint": "קבוע",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-o10",
+      "question": "תאר דוגמה לשגיאת לוגיקה (לא חריגה).",
+      "sampleAnswer": "לולאה אינסופית שהתוכנית לא קורסת אבל לא מסתיימת.",
+      "hint": "התנהגות שגויה",
+      "topicId": "introduction"
+    }
+  ],
+  "codeExercises": [
+    {
+      "id": "intro-c1",
+      "type": "complete",
+      "title": "השלם קריאת גיל",
+      "prompt": "השלם המרה בטוחה של קלט למספר",
+      "starterCode": "string input = Console.ReadLine();\n// השלם כאן\nif (_____) Console.WriteLine(age);",
+      "solution": "int age;\nif (int.TryParse(input, out age))",
+      "explanation": "TryParse מחזיר bool ולא זורק חריגה.",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-c2",
+      "type": "predict",
+      "title": "מה יודפס?",
+      "prompt": "int a=2,b=3; Console.WriteLine(a<b && b++>0); Console.WriteLine(b);",
+      "solution": "True\n4",
+      "explanation": "שני התנאים נבדקים ב-&&.",
+      "topicId": "introduction"
+    },
+    {
+      "id": "intro-c3",
+      "type": "debug",
+      "title": "תקן מערך",
+      "prompt": "for(i=0;i<=arr.Length;i++) — מה הבאג?",
+      "starterCode": "for(int i=0; i<=arr.Length; i++)",
+      "solution": "for(int i=0; i<arr.Length; i++)",
+      "explanation": "אינדקס אחרון הוא Length-1.",
+      "topicId": "introduction"
+    }
+  ]
+}
