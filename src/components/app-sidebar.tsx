@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BookOpen, Brain, ClipboardCheck, GraduationCap, Home, Search, Trophy } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { getCourseIndex } from "@/lib/content";
@@ -13,9 +12,10 @@ import { useState } from "react";
 
 interface AppSidebarProps {
   completedChapters?: string[];
+  onNavigate?: () => void;
 }
 
-export function AppSidebar({ completedChapters = [] }: AppSidebarProps) {
+export function AppSidebar({ completedChapters = [], onNavigate }: AppSidebarProps) {
   const pathname = usePathname();
   const course = getCourseIndex();
   const [search, setSearch] = useState("");
@@ -35,8 +35,8 @@ export function AppSidebar({ completedChapters = [] }: AppSidebarProps) {
   })).filter((m) => m.chapters.length > 0);
 
   return (
-    <aside className="flex h-full w-72 flex-col border-l border-border/60 bg-card/40 backdrop-blur-xl">
-      <div className="border-b border-border/60 p-4">
+    <aside className="flex h-full w-full max-w-full flex-col overflow-hidden border-l border-border/60 bg-card/40 backdrop-blur-xl lg:w-72">
+      <div className="shrink-0 border-b border-border/60 p-4">
         <div className="mb-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600">
@@ -60,12 +60,13 @@ export function AppSidebar({ completedChapters = [] }: AppSidebarProps) {
         </div>
       </div>
 
-      <ScrollArea className="flex-1 px-3 py-3">
+      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-3">
         <nav className="mb-4 space-y-1">
           {nav.map(({ href, label, icon: Icon }) => (
             <Link
               key={href}
               href={href}
+              onClick={onNavigate}
               className={cn(
                 "flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors hover:bg-accent",
                 pathname === href && "bg-accent font-medium"
@@ -90,6 +91,7 @@ export function AppSidebar({ completedChapters = [] }: AppSidebarProps) {
                   <Link
                     key={ch.id}
                     href={learnHref}
+                    onClick={onNavigate}
                     className={cn(
                       "flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent/80",
                       pathname.startsWith(learnHref) && "bg-gradient-to-l from-violet-500/15 to-transparent font-medium"
@@ -108,7 +110,7 @@ export function AppSidebar({ completedChapters = [] }: AppSidebarProps) {
             </div>
           </div>
         ))}
-      </ScrollArea>
+      </div>
     </aside>
   );
 }
