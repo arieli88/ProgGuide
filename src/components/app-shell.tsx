@@ -1,6 +1,7 @@
 "use client";
 
 import { AppSidebar } from "@/components/app-sidebar";
+import { SiteFooter } from "@/components/site-footer";
 import { useProgress } from "@/hooks/use-progress";
 import { getAllChapters } from "@/lib/content";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -36,6 +37,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <main className="flex-1 bg-gradient-to-b from-background via-background to-violet-500/[0.03]">
           {children}
         </main>
+        <SiteFooter />
       </div>
     </div>
   );
