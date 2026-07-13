@@ -99,7 +99,7 @@ export default function HomePage() {
         {[
           { icon: Target, title: "מבוסס על הקורס", desc: "תוכן מנוסח מחדש לפי המצגות, התרגולים והמבחנים" },
           { icon: Zap, title: "תרגול אינטראקטיבי", desc: "שאלות אמריקאיות, פתוחות ותרגילי קוד לכל פרק" },
-          { icon: GraduationCap, title: "מבחן מסכם", desc: `${examCount} שאלות מתיקיית תרגול למבחן (HTML + Word) עם ציון וניתוח חולשות` },
+          { icon: GraduationCap, title: "מבחן מסכם", desc: `מבחן לכל קובץ תרגול + מבחן מאוחד של ${examCount} שאלות, עם פירוט טעויות` },
         ].map(({ icon: Icon, title, desc }) => (
           <Card key={title} className="border-border/60 bg-card/50 backdrop-blur-sm">
             <CardContent className="pt-6">

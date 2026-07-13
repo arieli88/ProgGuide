@@ -91,6 +91,46 @@ export function getFinalExamQuestions(): ExamQuestion[] {
   return finalExamData as ExamQuestion[];
 }
 
+export interface ExamBundle {
+  id: string;
+  title: string;
+  description: string;
+  sourceFile?: string;
+  questions: ExamQuestion[];
+}
+
+export function getExamBundles(): ExamBundle[] {
+  const all = getFinalExamQuestions();
+  const bySource = new Map<string, ExamQuestion[]>();
+
+  for (const q of all) {
+    const key = q.sourceFile?.trim() || "מקור לא ידוע";
+    const list = bySource.get(key) ?? [];
+    list.push(q);
+    bySource.set(key, list);
+  }
+
+  const fileBundles: ExamBundle[] = [...bySource.entries()]
+    .sort((a, b) => a[0].localeCompare(b[0], "he"))
+    .map(([sourceFile, questions]) => ({
+      id: `file-${sourceFile}`,
+      title: sourceFile,
+      description: `${questions.length} שאלות מקובץ זה בלבד`,
+      sourceFile,
+      questions,
+    }));
+
+  return [
+    ...fileBundles,
+    {
+      id: "all",
+      title: "מבחן מסכם — הכל",
+      description: `${all.length} שאלות מכל קבצי תרגול למבחן יחד`,
+      questions: all,
+    },
+  ];
+}
+
 export function searchChapters(query: string): Chapter[] {
   const q = query.trim().toLowerCase();
   if (!q) return [];

@@ -1,4 +1,4 @@
-import { getFinalExamQuestions } from "@/lib/content";
+import { getExamBundles } from "@/lib/content";
 import { ExamPageClient } from "./exam-page-client";
 
 export const metadata = {
@@ -6,6 +6,6 @@ export const metadata = {
 };
 
 export default function ExamPage() {
-  const questions = getFinalExamQuestions();
-  return <ExamPageClient questions={questions} />;
+  const bundles = getExamBundles();
+  return <ExamPageClient bundles={bundles} />;
 }

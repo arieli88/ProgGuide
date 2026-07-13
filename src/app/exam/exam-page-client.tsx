@@ -1,15 +1,15 @@
 "use client";
 
-import type { ExamQuestion } from "@/types/course";
+import type { ExamBundle } from "@/lib/content";
 import { ExamView } from "@/components/exam-view";
 import { useProgress } from "@/hooks/use-progress";
 
-export function ExamPageClient({ questions }: { questions: ExamQuestion[] }) {
+export function ExamPageClient({ bundles }: { bundles: ExamBundle[] }) {
   const { recordExamAttempt } = useProgress();
 
   return (
     <ExamView
-      questions={questions}
+      bundles={bundles}
       onComplete={(result) =>
         recordExamAttempt({
           id: crypto.randomUUID(),
