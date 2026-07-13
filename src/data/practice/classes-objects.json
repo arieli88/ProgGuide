@@ -484,73 +484,73 @@
   ],
   "openQuestions": [
     {
-      "id": "classes-objects-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o1",
+      "question": "מה ההבדל בין מחלקה (class) לאובייקט (object)?",
+      "sampleAnswer": "מחלקה היא התבנית (blueprint); אובייקט הוא מופע ממשי בזיכרון שנוצר עם new.",
+      "hint": "שרטוט מול בניין",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o2",
+      "question": "מה חייב להיות נכון לגבי בנאי ב-C#?",
+      "sampleAnswer": "שם זהה למחלקה, ללא טיפוס מוחזר (גם לא void), ואפשר לעשות overload.",
+      "hint": "שם המחלקה",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o3",
+      "question": "הסבר את שלושת שלבי יצירת אובייקט.",
+      "sampleAnswer": "הצהרה על משתנה, new שמקצה זיכרון, קריאה לבנאי לאתחול.",
+      "hint": "declaration + new",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o4",
+      "question": "למה משתמשים ב-this בבנאי?",
+      "sampleAnswer": "להבדיל בין שדה של האובייקט לפרמטר עם אותו שם, למשל this.name = name.",
+      "hint": "פרמטר מול שדה",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o5",
+      "question": "מה תפקיד namespace?",
+      "sampleAnswer": "לארגן מחלקות ולמנוע התנגשויות שמות בין ספריות/פרויקטים שונים.",
+      "hint": "ארגון שמות",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o6",
+      "question": "הסבר getters ו-setters בקצרה.",
+      "sampleAnswer": "מתודות לקריאה/כתיבה מבוקרת של שדות private — חלק מאינקפסולציה.",
+      "hint": "גישה מבוקרת",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o7",
+      "question": "מה קורה אם שוכחים new ביצירת אובייקט?",
+      "sampleAnswer": "המשתנה לא מצביע על מופע תקין — בדרך כלל NullReferenceException בשימוש, או שגיאת קומפילציה אם אין אתחול.",
+      "hint": "null",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o8",
+      "question": "תאר דוגמה אחת מ-BankAccount מהקורס.",
+      "sampleAnswer": "יוצרים חשבון עם יתרה ראשונית, קוראים ל-deposit/GetBalance — כל מופע שומר מצב משלו.",
+      "hint": "מופעים עם יתרות",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o9",
+      "question": "מהי Call Stack בקריאת מתודות?",
+      "sampleAnswer": "כשמתודה קוראת למתודה אחרת, ה-runtime זוכר לאן לחזור אחרי שהמתודה הפנימית מסתיימת.",
+      "hint": "חזרה לקורא",
       "topicId": "classes-objects"
     },
     {
-      "id": "classes-objects-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "co-o10",
+      "question": "למה בנאי לא מחזיר ערך?",
+      "sampleAnswer": "תפקידו לאתחל את האובייקט החדש שהקצה new — לא לחשב ערך להחזרה כמו מתודה רגילה.",
+      "hint": "אתחול בלבד",
       "topicId": "classes-objects"
     }
   ],

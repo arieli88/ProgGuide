@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import Link from "next/link";
+import { GraduationCap, Menu } from "lucide-react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SiteFooter } from "@/components/site-footer";
 import { useProgress } from "@/hooks/use-progress";
 import { getAllChapters } from "@/lib/content";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const { progress, loaded } = useProgress();
@@ -31,16 +33,23 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <SheetTrigger className={buttonVariants({ variant: "ghost", size: "icon" })}>
               <Menu className="h-5 w-5" />
             </SheetTrigger>
-            <SheetContent
-              side="right"
-              className="fixed inset-y-0 right-0 z-50 h-full w-72 max-w-[min(85vw,18rem)] border-l p-0"
-            >
+            <SheetContent side="right" className="gap-0 p-0">
               <AppSidebar {...sidebarProps} />
             </SheetContent>
           </Sheet>
           <span className="text-sm font-semibold">תכנות מתקדם C#</span>
+          <Link
+            href="/exam"
+            className={cn(
+              buttonVariants({ variant: "secondary", size: "sm" }),
+              "mr-auto gap-1.5 text-xs"
+            )}
+          >
+            <GraduationCap className="h-3.5 w-3.5" />
+            תרגול מבחן
+          </Link>
           {loaded && (
-            <span className="mr-auto text-xs text-muted-foreground">
+            <span className="hidden text-xs text-muted-foreground sm:inline">
               {progress.completedChapters.length}/{total} פרקים
             </span>
           )}

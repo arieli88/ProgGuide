@@ -533,73 +533,73 @@
   ],
   "openQuestions": [
     {
-      "id": "polymorphism-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o1",
+      "question": "מהו פולימורפיזם דינמי ב-C#?",
+      "sampleAnswer": "אותה קריאה למתודה מתנהגת לפי סוג האובייקט בפועל בזמן ריצה, עם virtual/override.",
+      "hint": "טיפוס ריצה",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o2",
+      "question": "מה חייב להיות נכון כדי ש-override יעבוד?",
+      "sampleAnswer": "בבסיס המתודה מסומנת virtual (או abstract), וביורש override.",
+      "hint": "virtual בבסיס",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o3",
+      "question": "מה יקרה ב-Pet p = new Dog(); p.Eat() כשיש override?",
+      "sampleAnswer": "תיקרא גרסת Dog — לפי האובייקט האמיתי, לא לפי טיפוס המשתנה.",
+      "hint": "Dog",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o4",
+      "question": "מהו method hiding עם new?",
+      "sampleAnswer": "כשמגדירים מתודה באותו שם בלי override — מסתירים את של הבסיס; הקריאה תלויה בטיפוס המשתנה.",
+      "hint": "בלי override",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o5",
+      "question": "מה ההבדל בין Overloading ל-Overriding?",
+      "sampleAnswer": "Overloading — חתימות שונות בזמן קומפילציה; Overriding — החלפת התנהגות בירושה בזמן ריצה.",
+      "hint": "קומפילציה מול ריצה",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o6",
+      "question": "למה פולימורפיזם שימושי בספרייה?",
+      "sampleAnswer": "מערך Book[] יכול להחזיק סוגים שונים, ו-Borrow מתנהג לפי Physical/Digital.",
+      "hint": "מערך פולימורפי",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o7",
+      "question": "האם אפשר לעשות override למתודה שאינה virtual?",
+      "sampleAnswer": "לא — תקבל שגיאת קומפילציה; צריך virtual בבסיס.",
+      "hint": "שגיאה",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o8",
+      "question": "הסבר dynamic dispatch בקצרה.",
+      "sampleAnswer": "ה-runtime בוחר את המימוש לפי סוג האובייקט בפועל כשיש virtual/override.",
+      "hint": "טבלת מתודות",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o9",
+      "question": "מה היתרון של Pet p = new Dog()?",
+      "sampleAnswer": "אפשר לכתוב קוד כללי על טיפוס הבסיס ועדיין לקבל התנהגות ייחודית של היורש.",
+      "hint": "גמישות",
       "topicId": "polymorphism"
     },
     {
-      "id": "polymorphism-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "poly-o10",
+      "question": "תאר טעות נפוצה במבחן על polymorphism.",
+      "sampleAnswer": "לחשוב שטיפוס המשתנה קובע תמיד — ב-override קובע טיפוס הריצה.",
+      "hint": "טיפוס משתנה מול אובייקט",
       "topicId": "polymorphism"
     }
   ],

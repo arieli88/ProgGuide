@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { MultipleChoiceQuestion } from "@/types/course";
 import { CodeBlock } from "@/components/code-block";
+import { QuestionOptionText } from "@/components/question-option-text";
 import { Callout } from "@/components/callout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -129,7 +130,7 @@ export function McQuizPanel({ questions, title, onAnswer, showScore = true }: Mc
                         state.revealed && isSelected && !isCorrect && "border-red-500 bg-red-500/10"
                       )}
                     >
-                      {opt.text}
+                      <QuestionOptionText text={opt.text} />
                     </button>
                   );
                 })}

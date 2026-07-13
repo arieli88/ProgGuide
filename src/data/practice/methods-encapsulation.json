@@ -484,73 +484,73 @@
   ],
   "openQuestions": [
     {
-      "id": "methods-encapsulation-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o1",
+      "question": "מהו overloading של מתודות?",
+      "sampleAnswer": "כמה מתודות באותו שם עם חתימות שונות (פרמטרים שונים) — המהדר בוחר לפי הארגומנטים.",
+      "hint": "חתימות",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o2",
+      "question": "מה ההבדל בין מתודת מופע ל-static?",
+      "sampleAnswer": "מופע פועלת על אובייקט ספציפי; static שייכת למחלקה וקוראים לה דרך שם המחלקה.",
+      "hint": "אובייקט מול מחלקה",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o3",
+      "question": "הסבר את עקרון האינקפסולציה.",
+      "sampleAnswer": "הסתרת נתונים פנימיים (private) וחשיפת ממשק מבוקר בלבד — getters/setters או מתודות.",
+      "hint": "private",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o4",
+      "question": "למה עושים validation ב-set?",
+      "sampleAnswer": "כדי למנוע מצבים לא חוקיים (יתרה שלילית, גיל לא הגיוני) לפני שמירת הערך בשדה.",
+      "hint": "אימות",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o5",
+      "question": "מה ההבדל בין פרמטר לארגומנט?",
+      "sampleAnswer": "פרמטר הוא המשתנה בהגדרת המתודה; ארגומנט הוא הערך שמועבר בקריאה.",
+      "hint": "הגדרה מול קריאה",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o6",
+      "question": "מתי מתודה מחזירה void?",
+      "sampleAnswer": "כשהיא מבצעת פעולה (שינוי מצב/הדפסה) בלי להחזיר ערך לתוכנית הקוראת.",
+      "hint": "אין ערך מוחזר",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o7",
+      "question": "הסבר גישה private מול public.",
+      "sampleAnswer": "private נגיש רק מתוך המחלקה; public נגיש מכל מקום — לכן שדות לרוב private וממשק public.",
+      "hint": "רמות גישה",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o8",
+      "question": "למה לא חושפים שדות כ-public ישירות?",
+      "sampleAnswer": "כי אי אפשר לאכוף כללים, לשנות מימוש פנימי בבטחה, או להוסיף לוגיקה בשינוי הערך.",
+      "hint": "שליטה",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o9",
+      "question": "תן דוגמה ל-overload שימושי.",
+      "sampleAnswer": "Print(int) ו-Print(string) — אותו שם, טיפוסי פרמטרים שונים, נוחות לקורא.",
+      "hint": "אותו שם",
       "topicId": "methods-encapsulation"
     },
     {
-      "id": "methods-encapsulation-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "me-o10",
+      "question": "מה הקשר בין encapsulation לפרויקט הספרייה?",
+      "sampleAnswer": "שדות כמו מספר עותקים נשמרים פרטיים ומשתנים רק דרך Borrow/Return עם כללים.",
+      "hint": "שליטה במצב",
       "topicId": "methods-encapsulation"
     }
   ],

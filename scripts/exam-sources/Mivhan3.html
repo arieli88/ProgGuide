@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבחן אינטראקטיבי: תכנות מונחה עצמים (OOP)</title>
+    <!-- סגנונות עיצוב - העיצוב עודכן כך שלא יכיל עיגולים ירוקים לבקשתך -->
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .quiz-app {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 15px;
+        }
+
+        .question-container {
+            margin-bottom: 25px;
+        }
+
+        .question-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* עיצוב עבור קטעי קוד בתוך השאלות */
+        pre {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            direction: ltr;
+            text-align: left;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        code {
+            direction: ltr;
+            background-color: #e9ecef;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .options-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .option-item {
+            background-color: #fdfdfd;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .option-item:hover {
+            background-color: #f1f8ff;
+            border-color: #007bff;
+        }
+
+        /* שימוש בצבעים כחולים במקום ירוקים לסימון תשובה נכונה */
+        .option-item.correct {
+            background-color: #d1ecf1;
+            border-color: #0c5460;
+            color: #0c5460;
+            font-weight: bold;
+        }
+
+        .option-item.wrong {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        #feedback {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #end-screen {
+            text-align: center;
+        }
+
+        #end-screen h2 {
+            color: #2c3e50;
+        }
+
+        .score-highlight {
+            font-size: 2rem;
+            color: #007bff;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- מיכל האפליקציה של המבחן -->
+    <div class="quiz-app">
+        <h1>מבחן חזרה: Object Oriented Programming</h1>
+        
+        <div id="quiz-content">
+            <div class="status-bar">
+                <span id="question-count">שאלה 1 מתוך 28</span>
+                <span id="score-display">ניקוד: 0</span>
+            </div>
+
+            <div class="question-container">
+                <div id="question-title" class="question-title">טוען שאלה...</div>
+                <pre id="code-container" style="display: none;"></pre>
+                <ul id="options-list" class="options-list"></ul>
+            </div>
+
+            <div id="feedback"></div>
+            <button id="next-btn" class="btn" onclick="nextQuestion()" style="display: none;">שאלה הבאה</button>
+        </div>
+
+        <!-- מסך סיום המבחן -->
+        <div id="end-screen" style="display: none;">
+            <h2>כל הכבוד! סיימת את המבחן.</h2>
+            <div class="score-highlight" id="final-score"></div>
+            <button class="btn" onclick="restartQuiz()">התחל מחדש</button>
+        </div>
+    </div>
+
+    <!-- הלוגיקה של המבחן -->
+    <script>
+        // המערך עודכן להכיל את 28 השאלות החדשות מתוך התמונות
+        const questions = [
+            {
+                q: "מהו 'שדה גיבוי' (backing field) בהקשר של מאפיינים (properties) ב-C#?",
+                options: [
+                    "משתנה פומבי (public) שמאחסן את נתוני המאפיין ישירות.",
+                    "משתנה פרטי (private) המשמש לאחסון הנתונים בפועל שהמאפיין חושף.",
+                    "מילת מפתח מיוחדת המשמשת לאיפוס ערכי המאפיין לערכי ברירת המחדל שלהם.",
+                    "הערך המוחזר על ידי המתודה GetHashCode()."
+                ],
+                ans: 1
+            },
+            {
+                q: "מדוע אינך יכול/ה להשתמש במילת המפתח 'override' בעת מימוש מתודת ממשק (interface) במחלקה?",
+                options: [
+                    "מתודות של ממשק נחשבות לסטטיות, לא למתודות מופע.",
+                    "מכיוון שאתה מספק את המימוש הראשוני, ולא מחליף מימוש קיים ממחלקת בסיס.",
+                    "מתודות של ממשק הן פרטיות (private) באופן אוטומטי.",
+                    "מילת המפתח 'override' מותרת רק עבור אופרטורים אריתמטיים."
+                ],
+                ans: 1
+            },
+            {
+                q: "בהקשר של חומר המקור, למה מתייחס המונח 'חוסר השתנות' (Immutability) בהעמסת אופרטורים (operator overloading)?",
+                options: [
+                    "לא ניתן לשנות את האופרטור לאחר שהוגדר במחלקה.",
+                    "הדרישה שהעמסת אופרטור לעולם לא תשנה את פרמטרי הקלט שלה.",
+                    "העובדה שממשקים אינם יכולים להכיל משתנים.",
+                    "חוסר היכולת להעמיס אופרטורי השוואה כמו >."
+                ],
+                ans: 1
+            },
+            {
+                q: "איזה מהבאים הוא דוגמה לאופרטור ש*לא* ניתן להעמיס אותו ב-C#?",
+                options: [
+                    "==",
+                    ". (גישה לחבר - Member access)",
+                    ">> (הזזת סיביות - Bitwise shift)",
+                    "! (NOT לוגי)"
+                ],
+                ans: 1
+            },
+            {
+                q: "אם מחלקה מממשת שני ממשקים שלשניהם יש מתודה בעלת אותו שם ואותה חתימה, כיצד זה מטופל ב-C#?",
+                options: [
+                    "המחלקה יכולה לספק מימוש יחיד שעונה על הדרישות של שני הממשקים.",
+                    "המהדר (compiler) ייכשל ויכריח אותך לשנות את השם של אחת המתודות בממשק.",
+                    "ממשקים עם שמות מתנגשים אינם יכולים להיות ממומשים על ידי אותה מחלקה.",
+                    "על המחלקה לרשת מממשק אחד ולהתעלם מהשני."
+                ],
+                ans: 0
+            },
+            {
+                q: "איזה משפט הוא נכון לגבי אופרטורים אונאריים (Unary) כמו ++ או ! ב-C#?",
+                options: [
+                    "הם חייבים לקבל בדיוק שני פרמטרים מאותו סוג.",
+                    "הם מועמסים כמתודות סטטיות המקבלות פרמטר יחיד מסוג המחלקה.",
+                    "לא ניתן להעמיס אותם עבור טיפוסים מובנים כמו שלמים (integers).",
+                    "הם חייבים תמיד להחזיר ערך בוליאני."
+                ],
+                ans: 1
+            },
+            {
+                q: "התבונן/י במחלקה המופשטת (abstract) 'Book'. אם ברצונך שכל סוג ספר יורש (כמו DigitalBook ו-PrintedBook) יספק גרסה משלו למתודה 'GetPrice', כיצד היא צריכה להיות מוצהרת ב-'Book'?",
+                options: [
+                    "public virtual double GetPrice() { return 0; }",
+                    "public abstract double GetPrice();",
+                    "public double GetPrice() { }",
+                    "private abstract double GetPrice();"
+                ],
+                ans: 1
+            },
+            {
+                q: "מדוע מוזכר 'כימוס' (Encapsulation) כיתרון של שימוש במאפיינים (Properties)?",
+                options: [
+                    "מאפיינים מאפשרים לכל הנתונים להיות פומביים ונגישים בקלות.",
+                    "הם מספקים שער גישה לנתונים פרטיים, ומאפשרים אימות (validation) או טרנספורמציה לפני האחסון.",
+                    "הם מצפינים אוטומטית את הערכים המאוחסנים בשדות הגיבוי.",
+                    "מאפיינים מונעים את האפשרות שהמחלקה תורש על ידי אחרים."
+                ],
+                ans: 1
+            },
+            {
+                q: "מהי הדרך המומלצת לבדוק null בתוך העמסה מותאמת אישית של האופרטור == כדי למנוע רקורסיה אינסופית?",
+                options: [
+                    "שימוש בתבנית 'is null' או ב-'object.ReferenceEquals()'.",
+                    "שימוש בבלוק try-catch כדי לתפוס את שגיאת הרקורסיה.",
+                    "המרה (cast) של האופרנדים למחרוזות לפני השוואתם.",
+                    "השוואת ה-'GetHashCode()' של האובייקטים ל-null."
+                ],
+                ans: 0
+            },
+            {
+                q: "איזה משפט מתאר נכונה את היחס בין ממשקים (interfaces) לבנאים (constructors)?",
+                options: [
+                    "לממשקים יכולים להיות רק בנאים ללא פרמטרים.",
+                    "מחלקות חייבות לממש בנאי עבור כל ממשק שהן יורשות.",
+                    "ממשקים אינם תומכים בבנאים מכיוון שלא ניתן ליצור מהם מופעים (instantiated).",
+                    "ניתן להשתמש בבנאי במחלקה מופשטת כדי לאתחל חברי ממשק."
+                ],
+                ans: 2
+            },
+            {
+                q: "מה התוצאה של העמסת אופרטור בינארי כמו + מבחינת התנהגות המהדר (compiler)?",
+                options: [
+                    "זה משנה את סדר הקדימות (precedence) של האופרטור + כדי שיתאים לכפל.",
+                    "זה מאפשר למהדר לבחור את המתודה הנכונה על סמך טיפוסי הפרמטרים בזמן קימפול (compile-time).",
+                    "זה מאפשר להשתמש באופרטור עם כל שני טיפוסים באמצעות המרה דינמית.",
+                    "זה מאלץ את המהדר להשתמש בשוויון של מחלקת הבסיס Object במקום בשוויון ערכים."
+                ],
+                ans: 1
+            },
+            {
+                q: "התבונן/י בדוגמת הפולימורפיזם הבאה:\nמדוע `myVehicle.Fuel();` יגרום לשגיאת קימפול?",
+                code: "interface IDriveable { void Drive(); }\nclass Car : IDriveable {\n    public void Drive() { Console.WriteLine(\"Driving car\"); }\n    public void Fuel() { Console.WriteLine(\"Fueling\"); }\n}\n\nIDriveable myVehicle = new Car();\nmyVehicle.Fuel();",
+                options: [
+                    "המתודה Fuel חייבת להיות מסומנת כ-virtual.",
+                    "המשתנה 'myVehicle' הוא מטיפוס IDriveable, שאינו מגדיר מתודת Fuel.",
+                    "רפרנסים של ממשק יכולים לקרוא רק למתודות המחזירות void.",
+                    "לא ניתן להקצות מופע של מחלקה למשתנה של ממשק."
+                ],
+                ans: 1
+            },
+            {
+                q: "איזה מהבאים *אינו* מותר בהגדרת ממשק (interface) ב-C#?",
+                options: [
+                    "מאפיינים (Properties)",
+                    "אירועים (Events)",
+                    "שדות מופע (Instance Fields)",
+                    "חתימות מתודה (Method Signatures)"
+                ],
+                ans: 2
+            },
+            {
+                q: "ב-C#, מהו התחביר התקני לאתחול מאפיין ממומש-אוטומטית (auto-implemented property) עם ערך ברירת מחדל?",
+                options: [
+                    "public string Name { get; set; } = \"Unknown\";",
+                    "public string Name { get; set; (\"Unknown\"); }",
+                    "public string Name = \"Unknown\" { get; set; }",
+                    "default Name = \"Unknown\";"
+                ],
+                ans: 0
+            },
+            {
+                q: "סקור/י את קטע הקוד הבא עבור מחלקת 'Vector' מותאמת אישית:\nאיזה משפט נכון לגבי השימוש באופרטור זה?",
+                code: "public static Vector operator * (Vector v, int scalar) {\n    return new Vector(v.X * scalar, v.Y * scalar);\n}",
+                options: [
+                    "הביטוי '5 * myVector' יעבוד באופן אוטומטי.",
+                    "הביטוי 'myVector * 5' יעבוד ויחזיר אובייקט Vector חדש.",
+                    "זה ייכשל מכיוון שלפחות פרמטר אחד חייב להיות מחרוזת (string).",
+                    "הפרמטר 'scalar' חייב להיות מסומן במילת המפתח 'const'."
+                ],
+                ans: 1
+            },
+            {
+                q: "מה קורה אם מחלקה יורשת ממחלקה מופשטת (abstract) אך אינה מממשת את אחת המתודות המופשטות שלה?",
+                options: [
+                    "המתודה החסרה זוכה להתעלמות אוטומטית במהלך הריצה.",
+                    "המחלקה חייבת גם היא להיות מוצהרת כ-abstract.",
+                    "המהדר יספק מימוש ריק כברירת מחדל.",
+                    "התוכנית תקרוס רק כאשר תתבצע קריאה לאותה מתודה ספציפית בזמן ריצה."
+                ],
+                ans: 1
+            },
+            {
+                q: "איזה מבלוקי הקוד הבאים ממחיש נכונה מאפיין (property) ידני עם לוגיקת אימות (validation)?",
+                code: "// Option A\npublic int Age { get; set; if (value > 0) age = value; }\n\n// Option B\nprivate int _age;\npublic int Age {\n    get { return _age; }\n    set { if (value >= 0) _age = value; }\n}\n\n// Option C\npublic int Age => _age > 0 ? _age : 0;\n\n// Option D\npublic int Age = value => value > 0;",
+                options: [
+                    "אפשרות A",
+                    "אפשרות B",
+                    "אפשרות C",
+                    "אפשרות D"
+                ],
+                ans: 1
+            },
+            {
+                q: "מהי המטרה של מילת המפתח 'value' ב-setter של מאפיין?",
+                options: [
+                    "היא מייצגת את הערך הנוכחי המאוחסן בשדה הגיבוי.",
+                    "זהו פרמטר מרומז המייצג את הנתונים המוקצים למאפיין.",
+                    "היא משמשת להמרת טיפוס המאפיין למחרוזת לצורך תצוגה.",
+                    "היא מגדירה את ערך ברירת המחדל של המאפיין אם לא סופק כזה."
+                ],
+                ans: 1
+            },
+            {
+                q: "כיצד ממשק (interface) תומך בעקרון של 'צימוד חלש' (loose coupling) בעיצוב תוכנה?",
+                options: [
+                    "על ידי כך שהוא מאפשר למחלקה לרשת ממספר מחלקות בסיס.",
+                    "על ידי כך שהוא מאפשר למחלקה להגדיר נתונים פרטיים משלה תוך הסתרתם מאחרים.",
+                    "על ידי כך שהוא מאפשר לקוד להיות תלוי בחוזה התנהגות במקום במימוש ספציפי (concrete).",
+                    "על ידי דרישה שכל המתודות יהיו סטטיות, ובכך מניעת בעיות במצב האובייקט (object state)."
+                ],
+                ans: 2
+            },
+            {
+                q: "איזה מהאופרטורים הבאים *חובה* להעמיס בזוגות ב-C#?",
+                options: [
+                    "+ ו- -",
+                    "< ו- >",
+                    "* ו- /",
+                    "++ ו- --"
+                ],
+                ans: 1
+            },
+            {
+                q: "במחלקה מופשטת (abstract class), מה ההבדל בין מתודה וירטואלית (virtual) למתודה מופשטת (abstract)?",
+                options: [
+                    "מתודות וירטואליות חייבות להידרס (overridden), בעוד שמתודות מופשטות הן אופציונליות.",
+                    "למתודות מופשטות אין גוף, בעוד שמתודות וירטואליות מספקות מימוש ברירת מחדל.",
+                    "לא ניתן להשתמש במתודות וירטואליות בתוך מחלקות מופשטות.",
+                    "מתודות מופשטות הן פומביות (public) כברירת מחדל, בעוד שוירטואליות הן פרטיות."
+                ],
+                ans: 1
+            },
+            {
+                q: "סקור/י את הקוד הבא:\nמדוע מימוש זה של האופרטור + נחשב לפרקטיקה גרועה?",
+                code: "public class Point {\n    public int X { get; set; }\n    public int Y { get; set; }\n\n    public static Point operator + (Point p1, Point p2) {\n        p1.X += p2.X;\n        p1.Y += p2.Y;\n        return p1;\n    }\n}",
+                options: [
+                    "האופרטור חייב להחזיר ערך בוליאני עבור פעולות אריתמטיות.",
+                    "הוא משנה את האופרנד המקורי 'p1' במקום להחזיר אובייקט חדש.",
+                    "יש להעביר את הפרמטרים p1 ו-p2 לפי הפניה (by reference) באמצעות מילת המפתח 'ref'.",
+                    "לא ניתן להעמיס את האופרטור + עבור מחלקות שמשתמשות במאפיינים ממומשים-אוטומטית."
+                ],
+                ans: 1
+            },
+            {
+                q: "איזה משפט מתאר במדויק את היכולת של ממשקים (Interfaces) החל מגרסה C# 8.0?",
+                options: [
+                    "כעת הם יכולים להכיל שדות מופע (instance fields) ומצב (state).",
+                    "הם יכולים לספק מימושי ברירת מחדל למתודות.",
+                    "ניתן ליצור מהם מופעים באמצעות 'new' אם יש להם מתודות ברירת מחדל.",
+                    "כעת הם תומכים בבנאים פרטיים כדי להגביל ירושה."
+                ],
+                ans: 1
+            },
+            {
+                q: "בעת מימוש שוויון מותאם אישית על ידי העמסת האופרטור ==, איזו מתודה נוספת יש לדרוס (override) כדי להבטיח התנהגות עקבית באוספים כמו HashSet?",
+                options: [
+                    "ToString()",
+                    "GetHashCode()",
+                    "Dispose()",
+                    "CompareTo()"
+                ],
+                ans: 1
+            },
+            {
+                q: "מהי הסכנה העיקרית במימוש העמסת האופרטור == תוך בדיקת null באמצעות קוד כמו `if (obj == null)`?",
+                options: [
+                    "זה יגרום לשגיאת קימפול מכיוון שלא ניתן להשוות null לאובייקט.",
+                    "זה יוצר לולאה רקורסיבית אינסופית שמובילה ל-StackOverflowException.",
+                    "זה מאלץ ליצור מופע של האובייקט גם אם הוא היה null במקור.",
+                    "זה מפר את הכלל שאופרטורים חייבים להיות סטטיים."
+                ],
+                ans: 1
+            },
+            {
+                q: "בהינתן הגדרת המאפיין הבאה:\nאיזה מהמשפטים הבאים נכון לגבי מאפיין זה?",
+                code: "public int Score { get; private set; }",
+                options: [
+                    "המאפיין הוא לקריאה-בלבד (read-only) עבור כולם, כולל המחלקה המכילה.",
+                    "ניתן לעדכן את ערך המאפיין ממחלקות חיצוניות באמצעות השמה ישירה.",
+                    "המאפיין יכול להיקרא על ידי מחלקות חיצוניות אך יעודכן רק בתוך המחלקה שבה הוגדר.",
+                    "מאפיין זה דורש הצהרה ידנית על שדה גיבוי פרטי (private backing field) נפרד."
+                ],
+                ans: 2
+            },
+            {
+                q: "בעת העמסת אופרטור ב-C#, איזה שילוב של מילת מפתח ומגדיר גישה הוא חובה לחלוטין?",
+                options: [
+                    "public virtual",
+                    "public static",
+                    "private static",
+                    "protected internal"
+                ],
+                ans: 1
+            },
+            {
+                q: "התבונן/י בקטע הקוד הבא:\nמדוע קוד זה ייכשל בקימפול?",
+                code: "interface IWorkable {\n    void PerformTask();\n}\n\nclass Employee : IWorkable {\n    void PerformTask() {\n        Console.WriteLine(\"Working...\");\n    }\n}",
+                options: [
+                    "מימוש המתודה PerformTask חייב להשתמש במילת המפתח 'override'.",
+                    "המחלקה Employee חייבת לרשת ממחלקת בסיס לפני מימוש ממשק.",
+                    "מימוש מתודת הממשק חייב להיות מסומן במפורש כ-'public'.",
+                    "ממשקים אינם יכולים להכיל חתימות מתודה ללא פרמטרים."
+                ],
+                ans: 2
+            }
+        ];
+
+        // משתני מערכת לניהול מצב המבחן
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        // הפניות לאלמנטים ב-DOM
+        const questionTitle = document.getElementById('question-title');
+        const codeContainer = document.getElementById('code-container');
+        const optionsList = document.getElementById('options-list');
+        const nextBtn = document.getElementById('next-btn');
+        const feedback = document.getElementById('feedback');
+        const scoreDisplay = document.getElementById('score-display');
+        const questionCountDisplay = document.getElementById('question-count');
+        const quizContent = document.getElementById('quiz-content');
+        const endScreen = document.getElementById('end-screen');
+        const finalScore = document.getElementById('final-score');
+
+        // פונקציה לטעינת השאלה הנוכחית
+        function loadQuestion() {
+            answered = false;
+            nextBtn.style.display = 'none';
+            feedback.innerText = '';
+            optionsList.innerHTML = '';
+            
+            const currentQ = questions[currentQuestionIndex];
+            questionTitle.innerText = currentQ.q;
+            
+            // הצגת קטע קוד רק אם הוא קיים
+            if (currentQ.code) {
+                codeContainer.style.display = 'block';
+                codeContainer.innerText = currentQ.code;
+            } else {
+                codeContainer.style.display = 'none';
+            }
+            
+            // עדכון פס המצב
+            questionCountDisplay.innerText = `שאלה ${currentQuestionIndex + 1} מתוך ${questions.length}`;
+            scoreDisplay.innerText = `ניקוד: ${score}`;
+            
+            // יצירת אפשרויות התשובה
+            currentQ.options.forEach((opt, index) => {
+                const li = document.createElement('li');
+                li.className = 'option-item';
+                li.innerText = opt;
+                // הוספת מאזין ללחיצה
+                li.onclick = () => selectOption(index, li);
+                optionsList.appendChild(li);
+            });
+        }
+
+        // פונקציה לטיפול בבחירת משתמש
+        function selectOption(selectedIndex, element) {
+            if (answered) return;
+            answered = true;
+            
+            const currentQ = questions[currentQuestionIndex];
+            const allOptions = optionsList.children;
+            
+            if (selectedIndex === currentQ.ans) {
+                // סגנון לתשובה נכונה (ללא שימוש בירוק - מעודכן לכחול כהה)
+                element.classList.add('correct');
+                feedback.innerText = 'תשובה נכונה!';
+                feedback.style.color = '#0c5460';
+                score++;
+            } else {
+                // סגנון לתשובה שגויה
+                element.classList.add('wrong');
+                feedback.innerText = 'תשובה שגויה.';
+                feedback.style.color = '#721c24';
+                // הדגשת התשובה הנכונה בכחול
+                allOptions[currentQ.ans].classList.add('correct');
+            }
+            
+            scoreDisplay.innerText = `ניקוד: ${score}`;
+            nextBtn.style.display = 'block';
+        }
+
+        // מעבר לשאלה הבאה או סיום המבחן
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showEndScreen();
+            }
+        }
+
+        // הצגת מסך הסיום
+        function showEndScreen() {
+            quizContent.style.display = 'none';
+            endScreen.style.display = 'block';
+            finalScore.innerText = `${score} / ${questions.length}`;
+        }
+
+        // הפעלה מחדש של המבחן
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            quizContent.style.display = 'block';
+            endScreen.style.display = 'none';
+            loadQuestion();
+        }
+
+        // התחלת המבחן עם השאלה הראשונה בעת טעינת העמוד
+        loadQuestion();
+    </script>
+</body>
+</html>

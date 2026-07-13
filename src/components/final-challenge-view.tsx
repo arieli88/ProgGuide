@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Trophy } from "lucide-react";
 import type { ExamResult, MultipleChoiceQuestion } from "@/types/course";
 import { getChapterTitle } from "@/lib/content";
 import { CodeBlock } from "@/components/code-block";
+import { QuestionOptionText } from "@/components/question-option-text";
 import { ExamQuestionCard } from "@/components/exam-question-card";
 import { ExamResultsSummary } from "@/components/exam-results-summary";
 import { Button } from "@/components/ui/button";
@@ -86,7 +87,7 @@ export function FinalChallengeView({ questions, onComplete }: FinalChallengeView
           <Trophy className="mx-auto mb-4 h-16 w-16 text-amber-500" />
           <h1 className="mb-4 text-3xl font-bold">אתגר הסופי</h1>
           <p className="mb-8 text-muted-foreground">
-            {shuffled.length} שאלות מעורבבות מכל הפרקים, מבחני התרגול והמבחן — האתגר המלא לפני המבחן
+            {shuffled.length} שאלות אמריקאיות מכל פרקי הקורס — ללא כפילויות, עם הסברים וניווט
           </p>
           <Button size="lg" onClick={() => setStarted(true)} className="bg-gradient-to-l from-amber-600 to-orange-600">
             התחלת אתגר
@@ -116,9 +117,13 @@ export function FinalChallengeView({ questions, onComplete }: FinalChallengeView
                     {d.correct ? "✓ נכון" : "✗ שגוי"}
                   </p>
                   {!d.correct && d.selectedId && (
-                    <p className="mb-1 text-muted-foreground">בחרת: {selectedText}</p>
+                    <p className="mb-1 text-muted-foreground">
+                      בחרת: <QuestionOptionText text={selectedText ?? ""} />
+                    </p>
                   )}
-                  <p className="mb-1 text-emerald-600">תשובה נכונה: {correctText}</p>
+                  <p className="mb-1 text-emerald-600">
+                    תשובה נכונה: <QuestionOptionText text={correctText ?? ""} />
+                  </p>
                   <p>{q.explanation}</p>
                   {q.detailedExplanation && (
                     <p className="mt-2 whitespace-pre-line rounded-lg bg-muted/40 p-2 text-muted-foreground">

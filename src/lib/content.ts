@@ -107,16 +107,21 @@ export function getChapterTitle(id: string): string {
 }
 
 export function getAllChallengeQuestions(): MultipleChoiceQuestion[] {
-  const practice = Object.values(practiceMap).flatMap((p) => p.multipleChoice);
-  const exam = (finalExamData as ExamQuestion[]).map((q) => ({
-    ...q,
-    topicId: q.chapterIds[0] ?? "introduction",
-  }));
-  const all = [...practice, ...exam];
-  const seen = new Set<string>();
-  return all.filter((q) => {
-    if (seen.has(q.id)) return false;
-    seen.add(q.id);
-    return true;
-  });
+  const seenIds = new Set<string>();
+  const seenText = new Set<string>();
+  const all: MultipleChoiceQuestion[] = [];
+
+  for (const chapter of getAllChapters()) {
+    const practice = practiceMap[chapter.id];
+    if (!practice) continue;
+    for (const q of practice.multipleChoice) {
+      const textKey = q.question.trim();
+      if (seenIds.has(q.id) || seenText.has(textKey)) continue;
+      seenIds.add(q.id);
+      seenText.add(textKey);
+      all.push({ ...q, topicId: q.topicId || chapter.id });
+    }
+  }
+
+  return all;
 }

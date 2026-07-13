@@ -267,16 +267,10 @@ for (const [id, data] of Object.entries(enrich)) {
   }
 }
 
-// Fill minimum questions for all chapters — skip generic placeholders; use fix-placeholder-questions.js
+// Fill minimum questions for all chapters — skip generic open placeholders; use fix-open-questions.js
 const genericMc = () => [];
 
-const genericOpen = (chapterId, n = 10) =>
-  Array.from({ length: n }, (_, i) => ({
-    id: `${chapterId}-o${i + 1}`,
-    question: `הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה ${i + 1}).`,
-    sampleAnswer: "תשובה לדוגמה בהתאם לחומר הקורס.",
-    hint: "השתמשו בדוגמאות מהתרגול",
-  }));
+const genericOpen = () => [];
 
 const genericCode = (chapterId) => [
   { id: `${chapterId}-c1`, type: "predict", title: "מה יודפס?", prompt: "נתחו קוד מהתרגול בפרק זה.", solution: "לפי follow-through בקוד", explanation: "עקבו אחרי הזרימה שורה שורה." },
@@ -288,7 +282,9 @@ for (const ch of chapterDefs) {
   while (ch.practice.mc.length < 15) {
     ch.practice.mc.push(...genericMc(ch.id, ch.title, 15 - ch.practice.mc.length).slice(0, 15 - ch.practice.mc.length));
   }
-  if (ch.practice.open.length < 10) ch.practice.open = genericOpen(ch.id, 10);
+  if (ch.practice.open.length < 10) {
+    console.warn(`Chapter ${ch.id}: only ${ch.practice.open.length} open questions — run fix-open-questions.js`);
+  }
   if (ch.practice.code.length < 3) ch.practice.code = genericCode(ch.id);
 
   ch.practice.mc.forEach((q) => (q.topicId = ch.id));

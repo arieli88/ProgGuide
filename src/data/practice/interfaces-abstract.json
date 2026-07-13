@@ -679,73 +679,73 @@
   ],
   "openQuestions": [
     {
-      "id": "interfaces-abstract-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o1",
+      "question": "מהו ממשק (interface) ומה הוא לא כולל?",
+      "sampleAnswer": "חוזה של מתודות/תכונות למימוש; בלי שדות מופע רגילים כמו במחלקה.",
+      "hint": "ללא שדות מופע",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o2",
+      "question": "מהי מחלקה abstract?",
+      "sampleAnswer": "מחלקה חלקית שלא ניתן ליצור ממנה new; מיועדת לירושה ולכפיית מימוש.",
+      "hint": "אין new",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o3",
+      "question": "מתי בוחרים interface ומתי abstract?",
+      "sampleAnswer": "interface ליכולות מרובות/חוזה; abstract כשיש בסיס משותף עם קוד משותף ומצב.",
+      "hint": "חוזה מול בסיס",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o4",
+      "question": "האם מחלקה יכולה לממש כמה ממשקים?",
+      "sampleAnswer": "כן — זו הדרך העיקרית ל'ירושה מרובה' של יכולות ב-C#.",
+      "hint": "ממשקים מרובים",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o5",
+      "question": "האם משתמשים ב-override על מתודת ממשק?",
+      "sampleAnswer": "לא כמימוש רגיל של ממשק — מממשים את החתימה; override ל-virtual/abstract של מחלקה.",
+      "hint": "מימוש מול override",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o6",
+      "question": "מה היתרון של הפשטה למבחן/עיצוב?",
+      "sampleAnswer": "כופים מבנה אחיד על יורשים ומפרידים 'מה' חייב להתקיים מ'איך' מממשים.",
+      "hint": "חוזה",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o7",
+      "question": "למה לא יוצרים מופע של abstract?",
+      "sampleAnswer": "כי חסר בה מימוש מלא — היא שלד בלבד ליורשים קונקרטיים.",
+      "hint": "לא שלמה",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o8",
+      "question": "מה חייב להיות בנגישות של מימוש ממשק?",
+      "sampleAnswer": "בדרך כלל public — הממשק מגדיר API חיצוני.",
+      "hint": "public",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o9",
+      "question": "תן דוגמה מעשית מממשק.",
+      "sampleAnswer": "IChargeable על מכשירים שונים — כולם מממשים Charge אחרת.",
+      "hint": "יכולת משותפת",
       "topicId": "interfaces-abstract"
     },
     {
-      "id": "interfaces-abstract-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ia-o10",
+      "question": "מה הקשר לירושה יחידה?",
+      "sampleAnswer": "מחלקה אחת כבסיס + ממשקים מרובים = גמישות בלי ירושת מחלקות מרובה.",
+      "hint": "משלים ירושה",
       "topicId": "interfaces-abstract"
     }
   ],

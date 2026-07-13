@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced C# Programming — Quiz Hub</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --border: #334155;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #6366f1;
+    --correct: #22c55e;
+    --incorrect: #ef4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+  .app {
+    width: 100%;
+    max-width: 680px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+
+  /* ---------- Menu view ---------- */
+  .topic-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .topic-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.15s, transform 0.1s;
+    color: var(--text);
+    font-family: inherit;
+  }
+  .topic-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .topic-card .topic-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .topic-card .topic-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .topic-card .topic-meta {
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+
+  /* ---------- Quiz view ---------- */
+  .top-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .home-btn {
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .home-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .quiz-heading {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .progress {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .progress-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.25s ease;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .question {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .question code, .question .code-block {
+    display: block;
+    background: #0b1220;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #93c5fd;
+    white-space: pre-wrap;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    font-size: 0.95rem;
+  }
+  .option:hover {
+    border-color: var(--accent);
+  }
+  .option.selected {
+    border-color: var(--accent);
+    background: rgba(99, 102, 241, 0.12);
+  }
+  .option.correct {
+    border-color: var(--correct);
+    background: rgba(34, 197, 94, 0.12);
+  }
+  .option.incorrect {
+    border-color: var(--incorrect);
+    background: rgba(239, 68, 68, 0.12);
+  }
+  .option input {
+    accent-color: var(--accent);
+    flex-shrink: 0;
+  }
+  .option.locked {
+    cursor: default;
+  }
+  .feedback {
+    display: none;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  .feedback.show {
+    display: block;
+  }
+  .feedback.correct {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid var(--correct);
+  }
+  .feedback.incorrect {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid var(--incorrect);
+  }
+  .feedback strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .feedback .hint {
+    color: var(--muted);
+  }
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  button.nav {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: opacity 0.15s, background 0.15s;
+  }
+  button.nav:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  button.nav:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+  button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+  .nav-group {
+    display: flex;
+    gap: 8px;
+  }
+  .score {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 16px;
+  }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ===== Menu screen ===== -->
+  <div id="menuScreen">
+    <h1>Advanced C# Programming</h1>
+    <div class="subtitle">Choose a topic to start its quiz</div>
+    <div class="topic-grid" id="topicGrid"></div>
+  </div>
+
+  <!-- ===== Quiz screen ===== -->
+  <div id="quizScreen" class="hidden">
+    <div class="top-bar">
+      <button class="home-btn" id="homeBtn">&larr; Topics</button>
+      <div class="quiz-heading" id="quizHeading"></div>
+    </div>
+
+    <div class="progress">
+      <span id="progressLabel"></span>
+      <span id="answeredLabel"></span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <div class="card">
+      <div class="question" id="questionText"></div>
+      <div class="options" id="optionsContainer"></div>
+
+      <div class="feedback" id="feedback">
+        <strong id="feedbackTitle"></strong>
+        <div class="hint" id="feedbackHint"></div>
+      </div>
+
+      <div class="actions">
+        <div class="nav-group">
+          <button class="nav" id="prevBtn">&larr; Back</button>
+          <button class="nav" id="nextBtn">Next &rarr;</button>
+        </div>
+        <button class="nav primary" id="checkBtn">Check Answer</button>
+      </div>
+    </div>
+
+    <div class="score" id="scoreLabel"></div>
+  </div>
+
+</div>
+
+<script>
+const quizzes = [{"key": "oo", "topic": "Object-Oriented Fundamentals", "description": "Classes, objects, constructors & encapsulation", "quizTitle": "C# OO Quiz", "questions": [{"question": "In the context of the blueprint metaphor, which of the following best describes a 'Class'?", "options": ["The physical building constructed from architectural drawings.", "The specific data values stored within a program's memory.", "The abstract description of attributes and methods that a set of objects share.", "A communication message sent between different parts of a program."], "correct": 2, "hint": "Consider which component serves as the design template rather than the final product."}, {"question": "When declaring and instantiating an object in one line, such as `MyClass myObj = new MyClass();`, what does the second `MyClass` represent?", "options": ["The data type of the variable being declared.", "A call to the class constructor to create the object.", "A reference to the namespace containing the class.", "A static method used for memory allocation."], "correct": 1, "hint": "Focus on the specific component that initializes the new instance of the class."}, {"question": "Consider the following code snippet:\n\n`public class BankAccount {` \n `  int balance;` \n `  public BankAccount(int initial) { balance = initial; }` \n `}`\n\nWhat is a defining characteristic of the constructor shown above?", "options": ["It must return an integer value representing the balance.", "It has the exact same name as the class.", "It can only be called once throughout the entire program.", "It is an instance method that returns the newly created object."], "correct": 1, "hint": "Recall the strict naming convention required for initialization methods in C#."}, {"question": "Why is the principle of encapsulation critical for maintaining large software systems?", "options": ["It allows client classes to modify private fields directly for better performance.", "It ensures that all methods within a class are public and accessible.", "It allows implementation details to change without breaking code that uses the class.", "It forces every object to have the same attribute values."], "correct": 2, "hint": "Think about how separating 'how a task is done' from 'what the task is' affects code updates."}, {"question": "Which statement accurately describes the scope of a variable declared inside a method?", "options": ["It is accessible to any method within the same class.", "It can be accessed by the Main() method if the class is instantiated.", "It is only visible and accessible within the method where it was declared.", "It shares the same scope as the class attributes."], "correct": 2, "hint": "Recall the concept of 'scope isolation' mentioned in the source material."}, {"question": "Given the code:\n\n`class Car {` \n `  private int _price;` \n `  public void SetPrice(int p) { _price = p; }` \n `}`\n\nWhat role does the `SetPrice` method play?", "options": ["An accessor that retrieves the current state of an object.", "A mutator that allows controlled modification of a private field.", "A static method that sets the price for all Car objects simultaneously.", "A constructor that initializes the Car object's price."], "correct": 1, "hint": "Consider the term used for methods that 'set' or change data."}, {"question": "In C#, what is a primary purpose of using namespaces like `Europe_vehicles` and `Asia_vehicles`?", "options": ["To increase the execution speed of the program.", "To allow multiple classes with the same name to exist in one program.", "To ensure all variables are automatically declared as static.", "To hide the implementation of the Main() method."], "correct": 1, "hint": "Think about how a program handles two different classes both named 'Car'."}, {"question": "A method is defined as `bool Withdraw(int amount)`. What does the `bool` keyword signify in this context?", "options": ["The type of data required as an input parameter.", "The method will perform an action but return no data.", "The method must return a true or false value to the caller.", "The method can only be accessed by Boolean-type objects."], "correct": 2, "hint": "Consider the 'Definition Phase' of a method and what the leading keyword represents."}, {"question": "When calling a static method like `Math.Sqrt(25)`, which of the following is true?", "options": ["An object of the Math class must be created using 'new' first.", "The method can access any private instance field of the Math class.", "The method is called directly using the class name.", "The method's result is shared across every object instance."], "correct": 2, "hint": "Think about the 'Access Pattern' for members marked with the static keyword."}, {"question": "Look at this Car class snippet:\n\n`class Car {` \n `  private string _model;` \n `  public string GetModel() { return _model; }` \n `}`\n\nIf another class called `Dealership` tries to execute `myCar._model = \"Tesla\";`, what will happen?", "options": ["The code will compile successfully because Dealership is a client class.", "A compiler error will occur because `_model` is private.", "The value will be updated, but only temporarily.", "The program will automatically use `GetModel()` to perform the update."], "correct": 1, "hint": "Review the 'Private vs Public Access' rules for identifiers."}, {"question": "Which of the following describes a 'void' method?", "options": ["A method that contains no code in its body.", "A method that returns a null value by default.", "A method that performs an action but does not send a value back to the caller.", "A method that can only be called from within a constructor."], "correct": 2, "hint": "Focus on the distinction between value-returning methods and action-performing methods."}, {"question": "What happens on the 'call stack' when `MethodA()` calls `MethodB()`?", "options": ["C# deletes MethodA() from memory to save space for MethodB().", "C# begins MethodB() and remembers the exact spot in MethodA() to return to.", "The program executes both methods simultaneously using multiple cores.", "MethodB() inherits all the local variables of MethodA()."], "correct": 1, "hint": "Consider the 'Stack Unwinding' process explained in the material."}, {"question": "In the Agent class example from the source material, the Agent has a `private Car _car;` field. This demonstrates that:", "options": ["The Agent class is a child of the Car class.", "Agent and Car must be in the same namespace.", "One class can act as a client and utilize the functionality of another class.", "The Car object can access the Agent's private name field."], "correct": 2, "hint": "Think about how different 'modular units' connect and communicate in OOP."}, {"question": "Consider the method signature: `void Process(int x, double y, string z = \"None\")`. Which call to this method is invalid?", "options": ["`Process(10, 5.5, \"Full\");`", "`Process(10, 5.5);`", "`Process(5.5, 10);`", "`Process(5, 2);`"], "correct": 2, "hint": "Remember that arguments must match parameters in number, type, and order."}, {"question": "What is the relationship between class attributes and class methods?", "options": ["Methods are used to declare attributes.", "Methods have access to all attributes within the same class.", "Attributes and methods cannot have the same access modifiers.", "Attributes are local versions of methods."], "correct": 1, "hint": "Consider the visibility of variables declared at the top level of a class versus inside a function."}, {"question": "If a class has two constructors, one taking no arguments and one taking a `string`, this is an example of:", "options": ["Encapsulation.", "Constructor Overloading.", "Namespace collision.", "Implicit conversion."], "correct": 1, "hint": "Think of the term for having multiple methods with the same name but different signatures."}, {"question": "Which C# built-in class contains the static method `Abs()`, used for returning the absolute value of a number?", "options": ["Console", "Convert", "Math", "Program"], "correct": 2, "hint": "Identify the class responsible for numerical and algebraic utility functions."}, {"question": "In the Car class, the field `_sold` is set to `true` when the `sell()` method is called. What OOP concept does this update represent?", "options": ["Defining the public interface.", "Modifying the object's internal state.", "Static member access.", "Namespace organization."], "correct": 1, "hint": "Focus on what attributes represent for an individual object."}, {"question": "Why can't a static method like `Main()` directly access a non-static attribute variable?", "options": ["Because non-static attributes are always private.", "Because the static method exists without a specific object instance.", "Because static methods can only be called from other namespaces.", "Because non-static attributes are stored in the stack, not the heap."], "correct": 1, "hint": "Consider whether a class-level method knows about the data of a specific individual 'instance'."}, {"question": "Which of the following is NOT one of the three main components of a C# class as described in the source material?", "options": ["Attributes", "Methods", "Constructors", "Namespaces"], "correct": 3, "hint": "Look for the element that organizes multiple classes rather than defining the internal structure of one."}, {"question": "True or False: A class can have multiple constructors as long as they have different parameter lists.", "options": ["True", "False"], "correct": 0, "hint": "Consider the 'BankAccount' example where one constructor took a balance and the other did not."}, {"question": "What is the primary benefit of the 'Getters and Setters' pattern?", "options": ["It speeds up the program by avoiding method calls.", "It provides controlled access to private data, allowing for validation.", "It eliminates the need for constructors.", "It makes all class attributes public to the client."], "correct": 1, "hint": "Think about why you would want a 'set' method instead of letting a user change a variable directly."}, {"question": "Given the statement `double d = Convert.ToDouble(Console.ReadLine());`, which class is providing the utility for type conversion?", "options": ["Console", "Convert", "Double", "Math"], "correct": 1, "hint": "Look for the class name associated with the 'ToDouble' method."}, {"question": "In the Traffic System example, what would 'Traffic Lights' represent in an OOP model?", "options": ["A class with attributes like 'current color' and methods like 'changeState()'.", "A static method within the Road class.", "A namespace containing all vehicle-related objects.", "A local variable inside the Main algorithm."], "correct": 0, "hint": "Recall the 'Object-Oriented Thinking' process for system design."}, {"question": "What is the outcome of the following method call logic?\n\n`int balance = 10;` \n `bool deposit(int amount) { balance += amount; return true; }` \n `deposit(-5);`", "options": ["The balance becomes 15 because the negative sign is ignored.", "The balance becomes 5.", "The method returns false because the amount is negative.", "A runtime error occurs due to an invalid argument."], "correct": 1, "hint": "Trace the math carefully: what happens when you add a negative number to a variable?"}, {"question": "In the Car class, the field names are written as `_color` and `_model`. What does the underscore convention usually indicate in C#?", "options": ["The fields are public and can be accessed by any class.", "The fields are private members of the class.", "The fields are static and belong to the class level.", "The fields are temporary and will be deleted after the constructor runs."], "correct": 1, "hint": "Consider the 'Encapsulation' section and the provided Car class examples."}, {"question": "When a method is declared as `public int GetAge()`, what must the method body contain to be valid?", "options": ["A Console.WriteLine statement displaying the age.", "A return statement followed by an integer value.", "A call to a static Math function.", "A constructor for the Age class."], "correct": 1, "hint": "Focus on the requirement for 'Value-returning methods' mentioned in the source."}, {"question": "True or False: If you create a class but do not write any methods, you can still instantiate objects from it.", "options": ["True", "False"], "correct": 0, "hint": "Think about the minimum requirements for a class definition."}, {"question": "How does the 'new' operator interact with a class constructor?", "options": ["It deletes the constructor after it is used once.", "It allocates memory for the object and then triggers the constructor to initialize it.", "It converts the class into a namespace.", "It allows the constructor to access variables from Main()."], "correct": 1, "hint": "Recall the 'Combined Syntax' explanation for creating class objects."}, {"question": "Which of the following is a 'design principle' for creating a public interface for a class?", "options": ["Make as many fields public as possible for easy access.", "Only expose methods that a client actually needs to interact with the object.", "Ensure that the constructor is private to prevent instantiation.", "Place every class in the same default namespace."], "correct": 1, "hint": "Think about the advice given on how to protect internal data while enabling object usage."}]}, {"key": "polymorphism", "topic": "Polymorphism & Inheritance", "description": "Base/derived classes, virtual methods, casting", "quizTitle": "C# Polymorphism Quiz", "questions": [{"question": "What does the term 'Polymorphism' literally mean in the context of Object-Oriented Programming?", "options": ["Many forms", "Code reuse", "Data hiding", "Inheritance chain"], "correct": 0, "hint": "Consider the Greek roots of the prefix 'poly-' and the suffix '-morph'."}, {"question": "Which keyword is required in a base class method to allow derived classes to provide their own implementation?", "options": ["virtual", "override", "protected", "static"], "correct": 0, "hint": "This keyword indicates that the method's implementation is not necessarily fixed for its children."}, {"question": "In C#, what is the purpose of the following syntax: `public class Dog : Pet`?", "options": ["To establish that Dog inherits from Pet", "To create an instance of Pet named Dog", "To define a 'HAS A' relationship", "To implement an interface"], "correct": 0, "hint": "Think about how one class acquires the properties and behaviors of another."}, {"question": "Consider the following code snippet:\n\nclass Calculator {\n    public int Add(int a, int b) { return a + b; }\n    public double Add(double a, double b) { return a + b; }\n}\n\nWhat type of polymorphism is demonstrated here?", "options": ["Compile-time (Static) Polymorphism", "Runtime (Dynamic) Polymorphism", "Downcasting", "Constructor Chaining"], "correct": 0, "hint": "Notice that the methods have the same name but different parameters within the same class."}, {"question": "Which access modifier allows a member to be accessed within its own class and by all derived classes, but not by external code?", "options": ["protected", "private", "public", "internal"], "correct": 0, "hint": "This modifier is the 'key' for sharing attributes with 'children' while hiding them from 'strangers'."}, {"question": "What is the correct order of constructor execution when a derived class object is instantiated?", "options": ["Base class constructor first, then derived class constructor", "Derived class constructor first, then base class constructor", "They execute simultaneously", "Only the derived class constructor executes"], "correct": 0, "hint": "Consider why a child class might need its parent's data to be ready before it starts its own setup."}, {"question": "In C#, how do you explicitly call a specific base class constructor from a derived class constructor?", "options": ["Using the `: base()` syntax after the derived constructor signature", "Using `parent.Constructor()` inside the code block", "By declaring the base constructor as `virtual`", "Using the `super()` keyword"], "correct": 0, "hint": "This syntax involves a keyword followed by parentheses and appears before the opening brace of the constructor."}, {"question": "Which of the following describes 'Upcasting'?", "options": ["Converting a derived class reference to a base class type", "Converting a base class reference to a derived class type", "Converting between two unrelated classes like Car and Agent", "Overloading a method with different return types"], "correct": 0, "hint": "Think of moving 'upwards' towards the more general/parent type in an inheritance tree."}, {"question": "Consider this code:\n\nPet myPet = new Dog(\"Labrador\", 3.5);\nmyPet.HideBone();\n\nAssuming `HideBone()` is defined *only* in the `Dog` class and `Pet` is the base class, what will happen?", "options": ["A compilation error will occur", "The code will run successfully because the actual object is a Dog", "A runtime InvalidCastException will be thrown", "The Dog implementation of HideBone will be called via polymorphism"], "correct": 0, "hint": "The compiler looks at the 'label' on the reference variable to see what methods it can find."}, {"question": "What is the primary risk associated with 'Downcasting'?", "options": ["It can throw a runtime InvalidCastException", "It consumes significant amounts of extra memory", "It prevents the use of virtual methods", "It is not supported in the C# language"], "correct": 0, "hint": "Think about what happens if you try to treat a Pet that is actually a Fish as if it were a Dog."}, {"question": "How does the `as` operator behave during a type conversion compared to a standard explicit cast?", "options": ["It returns null instead of throwing an exception if the cast fails", "It automatically converts the object to a string", "It creates a new copy of the object in the new type", "It can only be used for upcasting"], "correct": 0, "hint": "Think about 'null-safe' behavior."}, {"question": "Which of the following operators returns a boolean indicating whether an object is of a specific type or derived from it?", "options": ["is", "as", "new", "typeof"], "correct": 0, "hint": "This keyword sounds like a common English question: '... it a Dog?'"}, {"question": "In .NET, every class automatically inherits from which base class?", "options": ["Object", "Base", "Program", "Class"], "correct": 0, "hint": "This class provides fundamental methods like `ToString()` and `Equals()` to every object."}, {"question": "Which relationship describes an Agent that owns a Car, where the Car's data occupies separate memory from the Agent?", "options": ["HAS A (Composition)", "IS A (Inheritance)", "Polymorphism", "Method Overloading"], "correct": 0, "hint": "The Agent 'contains' the Car reference as an attribute."}, {"question": "What is the primary limitation of C# regarding inheritance that distinguishes it from C++?", "options": ["C# does not support multiple class inheritance", "C# does not support virtual methods", "C# does not allow constructors in derived classes", "C# classes cannot inherit from internal classes"], "correct": 0, "hint": "Consider the number of 'parents' a class can have in C#."}, {"question": "In the following code, what is the output of the final line?\n\npublic class X {\n    public virtual int Calculate(int n) { return n * 2; }\n}\npublic class Y : X {\n    public override int Calculate(int n) {\n        int baseRes = base.Calculate(n);\n        return baseRes * 2;\n    }\n}\n// Execution:\nX obj = new Y();\nConsole.WriteLine(obj.Calculate(3));", "options": ["12", "6", "3", "24"], "correct": 0, "hint": "Follow the sequence: derived calls base, base returns a value, then derived finishes its calculation."}, {"question": "What happens when you call a virtual method on a derived object that is stored in a base class reference?", "options": ["The derived class implementation executes", "The base class implementation executes", "The code will not compile", "Both the base and derived implementations execute in sequence"], "correct": 0, "hint": "Remember the concept of 'Dynamic Dispatch'."}, {"question": "Why is it considered 'best practice' to override the `ToString()` method inherited from the Object class?", "options": ["To provide a meaningful string representation of the object's current state", "To enable the object to be cast to a string automatically", "To prevent the object from being garbage collected", "Because virtual methods in the Object class must be overridden"], "correct": 0, "hint": "Think about what is more useful: seeing 'MyProject.Pet' or seeing 'Dog, Weight: 4.5kg'."}, {"question": "What is the primary benefit of the 'DRY' principle achieved through inheritance?", "options": ["Reducing code duplication by defining shared members once in a base class", "Improving the execution speed of the program", "Enabling multiple inheritance between unrelated classes", "Automatically initializing all variables to zero"], "correct": 0, "hint": "Look at the acronym: D-R-Y."}, {"question": "Which code snippet correctly demonstrates a safe downcast using the `is` operator?", "options": ["if (p is Dog) { Dog d = (Dog)p; d.Bark(); }", "Dog d = p is Dog;", "if (p as Dog) { p.Bark(); }", "Dog d = (Dog)is p;"], "correct": 0, "hint": "You check the type first, then perform the cast inside the conditional block."}, {"question": "Consider the following array initialization:\n\nPet[] pets = new Pet[3];\npets[0] = new Dog();\npets[1] = new Cat();\npets[2] = new Fish();\n\nWhat is this an example of?", "options": ["Polymorphic Collection", "Multiple Inheritance", "Static Polymorphism", "Method Overriding"], "correct": 0, "hint": "Think about how one array can hold 'many forms' of pets."}, {"question": "What will be printed to the console by the following code?\n\nPet p1 = new Dog(4, \"Labrador\");\nPet p2 = p1;\nbool result = p1.Equals(p2);\nConsole.WriteLine(result);", "options": ["True", "False", "A compilation error", "Dog"], "correct": 0, "hint": "Examine if p1 and p2 point to the same instance in memory."}, {"question": "Why would a base class have an attribute marked as `private` instead of `protected`?", "options": ["To hide internal implementation details that derived classes should not manipulate", "Because derived classes cannot inherit private attributes", "To allow the attribute to be accessed by external classes", "To make the attribute virtual"], "correct": 0, "hint": "Think about the concept of 'strictest' encapsulation."}, {"question": "In a derived class constructor, if you do *not* explicitly call `base()`, what does the C# compiler do?", "options": ["It automatically attempts to call the parameterless base constructor", "It throws a compilation error immediately", "It skips the initialization of base class attributes", "It clones the base class instead"], "correct": 0, "hint": "The compiler tries to be 'helpful' if you leave out the explicit instruction."}, {"question": "Which of the following is true about a 'HAS A' relationship?", "options": ["The contained object's attributes occupy different memory spaces from the container", "It is implemented using the colon (:) operator", "The container class inherits all methods of the contained class", "It represents a type-subtype relationship"], "correct": 0, "hint": "Consider the memory layout of an Agent having a Car versus a Dog being a Pet."}, {"question": "Analyze the following code:\n\nclass Z {\n    public int Calculate(X obj, int n) { return obj.Calculate(n) * 2; }\n}\n// Context: X is base, Y inherits X and overrides Calculate to double the result.\nX objX = new X();\nY objY = new Y();\nZ objZ = new Z();\n\nWhat is the result of `objZ.Calculate(objY, 3)` if base `X.Calculate(n)` returns n x 2?", "options": ["24", "12", "48", "6"], "correct": 0, "hint": "Z multiplies the result of the object's calculation by 2. Determine what Y.Calculate(3) returns first."}, {"question": "Why is Upcasting considered 'always safe'?", "options": ["Because a derived class contains everything the base class has", "Because the compiler checks it at runtime", "Because it doesn't allow access to private members", "Because it uses the 'as' operator automatically"], "correct": 0, "hint": "Does a Dog have all the 'Pet' features?"}, {"question": "What keyword must accompany `virtual` in a derived class to implement polymorphism?", "options": ["override", "new", "static", "extends"], "correct": 0, "hint": "This keyword sounds like you are 'taking over' or 'replacing' something."}, {"question": "If you have an array `Pet[] pets` containing `Dog` objects, and you want to call a Dog-only method `Bark()` on the first element, what must you do?", "options": ["Cast `pets[0]` to type `Dog` explicitly", "Just call `pets[0].Bark()`", "Use the `virtual` keyword on `Bark()`", "Declare the array as `Object[]` instead"], "correct": 0, "hint": "You need to change the 'reference type' from Pet to Dog."}, {"question": "Which of the following is NOT a purpose of inheritance?", "options": ["Defining unrelated classes in the same file", "Building on existing functionality", "Code Reuse", "Establishing logical hierarchies"], "correct": 0, "hint": "Inheritance is used for relationships, specifically 'IS A' relationships."}]}, {"key": "operator_overloading", "topic": "Operators, Properties & Interfaces", "description": "Operator overloading, properties, abstract classes", "quizTitle": "C# operator overloading, properties, interfaces Quiz", "questions": [{"question": "Which of the following best describes the 'contract' nature of an interface in C#?", "options": ["It defines both the required method signatures and the internal logic for those methods.", "It specifies a set of members that an implementing class must provide.", "It allows a class to inherit state and fields from multiple sources.", "It automatically provides the implementation for all methods to the derived classes."], "correct": 1, "hint": "Focus on the distinction between declaring a requirement and fulfilling it."}, {"question": "In C#, why might a developer choose an abstract class over an interface?", "options": ["To enable multiple inheritance of structure.", "To allow the definition of private methods and fields that can be shared among related classes.", "To ensure that the object can be instantiated directly using the 'new' keyword.", "To bypass the requirement of implementing all methods in the derived class."], "correct": 1, "hint": "Consider the ability to store data or provide shared helper methods."}, {"question": "Consider the following code snippet:\n\ninterface IWorkable {\n    void PerformTask();\n}\n\nclass Employee : IWorkable {\n    void PerformTask() {\n        Console.WriteLine(\"Working...\");\n    }\n}\n\nWhy will this code fail to compile?", "options": ["The implementation of PerformTask must use the 'override' keyword.", "The Employee class must inherit from a base class before implementing an interface.", "The implementation of the interface method must be explicitly marked as 'public'.", "Interfaces cannot contain method signatures without parameters."], "correct": 2, "hint": "Look closely at the access modifier of the method in the Employee class."}, {"question": "When overloading an operator in C#, which keyword and modifier combination is strictly required?", "options": ["public virtual", "public static", "private static", "protected internal"], "correct": 1, "hint": "Operators are called on the class type itself, similar to utility methods."}, {"question": "Given the following property definition:\n\npublic int Score { get; private set; }\n\nWhich of the following statements is true regarding this property?", "options": ["The property is read-only for everyone, including the containing class.", "The property value can be updated from external classes using direct assignment.", "The property can be read by external classes but only updated within the class it is defined.", "This property requires a separate private backing field to be manually declared."], "correct": 2, "hint": "Notice how the access level differs between retrieving and assigning the value."}, {"question": "What is the primary danger of implementing the == operator overload by checking null using code like `if (obj == null)`?", "options": ["It will cause a compile-time error because null cannot be compared to an object.", "It creates an infinite recursive loop leading to a StackOverflowException.", "It forces the object to be instantiated even if it was originally null.", "It violates the rule that operators must be static."], "correct": 1, "hint": "Think about what method is being called when you use that specific operator within its own definition."}, {"question": "When implementing custom equality by overloading the == operator, which other method must also be overridden to ensure consistent behavior in collections like HashSet?", "options": ["ToString()", "GetHashCode()", "Dispose()", "CompareTo()"], "correct": 1, "hint": "Consider how a dictionary or hash-based set identifies unique keys."}, {"question": "Which statement accurately describes the capability of Interfaces starting with C# 8.0?", "options": ["They can now contain instance fields and state.", "They can provide default implementations for methods.", "They can be instantiated using the 'new' keyword if they have default methods.", "They now support private constructors to limit inheritance."], "correct": 1, "hint": "Think about how interfaces can now provide 'optional' behavior without breaking existing implementations."}, {"question": "Review the following code:\n\npublic class Point {\n    public int X { get; set; }\n    public int Y { get; set; }\n\n    public static Point operator + (Point p1, Point p2) {\n        p1.X += p2.X;\n        p1.Y += p2.Y;\n        return p1;\n    }\n}\n\nWhy is this implementation of the + operator considered poor practice?", "options": ["The operator must return a boolean value for arithmetic operations.", "It modifies the original operand 'p1' instead of returning a new object.", "The parameters p1 and p2 must be passed by reference using the 'ref' keyword.", "The + operator cannot be overloaded for classes that use auto-implemented properties."], "correct": 1, "hint": "Consider what happens to the variables used in a mathematical expression like a = b + c."}, {"question": "In an abstract class, what is the difference between a virtual method and an abstract method?", "options": ["Virtual methods must be overridden, while abstract methods are optional.", "Abstract methods have no body, while virtual methods provide a default implementation.", "Virtual methods cannot be used in abstract classes.", "Abstract methods are public by default, while virtual methods are private."], "correct": 1, "hint": "One is a 'requirement' for the subclass, and the other is a 'suggestion' or 'default'."}, {"question": "Which of the following operators MUST be overloaded in pairs in C#?", "options": ["+ and -", "< and >", "* and /", "++ and --"], "correct": 1, "hint": "Consider logical opposites used in comparisons."}, {"question": "How does an interface support the principle of 'loose coupling' in software design?", "options": ["By allowing a class to inherit from multiple base classes.", "By enabling a class to define its own private data while hiding it from others.", "By allowing code to depend on a behavior contract rather than a specific concrete implementation.", "By requiring all methods to be static, thus avoiding object state issues."], "correct": 2, "hint": "Think about why a developer would use an interface reference instead of a specific class reference."}, {"question": "What is the purpose of the 'value' keyword in a property setter?", "options": ["It represents the current value stored in the backing field.", "It is an implicit parameter representing the data being assigned to the property.", "It is used to convert the property type into a string for display.", "It defines the default value of the property if none is provided."], "correct": 1, "hint": "It acts like a parameter for a method that handles assignment."}, {"question": "Which of these code blocks correctly illustrates a manual property with validation logic?\n\n// Option A\npublic int Age { get; set; if (value > 0) age = value; }\n\n// Option B\nprivate int _age;\npublic int Age {\n    get { return _age; }\n    set { if (value >= 0) _age = value; }\n}\n\n// Option C\npublic int Age => _age > 0 ? _age : 0;\n\n// Option D\npublic int Age = value => value > 0;", "options": ["Option A", "Option B", "Option C", "Option D"], "correct": 1, "hint": "Validation requires a full block with 'get' and 'set' accessors and a backing variable."}, {"question": "What happens if a class inherits from an abstract class but does not implement one of its abstract methods?", "options": ["The missing method is automatically ignored during execution.", "The class must also be declared as abstract.", "The compiler will provide a default empty implementation.", "The program will crash only when that specific method is called at runtime."], "correct": 1, "hint": "Think about the 'abstract' keyword as a sign that the class is an incomplete template."}, {"question": "Review this snippet for a custom 'Vector' class:\n\npublic static Vector operator * (Vector v, int scalar) {\n    return new Vector(v.X * scalar, v.Y * scalar);\n}\n\nWhich statement is true about using this operator?", "options": ["The expression '5 * myVector' will work automatically.", "The expression 'myVector * 5' will work and return a new Vector object.", "This will fail because at least one parameter must be a string.", "The 'scalar' parameter must be marked with the 'const' keyword."], "correct": 1, "hint": "Pay attention to the order of the parameters in the definition versus the usage."}, {"question": "In C#, what is the standard syntax for initializing an auto-implemented property with a default value?", "options": ["public string Name { get; set; } = \"Unknown\";", "public string Name { get; set; (\"Unknown\"); }", "public string Name = \"Unknown\" { get; set; }", "default Name = \"Unknown\";"], "correct": 0, "hint": "The assignment happens after the braces."}, {"question": "Which of the following is NOT allowed in a C# interface definition?", "options": ["Properties", "Events", "Instance Fields", "Method Signatures"], "correct": 2, "hint": "Think about whether interfaces can store 'data' versus 'definitions'."}, {"question": "Consider the following polymorphism example:\n\ninterface IDriveable { void Drive(); }\nclass Car : IDriveable { \n    public void Drive() { Console.WriteLine(\"Driving car\"); }\n    public void Fuel() { Console.WriteLine(\"Fueling\"); }\n}\n\nIDriveable myVehicle = new Car();\nmyVehicle.Drive();\n\nWhy would `myVehicle.Fuel();` cause a compilation error?", "options": ["The Fuel method must be marked as virtual.", "The variable 'myVehicle' is of type IDriveable, which does not define a Fuel method.", "Interface references can only call methods that return void.", "A class instance cannot be assigned to an interface variable."], "correct": 1, "hint": "Check what methods are 'visible' to the compiler based on the variable's type."}, {"question": "What is the result of overloading a binary operator like + in terms of compiler behavior?", "options": ["It changes the precedence of the + operator to match multiplication.", "It allows the compiler to choose the correct method based on the parameter types at compile-time.", "It allows the operator to be used with any two types via dynamic casting.", "It forces the compiler to use the base Object equality instead of value equality."], "correct": 1, "hint": "Think about 'method overloading' and when the compiler decides which version to use."}, {"question": "Which statement correctly describes the relationship between interfaces and constructors?", "options": ["Interfaces can have parameterless constructors only.", "Classes must implement a constructor for every interface they inherit.", "Interfaces do not support constructors because they cannot be instantiated.", "A constructor in an abstract class can be used to initialize interface members."], "correct": 2, "hint": "Can you create an 'object' of an interface using 'new'?"}, {"question": "What is the recommended way to check for null inside a custom == operator overload to avoid infinite recursion?", "options": ["Use the 'is null' pattern or 'object.ReferenceEquals()'.", "Use a try-catch block to catch the recursion error.", "Cast the operands to strings before comparing them.", "Compare the 'GetHashCode()' of the objects to null."], "correct": 0, "hint": "Look for a method that bypasses your own operator definition."}, {"question": "Why is 'Encapsulation' mentioned as a benefit of using Properties?", "options": ["Properties allow all data to be public and easily accessible.", "They provide a gateway to private data, allowing for validation or transformation before storage.", "They automatically encrypt the values stored in the backing fields.", "Properties prevent the class from being inherited by others."], "correct": 1, "hint": "Think about the 'gatekeeper' role of a property setter."}, {"question": "Consider an abstract class 'Book'. If you want every derived book type (like DigitalBook and PrintedBook) to provide its own version of a 'GetPrice' method, how should it be declared in 'Book'?", "options": ["public virtual double GetPrice() { return 0; }", "public abstract double GetPrice();", "public double GetPrice() { }", "private abstract double GetPrice();"], "correct": 1, "hint": "You want to 'force' the subclasses to write the logic because the base class doesn't have a single correct answer."}, {"question": "Which statement is true about Unary operators like ++ or ! in C#?", "options": ["They must take exactly two parameters of the same type.", "They are overloaded as static methods taking a single parameter of the class type.", "They cannot be overloaded if they are built-in types like integers.", "They must always return a boolean value."], "correct": 1, "hint": "Look at the prefix 'Uni-' which means 'one'."}, {"question": "If a class implements two interfaces that both have a method with the same name and signature, how is this handled in C#?", "options": ["The class can provide a single implementation that satisfies both interfaces.", "The compiler will fail and force you to rename one of the methods in the interface.", "Interfaces with clashing names cannot be implemented by the same class.", "The class must inherit from one interface and ignore the other."], "correct": 0, "hint": "Think about whether one 'PerformTask' method could fulfill the duties for two different 'Work' contracts."}, {"question": "Which of the following is an example of an operator that CANNOT be overloaded in C#?", "options": ["==", ". (Member access)", ">> (Bitwise shift)", "! (Logical NOT)"], "correct": 1, "hint": "Consider the operators used for basic language structure or assignment."}, {"question": "In the context of the source material, what does 'Immutability' refer to in operator overloading?", "options": ["The operator cannot be changed once it is defined in the class.", "The requirement that an operator overload must never modify its input parameters.", "The fact that interfaces cannot contain variables.", "The inability to overload comparison operators like <."], "correct": 1, "hint": "Think about a math problem 1 + 2 = 3. Does the number '1' change into '3'?"}, {"question": "Why can't you use the 'override' keyword when implementing an interface method in a class?", "options": ["Interface methods are considered static, not instance methods.", "Because you are providing the initial implementation, not replacing an existing one from a base class.", "Interface methods are automatically private.", "The 'override' keyword is only allowed for arithmetic operators."], "correct": 1, "hint": "Interfaces provide the 'what', and the class provides the 'how' for the first time."}, {"question": "What is a 'backing field' in the context of C# properties?", "options": ["A public variable that stores the property's data directly.", "A private variable used to store the actual data that a property exposes.", "A special keyword used to reset property values to their defaults.", "The value returned by the GetHashCode() method."], "correct": 1, "hint": "It's the 'hidden' storage behind the property."}]}, {"key": "exceptions", "topic": "Exceptions & Error Handling", "description": "try/catch/finally, validation, common exception types", "quizTitle": "C# Exceptions Quiz", "questions": [{"question": "Which type of error is detected by the C# compiler and prevents the application from being built?", "options": ["Syntax Errors", "Runtime Errors", "Logic Errors", "Input Validation Errors"], "correct": 0, "hint": "Consider which errors are caught before the code even begins to run."}, {"question": "Observe the following code: int[] myNumbers = {10, 20, 30}; Console.WriteLine(myNumbers[5]);. What specific exception will be thrown?", "options": ["System.IndexOutOfRangeException", "System.ArithmeticException", "System.NullReferenceException", "System.ArrayTypeMismatchException"], "correct": 0, "hint": "Focus on the relationship between the requested index and the actual size of the collection."}, {"question": "In a try-catch-finally structure, under what condition does the finally block execute?", "options": ["Only if an exception was caught in the catch block", "Only if the try block completed without any errors", "Regardless of whether an exception occurred or was handled", "Only if the exception was unhandled by the catch block"], "correct": 2, "hint": "Think about the block intended for 'cleanup' tasks that must always be performed."}, {"question": "Which property of the Exception object provides a human-readable description of why the error occurred?", "options": ["StackTrace", "Message", "Source", "HelpLink"], "correct": 1, "hint": "Look for the property that 'talks' to the developer or user about the problem."}, {"question": "Why is int.TryParse() considered a better practice for handling user input compared to int.Parse()?", "options": ["It can convert strings to numbers much faster than Parse", "It returns a boolean and does not throw an exception on failure", "It automatically rounds decimal numbers to the nearest integer", "It is the only method that can handle null values"], "correct": 1, "hint": "Consider the impact of 'throwing an exception' on application stability and performance."}, {"question": "Observe this code: private double Divide(double a, double b) { if (b == 0) { return 0; } return a / b; }. This implementation is an example of:", "options": ["Exception Handling", "Input Validation", "A Syntax Error", "A Stack Overflow"], "correct": 1, "hint": "Think about whether this code is 'reacting' to a crash or 'preventing' it from ever happening."}, {"question": "Which of the following exceptions would most likely be thrown if you tried to call a method on a variable that currently holds a value of null?", "options": ["InvalidCastException", "OutOfMemoryException", "NullReferenceException", "OverflowException"], "correct": 2, "hint": "The name of this exception directly refers to the state of an uninitialized object reference."}, {"question": "When catching specific exceptions in a code block, what is the correct order for the catch statements?", "options": ["From the most general to the most specific", "From the most specific to the most general", "The order does not matter in C#", "Alphabetical order based on the exception name"], "correct": 1, "hint": "Consider what would happen if a 'catch-all' handler was placed at the very top."}, {"question": "Which of these scenarios represents a logical error rather than a runtime exception?", "options": ["An infinite loop that causes the program to hang but not crash", "Dividing an integer by a variable that happens to be zero", "Accessing an array index that is negative", "Running out of system memory during a massive allocation"], "correct": 0, "hint": "Identify the mistake where the program keeps running but performs the wrong action."}, {"question": "Which of the following code snippets contains a syntax error that will be caught by the compiler?", "options": ["int x = 10 / 0;", "string name = \"Alex\";", "int val = 5", "int[] nums = {1, 2, 3};"], "correct": 2, "hint": "Look for a violation of basic 'punctuation' rules in C#."}]}, {"key": "db", "topic": "Database Access (ADO.NET & MySQL)", "description": "Connections, commands, parameters, the Repository pattern", "quizTitle": "C# Database Quiz", "questions": [{"question": "In the following C# snippet, what is the primary purpose of the `using` statement?\n\nusing (MySqlConnection conn = new MySqlConnection(connStr))\n{\n    conn.Open();\n    // operations\n}", "options": ["To ensure the connection is automatically closed and disposed of even if an exception occurs.", "To prevent any database exceptions from being thrown during the connection process.", "To automatically open the connection as soon as the object is instantiated.", "To encrypt the connection string so it cannot be read by other processes."], "correct": 0, "hint": "Focus on how C# manages objects that implement the `IDisposable` interface."}, {"question": "What value does the `ExecuteNonQuery()` method return when executing an `UPDATE` statement?", "options": ["An integer representing the number of rows modified by the command.", "A boolean indicating whether the SQL command was syntactically correct.", "A `MySqlDataReader` containing the rows before they were updated.", "The ID of the first record that was modified by the update."], "correct": 0, "hint": "Think about what kind of numerical feedback a developer needs after modifying existing records."}, {"question": "Why is the following code considered a major security risk?\n\nstring sql = \"DELETE FROM users WHERE name = '\" + userInput + \"'\";", "options": ["It is vulnerable to SQL injection because user input is concatenated directly into the command string.", "The `DELETE` keyword cannot be used in a string variable in C#.", "Concatenation makes the query execute much slower than a parameterized query.", "C# strings do not support single quotes inside double quotes."], "correct": 0, "hint": "Consider what happens if a user enters something like `' OR 1=1 --` into the input field."}, {"question": "Which method is the most appropriate for executing a `CREATE TABLE` statement from C# code?", "options": ["ExecuteNonQuery()", "ExecuteReader()", "ExecuteScalar()", "OpenConnection()"], "correct": 0, "hint": "Determine if creating a table returns a set of data rows or simply modifies the database."}, {"question": "How does the `MySqlDataReader` handle memory when retrieving a large result set?", "options": ["It is forward-only and only keeps the current row in memory at any given time.", "It loads the entire table into a C# array before processing starts.", "It saves the results to a temporary file on the local hard drive.", "It allows the user to jump back and forth between rows to save cache space."], "correct": 0, "hint": "Consider the efficiency of reading data sequentially versus loading an entire dataset at once."}, {"question": "In a Repository pattern, what is the role of a 'Model' class such as the one below?\n\nclass Product {\n    public int Id;\n    public string Name;\n}", "options": ["To represent a domain concept and hold the data from a single database row as an object.", "To store the connection string and handle the opening of the database.", "To provide the user interface logic for displaying products.", "To automatically generate SQL `INSERT` statements using reflection."], "correct": 0, "hint": "Think about the 'Separation of Concerns' between data structure and database operations."}, {"question": "What will be the value of `rowsAffected` if an `UPDATE` command's `WHERE` clause matches no records?\n\ncmd.CommandText = \"UPDATE cars SET price = 10 WHERE name = 'Ghost'\";\nint rowsAffected = cmd.ExecuteNonQuery();", "options": ["0", "-1", "It will throw a `MySqlException`.", "1"], "correct": 0, "hint": "The return value is a direct count of how many records were successfully modified."}, {"question": "In the context of safe database access, what does the `@` symbol represent in a query string like `\"SELECT * FROM items WHERE id = @id\"`?", "options": ["A placeholder for a parameter that will be safely supplied later.", "A special operator used for fast indexing in MySQL.", "An instruction to the compiler to ignore the rest of the string.", "A decorator that forces the value to be converted to a string."], "correct": 0, "hint": "This symbol is used to create 'named' variables within your SQL text."}, {"question": "What is a primary benefit of using Object-Oriented Database Access over working with raw rows?", "options": ["The compiler can catch typos in field names at compile-time instead of crashing at runtime.", "It eliminates the need to install the MySQL Connector library.", "SQL queries are no longer needed to retrieve data from the server.", "Objects are automatically synchronized with the database in real-time."], "correct": 0, "hint": "Think about the difference between accessing data via a property and accessing data via a string index."}, {"question": "Which C# code correctly adds a parameter to a `MySqlCommand` object named `cmd`?", "options": ["cmd.Parameters.AddWithValue(\"@price\", 500);", "cmd.AddParameter(\"@price\", 500);", "cmd.Parameters = new Parameter(\"@price\", 500);", "cmd.Parameters[\"@price\"] = 500;"], "correct": 0, "hint": "Look for the method that specifies both the name and the value in the parameters collection."}, {"question": "When iterating with `while (reader.Read())`, what happens when the reader reaches the end of the result set?", "options": ["The `Read()` method returns `false` and the loop terminates.", "A `NullReferenceException` is thrown to signal the end of data.", "The reader automatically jumps back to the first row of the set.", "The database connection is immediately closed by the server."], "correct": 0, "hint": "Recall the return type of the `Read()` method used in the loop condition."}, {"question": "Why should you separate database logic into a 'Repository' class?", "options": ["To centralize SQL queries so that changes to the database schema only require updates in one place.", "Because C# console applications are not allowed to contain SQL strings directly.", "To allow multiple users to connect to the database using the same connection object simultaneously.", "To automatically encrypt all data before it leaves the Repository class."], "correct": 0, "hint": "Consider the impact on your project if you decided to change a column name in your database table."}, {"question": "In the following code, what is the significance of the `--` characters?\n\nDELETE FROM cars WHERE name = '' OR 1=1 --'", "options": ["They represent a SQL comment that causes the rest of the query to be ignored.", "They are a shorthand for 'DELETE ALL' in MySQL syntax.", "They indicate that the query should be executed with high priority.", "They act as a delimiter between two different SQL commands."], "correct": 0, "hint": "Think about how developers leave notes for themselves in code that the computer shouldn't run."}, {"question": "Which of these is NOT a component of a standard MySQL connection string?", "options": ["The name of the C# class that will receive the data.", "The hostname or IP address of the database server.", "The username and password used for authentication.", "The specific database name to use on that server."], "correct": 0, "hint": "Identify which information is needed by the database server versus which information is only relevant to your C# code."}, {"question": "What is a common result of a 'Connection Leak' in a database application?", "options": ["The application eventually runs out of available connections and crashes or hangs.", "The database data becomes corrupted and starts returning random values.", "The connection string is automatically deleted from the configuration file.", "The server's password is reset for security reasons."], "correct": 0, "hint": "Consider the limit the MySQL server places on the number of simultaneous users."}, {"question": "Which exception type should you catch to handle most database-specific errors in C#?", "options": ["MySqlException", "SqlError", "DatabaseFailException", "System.IOException"], "correct": 0, "hint": "Look for the exception class provided by the MySQL Connector library."}, {"question": "True or False: Using the `using` statement prevents all database errors from occurring.", "options": ["False", "True"], "correct": 0, "hint": "Distinguish between 'resource management' and 'error prevention'."}, {"question": "Why is it important to use type-specific methods like `GetInt32(\"id\")` on a `MySqlDataReader`?", "options": ["They provide type safety and ensure that the C# variable matches the database column type.", "They are required to make the database query execute faster.", "They automatically encrypt the data as it is read from the stream.", "They are the only way to read data from a `SELECT` statement."], "correct": 0, "hint": "Consider the benefits of knowing exactly what kind of data is stored in a variable."}, {"question": "In the Repository Pattern, how does the Repository usually get access to the database connection?", "options": ["It is passed into the constructor via dependency injection.", "It creates a new connection string inside every method.", "It inherits from the `MySqlConnection` class directly.", "It reads it directly from the Windows Registry."], "correct": 0, "hint": "Think about how the `CarRepository` was initialized in the source code examples."}, {"question": "What is the result of executing a `DELETE` statement with no `WHERE` clause?", "options": ["All records in the table will be permanently removed.", "No records will be deleted as a safety precaution.", "Only the first record in the table will be deleted.", "A syntax error will be thrown by the MySQL server."], "correct": 0, "hint": "Recall the 'Danger Zone' warning regarding the scope of modification commands."}, {"question": "Which of the following is a primary goal of 'Object-Oriented Database Access'?", "options": ["To interact with data using familiar programming concepts like objects and properties.", "To bypass the need for a database server entirely.", "To make SQL queries case-insensitive in C# strings.", "To reduce the amount of RAM required to run the application."], "correct": 0, "hint": "Think about why a developer would prefer `car.Price` over `reader.GetInt32(2)`."}, {"question": "What happens during 'Step 03: Add Parameters' in the provided INSERT code example?\n\ncmd.Parameters.AddWithValue(\"@name\", \"Ford\");", "options": ["The literal value \"Ford\" is bound to the placeholder `@name` to prevent injection.", "The table schema is updated to include a new column called `@name`.", "C# checks the database to see if a car named \"Ford\" already exists.", "The SQL string is modified to replace `@name` with the text `'Ford'`."], "correct": 0, "hint": "Think about the security mechanism that keeps data separate from instructions."}, {"question": "What is the typical return value of `ExecuteNonQuery()` for a `CREATE TABLE` command?", "options": ["0", "1", "The total number of columns in the new table.", "A null object."], "correct": 0, "hint": "Recall the note in the source regarding DDL commands and their 'affected row' count."}, {"question": "Which layer of a well-designed database application handles the logic of converting `MySqlDataReader` rows into C# objects?", "options": ["The Repository Class", "The Model Class", "The Main Program", "The MySQL Server"], "correct": 0, "hint": "Identify the class specifically designed to 'bridge' the gap between the database and model objects."}, {"question": "What does the `AUTO_INCREMENT` attribute do in a `CREATE TABLE` statement?", "options": ["It automatically generates a unique number for a column whenever a new row is added.", "It increases the size of the database file every time a query is run.", "It automatically updates the 'price' column based on inflation.", "It forces the application to reconnect to the database every 10 seconds."], "correct": 0, "hint": "This attribute is frequently paired with the `PRIMARY KEY` constraint."}, {"question": "Why is it recommended to use the `@` parameter syntax even for queries that don't involve user input?", "options": ["It promotes consistent coding patterns and handles data type conversion automatically.", "Because SQL queries will not execute in C# without at least one `@` symbol.", "It is required to allow the `using` statement to work correctly.", "It compresses the SQL string to reduce network latency."], "correct": 0, "hint": "Consider the benefits of 'Type Safety' and 'Best Practices'."}, {"question": "How many primary objects are involved in the 'Complete CRUD Flow' described in the source?", "options": ["6", "2", "10", "4"], "correct": 0, "hint": "Count the numbered steps in the 'Complete CRUD Flow' slide in Part 2."}, {"question": "Which of the following is true about the `MySql.Data.MySqlClient` namespace?", "options": ["It contains the key classes like `MySqlConnection` and `MySqlCommand` needed for database work.", "It is built directly into the core .NET library and doesn't require a NuGet package.", "It is used to connect to Microsoft SQL Server instead of MySQL.", "It is only compatible with C# and cannot be used with other .NET languages."], "correct": 0, "hint": "Think about where you find the classes used to build a connection."}, {"question": "What is the primary difference between `ExecuteReader()` and `ExecuteNonQuery()`?", "options": ["One returns a stream of data rows, while the other returns a simple integer count.", "One is used for local databases, and the other is for remote servers.", "One can only be used inside a `using` block, but the other cannot.", "One supports parameters, while the other requires raw string concatenation."], "correct": 0, "hint": "Focus on the type of data (or lack thereof) returned by each method."}, {"question": "In the following example, what does the variable `index` track?\n\nCar[] cars = new Car[100];\nint index = 0;\nwhile (reader.Read()) {\n    cars[index] = new Car { ... };\n    index++;\n}", "options": ["The current position in the array where the next `Car` object should be stored.", "The primary key ID of the car currently being read from the database.", "The total number of columns present in the database table.", "The memory address of the database connection object."], "correct": 0, "hint": "Consider how an array is populated one step at a time inside a loop."}]}];
+
+// per-quiz state, keyed by quiz index, persists while the page stays open
+const quizState = quizzes.map(q => ({
+  current: 0,
+  answers: q.questions.map(() => ({ selected: null, checked: false }))
+}));
+
+let activeQuizIndex = null;
+
+const menuScreen = document.getElementById('menuScreen');
+const quizScreen = document.getElementById('quizScreen');
+const topicGrid = document.getElementById('topicGrid');
+const homeBtn = document.getElementById('homeBtn');
+const quizHeading = document.getElementById('quizHeading');
+
+const questionText = document.getElementById('questionText');
+const optionsContainer = document.getElementById('optionsContainer');
+const feedback = document.getElementById('feedback');
+const feedbackTitle = document.getElementById('feedbackTitle');
+const feedbackHint = document.getElementById('feedbackHint');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const checkBtn = document.getElementById('checkBtn');
+const progressLabel = document.getElementById('progressLabel');
+const answeredLabel = document.getElementById('answeredLabel');
+const progressFill = document.getElementById('progressFill');
+const scoreLabel = document.getElementById('scoreLabel');
+
+function renderMenu() {
+  topicGrid.innerHTML = '';
+  quizzes.forEach((q, i) => {
+    const state = quizState[i];
+    const answeredCount = state.answers.filter(a => a.checked).length;
+    const btn = document.createElement('button');
+    btn.className = 'topic-card';
+    btn.innerHTML = `
+      <div class="topic-title">${i + 1}. ${q.topic}</div>
+      <div class="topic-desc">${q.description}</div>
+      <div class="topic-meta">${q.questions.length} questions${answeredCount ? ' — ' + answeredCount + '/' + q.questions.length + ' answered' : ''}</div>
+    `;
+    btn.addEventListener('click', () => openQuiz(i));
+    topicGrid.appendChild(btn);
+  });
+}
+
+function openQuiz(index) {
+  activeQuizIndex = index;
+  menuScreen.classList.add('hidden');
+  quizScreen.classList.remove('hidden');
+  quizHeading.textContent = quizzes[index].quizTitle;
+  renderQuestion();
+}
+
+function goHome() {
+  activeQuizIndex = null;
+  quizScreen.classList.add('hidden');
+  menuScreen.classList.remove('hidden');
+  renderMenu();
+}
+
+function renderQuestion() {
+  const quiz = quizzes[activeQuizIndex];
+  const state = quizState[activeQuizIndex];
+  const q = quiz.questions[state.current];
+  const s = state.answers[state.current];
+
+  questionText.textContent = q.question;
+  progressLabel.textContent = `Question ${state.current + 1} of ${quiz.questions.length}`;
+
+  const answeredCount = state.answers.filter(x => x.checked).length;
+  answeredLabel.textContent = `${answeredCount} answered`;
+  progressFill.style.width = `${((state.current + 1) / quiz.questions.length) * 100}%`;
+
+  optionsContainer.innerHTML = '';
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    if (s.checked) div.classList.add('locked');
+    if (s.selected === i && !s.checked) div.classList.add('selected');
+    if (s.checked) {
+      if (i === q.correct) div.classList.add('correct');
+      else if (i === s.selected) div.classList.add('incorrect');
+    }
+
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'option';
+    input.checked = s.selected === i;
+    input.disabled = s.checked;
+
+    const label = document.createElement('span');
+    label.textContent = opt;
+
+    div.appendChild(input);
+    div.appendChild(label);
+
+    if (!s.checked) {
+      div.addEventListener('click', () => {
+        s.selected = i;
+        renderQuestion();
+      });
+    }
+
+    optionsContainer.appendChild(div);
+  });
+
+  if (s.checked) {
+    const isCorrect = s.selected === q.correct;
+    feedback.classList.add('show');
+    feedback.classList.toggle('correct', isCorrect);
+    feedback.classList.toggle('incorrect', !isCorrect);
+    feedbackTitle.textContent = isCorrect ? '✅ Correct!' : `❌ Incorrect — correct answer: "${q.options[q.correct]}"`;
+    feedbackHint.textContent = q.hint;
+  } else {
+    feedback.classList.remove('show', 'correct', 'incorrect');
+  }
+
+  checkBtn.disabled = s.selected === null || s.checked;
+  checkBtn.textContent = s.checked ? 'Answer Checked' : 'Check Answer';
+  prevBtn.disabled = state.current === 0;
+  nextBtn.disabled = state.current === quiz.questions.length - 1;
+
+  if (answeredCount === quiz.questions.length) {
+    const correctCount = state.answers.filter((x, i) => x.selected === quiz.questions[i].correct).length;
+    scoreLabel.textContent = `Score: ${correctCount} / ${quiz.questions.length}`;
+  } else {
+    scoreLabel.textContent = '';
+  }
+}
+
+checkBtn.addEventListener('click', () => {
+  const state = quizState[activeQuizIndex];
+  const s = state.answers[state.current];
+  if (s.selected === null || s.checked) return;
+  s.checked = true;
+  renderQuestion();
+});
+
+prevBtn.addEventListener('click', () => {
+  const state = quizState[activeQuizIndex];
+  if (state.current > 0) {
+    state.current--;
+    renderQuestion();
+  }
+});
+
+nextBtn.addEventListener('click', () => {
+  const state = quizState[activeQuizIndex];
+  const quiz = quizzes[activeQuizIndex];
+  if (state.current < quiz.questions.length - 1) {
+    state.current++;
+    renderQuestion();
+  }
+});
+
+homeBtn.addEventListener('click', goHome);
+
+renderMenu();
+</script>
+</body>
+</html>

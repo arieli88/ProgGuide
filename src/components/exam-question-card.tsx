@@ -2,6 +2,7 @@
 
 import type { MultipleChoiceQuestion } from "@/types/course";
 import { CodeBlock } from "@/components/code-block";
+import { QuestionOptionText } from "@/components/question-option-text";
 import { Callout } from "@/components/callout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -70,7 +71,7 @@ export function ExamQuestionCard({
               )}
             >
               <span className="flex items-center justify-between gap-2">
-                <span>{opt.text}</span>
+                <QuestionOptionText text={opt.text} />
                 {revealed && isCorrect && (
                   <Badge className="shrink-0 bg-emerald-600">תשובה נכונה</Badge>
                 )}
@@ -81,7 +82,8 @@ export function ExamQuestionCard({
         {revealed && (
           <Callout type="tip" title="הסבר">
             <p className="mb-1">
-              <strong>תשובה נכונה:</strong> {correctOption?.text}
+              <strong>תשובה נכונה:</strong>{" "}
+              <QuestionOptionText text={correctOption?.text ?? ""} />
             </p>
             <p>{question.explanation}</p>
             {question.detailedExplanation && (

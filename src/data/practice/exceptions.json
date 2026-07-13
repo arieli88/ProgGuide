@@ -484,73 +484,73 @@
   ],
   "openQuestions": [
     {
-      "id": "exceptions-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o1",
+      "question": "מהי חריגה (exception)?",
+      "sampleAnswer": "שגיאה בזמן ריצה שמפריעה לזרימה הרגילה — ניתנת ללכידה ב-try/catch.",
+      "hint": "זמן ריצה",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o2",
+      "question": "מה תפקיד finally?",
+      "sampleAnswer": "בלוק שרץ תמיד אחרי try/catch — לסגירת משאבים וניקוי.",
+      "hint": "תמיד רץ",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o3",
+      "question": "למה Prefer ל-TryParse על Parse לקלט משתמש?",
+      "sampleAnswer": "TryParse מחזיר false בלי לזרוק; Parse זורק FormatException על קלט רע.",
+      "hint": "לא זורק",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o4",
+      "question": "מה הסדר הנכון של כמה catch?",
+      "sampleAnswer": "מהספציפי לכללי — אחרת ה-catch הכללי בולע הכל והספציפי לא יגיע.",
+      "hint": "ספציפי קודם",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o5",
+      "question": "תן דוגמה ל-IndexOutOfRangeException.",
+      "sampleAnswer": "גישה ל-arr[9] כשגודל המערך 9 (אינדקסים 0–8).",
+      "hint": "גבול מערך",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o6",
+      "question": "איך אימות קלט מונע חריגות?",
+      "sampleAnswer": "בודקים טווח/פורמט לפני פעולה מסוכנת — פחות כישלונות בריצה.",
+      "hint": "מניעה",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o7",
+      "question": "מה ההבדל בין שגיאת קומפילציה לחריגה?",
+      "sampleAnswer": "קומפילציה נתפסת לפני הרצה; חריגה קורית בזמן ריצה.",
+      "hint": "מתי",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o8",
+      "question": "מתי זורקים throw במתודה שלכם?",
+      "sampleAnswer": "כשמצב לא חוקי שאי אפשר לטפל בו מקומית — מעבירים לטיפול בשכבה מעל.",
+      "hint": "מצב לא חוקי",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o9",
+      "question": "הסבר NullReferenceException בקצרה.",
+      "sampleAnswer": "ניסיון לגשת לחבר של משתנה שערכו null — לא נוצר אובייקט.",
+      "hint": "null",
       "topicId": "exceptions"
     },
     {
-      "id": "exceptions-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "ex-o10",
+      "question": "למה לא לתפוס Exception באופן גורף בלי טיפול?",
+      "sampleAnswer": "מסתיר באגים; עדיף ללכוד סוגים צפויים ולטפל/לרשום בהתאם.",
+      "hint": "אל תבלעו הכל",
       "topicId": "exceptions"
     }
   ],

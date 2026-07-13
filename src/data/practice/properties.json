@@ -486,73 +486,73 @@
   ],
   "openQuestions": [
     {
-      "id": "properties-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o1",
+      "question": "מהי Property ב-C# ולמה עדיפה על שדה ציבורי?",
+      "sampleAnswer": "ממשק get/set עם לוגיקה אפשרית — שולטת בגישה בלי לחשוף את השדה עצמו.",
+      "hint": "שליטה",
       "topicId": "properties"
     },
     {
-      "id": "properties-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o2",
+      "question": "מהו backing field?",
+      "sampleAnswer": "שדה private שמחזיק את הערך האמיתי מאחורי ה-Property.",
+      "hint": "private",
       "topicId": "properties"
     },
     {
-      "id": "properties-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o3",
+      "question": "מה המילה value ב-set?",
+      "sampleAnswer": "הערך שהוקצה מימין לסימן = כשכותבים prop = x.",
+      "hint": "הערך המוקצה",
       "topicId": "properties"
     },
     {
-      "id": "properties-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o4",
+      "question": "איפה שמים validation ב-Property?",
+      "sampleAnswer": "בדרך כלל ב-set — לפני שמירת הערך ל-backing field.",
+      "hint": "set",
       "topicId": "properties"
     },
     {
-      "id": "properties-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o5",
+      "question": "מה עושה { get; set; }?",
+      "sampleAnswer": "Property אוטומטית עם שדה נסתר — קיצור כשאין לוגיקה מיוחדת.",
+      "hint": "auto-property",
       "topicId": "properties"
     },
     {
-      "id": "properties-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o6",
+      "question": "מתי משתמשים ב-private set?",
+      "sampleAnswer": "כשהקריאה מבחוץ מותרת, אבל שינוי הערך רק מתוך המחלקה.",
+      "hint": "קריאה בלבד מבחוץ",
       "topicId": "properties"
     },
     {
-      "id": "properties-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o7",
+      "question": "מה ההבדל בין Property למתודות GetX/SetX?",
+      "sampleAnswer": "Property מספקת תחביר של שדה (obj.Name = ...) עם שליטה של מתודה.",
+      "hint": "תחביר נוח",
       "topicId": "properties"
     },
     {
-      "id": "properties-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o8",
+      "question": "הסבר init או set חד-כיווני ברעיון הקורס.",
+      "sampleAnswer": "לעיתים רוצים לאפשר השמה בעיקר באתחול ולמנוע שינוי חופשי אחר כך.",
+      "hint": "הגבלה",
       "topicId": "properties"
     },
     {
-      "id": "properties-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o9",
+      "question": "למה לא לשים לוגיקה כבדה ב-get?",
+      "sampleAnswer": "כי נראה כמו קריאת שדה פשוטה — לוגיקה כבדה מבלבלת ופוגעת בביצועים/בהבנה.",
+      "hint": "פשטות",
       "topicId": "properties"
     },
     {
-      "id": "properties-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "prop-o10",
+      "question": "תן דוגמה מהקורס ל-Property עם אימות.",
+      "sampleAnswer": "Age או Balance — ב-set בודקים טווח חוקי ורק אז שומרים.",
+      "hint": "טווח ערכים",
       "topicId": "properties"
     }
   ],

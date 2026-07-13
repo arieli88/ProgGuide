@@ -205,6 +205,7 @@ export interface CourseIndex {
 
 export interface ExamQuestion extends MultipleChoiceQuestion {
   chapterIds: string[];
+  sourceFile?: string;
 }
 
 export interface UserProgress {

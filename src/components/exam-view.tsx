@@ -3,9 +3,11 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { ExamQuestion, ExamResult } from "@/types/course";
 import { getChapterTitle } from "@/lib/content";
 import { CodeBlock } from "@/components/code-block";
+import { QuestionOptionText } from "@/components/question-option-text";
 import { ExamQuestionCard } from "@/components/exam-question-card";
 import { ExamResultsSummary } from "@/components/exam-results-summary";
 import { Button } from "@/components/ui/button";
@@ -19,7 +21,7 @@ interface ExamViewProps {
 }
 
 export function ExamView({ questions, onComplete }: ExamViewProps) {
-  const shuffled = useMemo(() => [...questions].sort(() => Math.random() - 0.5).slice(0, 50), [questions]);
+  const shuffled = useMemo(() => [...questions].sort(() => Math.random() - 0.5), [questions]);
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -27,6 +29,8 @@ export function ExamView({ questions, onComplete }: ExamViewProps) {
   const [result, setResult] = useState<ExamResult | null>(null);
 
   const current = shuffled[index];
+  const answeredCount = Object.keys(answers).length;
+  const remainingCount = shuffled.length - answeredCount;
 
   const submit = () => {
     const details = shuffled.map((q) => {
@@ -37,7 +41,7 @@ export function ExamView({ questions, onComplete }: ExamViewProps) {
         correct,
         selectedId,
         correctId: q.correctId,
-        chapterId: q.chapterIds[0],
+        chapterId: q.chapterIds?.[0] || q.topicId,
       };
     });
     const score = details.filter((d) => d.correct).length;
@@ -71,8 +75,11 @@ export function ExamView({ questions, onComplete }: ExamViewProps) {
       <div className="mx-auto max-w-2xl px-6 py-16 text-center">
         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }}>
           <h1 className="mb-4 text-3xl font-bold">מבחן מסכם</h1>
-          <p className="mb-8 text-muted-foreground">
-            {shuffled.length} שאלות מעורבבות מכל נושאי הקורס · קלות, בינוניות וקשות
+          <p className="mb-4 text-muted-foreground">
+            {shuffled.length} שאלות מכל קבצי תיקיית «תרגול למבחן» (HTML + Word) — מעורבבות
+          </p>
+          <p className="mb-8 text-xs text-muted-foreground">
+            מקורות: מבחן 3.html · Quiz Hub.html · Practice_Exam.docx · מבחן לילך.docx
           </p>
           <Button size="lg" onClick={() => setStarted(true)} className="bg-gradient-to-l from-violet-600 to-indigo-600">
             התחלת מבחן
@@ -98,9 +105,14 @@ export function ExamView({ questions, onComplete }: ExamViewProps) {
               return (
                 <Card key={d.questionId} className="border-red-500/20">
                   <CardContent className="pt-4 text-sm">
+                    {q.sourceFile && (
+                      <p className="mb-1 text-[11px] text-muted-foreground">מקור: {q.sourceFile}</p>
+                    )}
                     <p className="mb-2 font-medium whitespace-pre-line">{q.question}</p>
                     {q.code && <CodeBlock code={q.code} compact />}
-                    <p className="mb-1 text-emerald-600">תשובה נכונה: {correctText}</p>
+                    <p className="mb-1 text-emerald-600">
+                      תשובה נכונה: <QuestionOptionText text={correctText ?? ""} />
+                    </p>
                     <p className="text-muted-foreground">{q.explanation}</p>
                     {q.detailedExplanation && (
                       <p className="mt-2 whitespace-pre-line rounded-lg bg-muted/40 p-2 text-muted-foreground">
@@ -134,11 +146,20 @@ export function ExamView({ questions, onComplete }: ExamViewProps) {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-8">
-      <div className="mb-4 flex justify-between text-sm text-muted-foreground">
-        <span>שאלה {index + 1} / {shuffled.length}</span>
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+        <span>
+          שאלה {index + 1} / {shuffled.length}
+        </span>
+        <span className="text-xs">
+          נענו {answeredCount} · נשארו {remainingCount}
+        </span>
         <Badge variant="outline">{current.difficulty}</Badge>
       </div>
-      <Progress value={((index + 1) / shuffled.length) * 100} className="mb-6 h-2" />
+      <Progress value={(answeredCount / shuffled.length) * 100} className="mb-4 h-2" />
+
+      {current.sourceFile && (
+        <p className="mb-2 text-[11px] text-muted-foreground">מקור: {current.sourceFile}</p>
+      )}
 
       <ExamQuestionCard
         question={current}
@@ -151,18 +172,27 @@ export function ExamView({ questions, onComplete }: ExamViewProps) {
 
       <div className="mt-6 flex gap-2">
         <Button variant="outline" disabled={index === 0} onClick={() => setIndex((i) => i - 1)}>
+          <ArrowRight className="ml-1 h-4 w-4" />
           הקודם
         </Button>
         {index < shuffled.length - 1 ? (
-          <Button className="flex-1" disabled={!answers[current.id]} onClick={() => setIndex((i) => i + 1)}>
+          <Button className="flex-1" onClick={() => setIndex((i) => i + 1)}>
             הבא
+            <ArrowLeft className="mr-1 h-4 w-4" />
           </Button>
         ) : (
-          <Button className="flex-1" disabled={Object.keys(answers).length < shuffled.length} onClick={submit}>
+          <Button
+            className="flex-1"
+            disabled={answeredCount < shuffled.length}
+            onClick={submit}
+          >
             סיום וציון
           </Button>
         )}
       </div>
+      <p className="mt-3 text-center text-xs text-muted-foreground">
+        אפשר לדפדף בין השאלות בחופשיות. לסיום יש לענות על כל השאלות ({remainingCount} נותרו).
+      </p>
     </div>
   );
 }

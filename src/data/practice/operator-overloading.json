@@ -690,73 +690,73 @@
   ],
   "openQuestions": [
     {
-      "id": "operator-overloading-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o1",
+      "question": "מהם התנאים להעמסת אופרטור ב-C#?",
+      "sampleAnswer": "מתודה public static עם המילה operator וטיפוסי פרמטרים מתאימים.",
+      "hint": "public static",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o2",
+      "question": "למה מעמיסים == יחד עם !=?",
+      "sampleAnswer": "כדי לשמור עקביות לוגית — אם מגדירים שוויון חייבים גם אי-שוויון.",
+      "hint": "זוגות",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o3",
+      "question": "למה משתמשים ב-ReferenceEquals בבדיקת null?",
+      "sampleAnswer": "כדי להשוות זהות הפניה בלי לקרוא שוב ל-== המועמס (שעלול לגרום ללולאה).",
+      "hint": "null בטוח",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o4",
+      "question": "מה הקשר בין == ל-GetHashCode?",
+      "sampleAnswer": "אם שני אובייקטים שווים ב-==, רצוי שיהיה להם אותו GetHashCode לאוספים.",
+      "hint": "עקביות",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o5",
+      "question": "האם מותר לשנות את האופרנדים בתוך operator +?",
+      "sampleAnswer": "לא מומלץ/לא best practice — עדיף להחזיר אובייקט חדש עם התוצאה.",
+      "hint": "אובייקט חדש",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o6",
+      "question": "אילו אופרטורים אי אפשר להעמיס?",
+      "sampleAnswer": "למשל נקודה (.) והשמה הרגילה — לא כל התחביר של השפה ניתן להעמסה.",
+      "hint": ". ו-",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o7",
+      "question": "תן דוגמה שימושית להעמסת +.",
+      "sampleAnswer": "חיבור שני וקטורים/כספים שמחזיר מופע חדש עם הסכום.",
+      "hint": "ערך חדש",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o8",
+      "question": "מתי להעמיס אופרטורים בכלל?",
+      "sampleAnswer": "כשהפעולה טבעית וברורה לקורא הקוד — לא רק כדי לקצר שורה.",
+      "hint": "משמעות ברורה",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o9",
+      "question": "הסבר העמסת אופרטור המרה בקצרה.",
+      "sampleAnswer": "מאפשרת המרה מפורשת/מרומזת בין טיפוסים שיצרתם, לפי חוקי הבטיחות שתבחרו.",
+      "hint": "conversion",
       "topicId": "operator-overloading"
     },
     {
-      "id": "operator-overloading-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "op-o10",
+      "question": "מה הסיכון בהעמסת == בלי זהירות עם null?",
+      "sampleAnswer": "קריאה רקורסיבית או NullReferenceException אם לא בודקים הפניות קודם.",
+      "hint": "null",
       "topicId": "operator-overloading"
     }
   ],

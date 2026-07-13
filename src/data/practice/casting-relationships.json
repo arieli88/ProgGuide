@@ -484,73 +484,73 @@
   ],
   "openQuestions": [
     {
-      "id": "casting-relationships-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o1",
+      "question": "מהו Upcast ולמה הוא בטוח?",
+      "sampleAnswer": "המרה מיורש לבסיס (Dog→Pet) — תמיד חוקית כי כל Dog הוא Pet.",
+      "hint": "IS-A",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o2",
+      "question": "מהו Downcast ומתי הוא מסוכן?",
+      "sampleAnswer": "המרה מבסיס ליורש — עלולה להיכשל בזמן ריצה אם האובייקט אינו מהסוג המבוקש.",
+      "hint": "InvalidCast",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o3",
+      "question": "מה ההבדל בין is ל-as?",
+      "sampleAnswer": "is מחזיר bool; as מחזיר את האובייקט או null אם ההמרה לא אפשרית.",
+      "hint": "בדיקה מול המרה",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o4",
+      "question": "מתי בודקים is לפני cast?",
+      "sampleAnswer": "לפני downcast מפורש — כדי להימנע מחריגה כשהסוג לא מתאים.",
+      "hint": "בטיחות",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o5",
+      "question": "מה יחזיד as כשההמרה נכשלת?",
+      "sampleAnswer": "null — בלי לזרוק חריגה (בניגוד ל-cast מפורש).",
+      "hint": "null",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o6",
+      "question": "הסבר: A obj = new B(); מה בודק obj is B?",
+      "sampleAnswer": "true — כי האובייקט בפועל הוא B, גם אם המשתנה מטיפוס A.",
+      "hint": "טיפוס ריצה",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o7",
+      "question": "מה הקשר בין casting לפולימורפיזם?",
+      "sampleAnswer": "לרוב עובדים עם טיפוס בסיס; רק כשצריך יכולת ייחודית — בודקים ומבצעים downcast.",
+      "hint": "מתי לרדת",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o8",
+      "question": "תן דוגמה לשימוש ב-is בפרויקט ספרייה.",
+      "sampleAnswer": "בדוחות: if (book is AudioBook a) — כדי לטפל רק בספרי אודיו.",
+      "hint": "דוחות",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o9",
+      "question": "מה ההבדל המרכזי בין המרת ערכים ((int)x) ל-cast בין מחלקות?",
+      "sampleAnswer": "בין ערכים — המרת טיפוס פרימיטיבי; בין מחלקות — בדיקת יחס ירושה בזמן ריצה.",
+      "hint": "פרימיטיבי מול OOP",
       "topicId": "casting-relationships"
     },
     {
-      "id": "casting-relationships-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "cast-o10",
+      "question": "למה Upcast לא דורש בדיקה?",
+      "sampleAnswer": "כי לפי ירושה כל מופע של היורש הוא בהכרח מהטיפוס של הבסיס.",
+      "hint": "תמיד חוקי",
       "topicId": "casting-relationships"
     }
   ],

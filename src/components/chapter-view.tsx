@@ -50,12 +50,21 @@ export function ChapterView({ chapter, prev, next, onComplete, isCompleted }: Ch
         </BreadcrumbList>
       </Breadcrumb>
 
-      <div className="mb-8">
-        <Badge variant="outline" className="mb-3">
-          פרק {chapter.order} · ~{chapter.estimatedMinutes} דקות
-        </Badge>
-        <h1 className="mb-2 text-3xl font-bold tracking-tight">{chapter.title}</h1>
-        <p className="text-lg text-muted-foreground">{chapter.subtitle}</p>
+      <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <Badge variant="outline" className="mb-3">
+            פרק {chapter.order} · ~{chapter.estimatedMinutes} דקות
+          </Badge>
+          <h1 className="mb-2 text-3xl font-bold tracking-tight">{chapter.title}</h1>
+          <p className="text-lg text-muted-foreground">{chapter.subtitle}</p>
+        </div>
+        <LinkButton
+          href={`/practice/${chapter.id}`}
+          className="shrink-0 bg-gradient-to-l from-violet-600 to-indigo-600"
+        >
+          <Dumbbell className="ml-1 h-4 w-4" />
+          תרגול מבחן
+        </LinkButton>
       </div>
 
       <Tabs defaultValue="lesson" className="mb-8">
@@ -260,7 +269,7 @@ export function ChapterView({ chapter, prev, next, onComplete, isCompleted }: Ch
         <div className="flex gap-2">
           <LinkButton href={`/practice/${chapter.id}`} variant="secondary">
             <Dumbbell className="ml-1 h-4 w-4" />
-            תרגול
+            תרגול מבחן
           </LinkButton>
           {!isCompleted && onComplete && (
             <Button onClick={onComplete} className="bg-gradient-to-l from-violet-600 to-indigo-600">

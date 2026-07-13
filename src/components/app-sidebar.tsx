@@ -35,7 +35,7 @@ export function AppSidebar({ completedChapters = [], onNavigate }: AppSidebarPro
   })).filter((m) => m.chapters.length > 0);
 
   return (
-    <aside className="flex h-full w-full max-w-full flex-col overflow-hidden border-l border-border/60 bg-card/40 backdrop-blur-xl lg:w-72">
+    <aside className="flex h-full w-72 max-w-[85vw] flex-col overflow-hidden border-l border-border/60 bg-card/40 backdrop-blur-xl">
       <div className="shrink-0 border-b border-border/60 p-4">
         <div className="mb-3 flex items-center justify-between">
           <div className="flex items-center gap-2">

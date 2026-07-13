@@ -484,73 +484,73 @@
   ],
   "openQuestions": [
     {
-      "id": "inheritance-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o1",
+      "question": "מהי ירושה ב-C# ומה התחביר?",
+      "sampleAnswer": "מחלקה יורשת מקבלת שדות ומתודות מהבסיס: class Dog : Pet — יחס IS-A.",
+      "hint": "Derived : Base",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o2",
+      "question": "למה בנאי לא יורש?",
+      "sampleAnswer": "כל מחלקה צריכה לאתחל את עצמה; היורש קורא ל-base(...) ואז מאתחל את השדות שלו.",
+      "hint": "base()",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o3",
+      "question": "מה תפקיד protected?",
+      "sampleAnswer": "נגיש במחלקה עצמה וביורשים, אבל לא מבחוץ כמו public.",
+      "hint": "ליורשים",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o4",
+      "question": "הסבר ירושה יחידה ב-C#.",
+      "sampleAnswer": "מחלקה יכולה לרשת ממחלקה אחת בלבד; לממשקים מרובים משתמשים ב-interface.",
+      "hint": "מחלקה אחת",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o5",
+      "question": "מה הסדר בקריאת בנאים בירושה?",
+      "sampleAnswer": "קודם בנאי הבסיס (דרך base או ברירת מחדל), ואז גוף בנאי היורש.",
+      "hint": "מלמעלה למטה",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o6",
+      "question": "מה ההבדל בין IS-A ל-HAS-A?",
+      "sampleAnswer": "IS-A הוא ירושה (Dog הוא Pet); HAS-A הוא הרכבה (Car יש לו Engine כשדה).",
+      "hint": "ירושה מול הרכבה",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o7",
+      "question": "למה ירושה מקדמת DRY?",
+      "sampleAnswer": "קוד משותף נשאר בבסיס במקום לשכפל בכל יורש.",
+      "hint": "שימוש חוזר",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o8",
+      "question": "תן דוגמה מהקורס לירושה.",
+      "sampleAnswer": "PhysicalBook : Book או Dog : Pet — היורש מוסיף שדות/התנהגות ייחודית.",
+      "hint": "Book / Pet",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o9",
+      "question": "מה עושה base.Method()?",
+      "sampleAnswer": "קורא למימוש של המתודה במחלקת הבסיס מתוך היורש.",
+      "hint": "קריאה לבסיס",
       "topicId": "inheritance"
     },
     {
-      "id": "inheritance-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "inh-o10",
+      "question": "האם שדות private של הבסיס נגישים ביורש?",
+      "sampleAnswer": "לא ישירות — רק דרך public/protected או מתודות של הבסיס.",
+      "hint": "private לא יורש גישה",
       "topicId": "inheritance"
     }
   ],

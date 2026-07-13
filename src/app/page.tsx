@@ -3,12 +3,19 @@ import { ArrowLeft, BookOpen, GraduationCap, Sparkles, Target, Zap } from "lucid
 import { LinkButton } from "@/components/link-button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getAllChapters, getCourseIndex } from "@/lib/content";
+import {
+  getAllChallengeQuestions,
+  getAllChapters,
+  getCourseIndex,
+  getFinalExamQuestions,
+} from "@/lib/content";
 import { HomeProgress } from "@/components/home-progress";
 
 export default function HomePage() {
   const course = getCourseIndex();
   const chapters = getAllChapters();
+  const examCount = getFinalExamQuestions().length;
+  const challengeCount = getAllChallengeQuestions().length;
 
   return (
     <div className="mx-auto max-w-5xl px-6 py-10">
@@ -40,7 +47,7 @@ export default function HomePage() {
               <Badge className="mb-3 bg-amber-600/90">אתגר הסופי</Badge>
               <h2 className="mb-2 text-2xl font-bold">כל השאלות — מקום אחד</h2>
               <p className="max-w-xl text-muted-foreground">
-                מעל מאה שאלות מעורבבות מכל הפרקים, תרגולי המבחן ומבחן 3 — עם הסברים מפורטים, מושגים מובנים וניווט קדימה/אחורה.
+                {challengeCount} שאלות אמריקאיות מכל פרקי הקורס — מעורבבות, עם הסברים וניווט קדימה/אחורה.
               </p>
             </div>
             <LinkButton href="/final-challenge" size="lg" className="shrink-0 bg-gradient-to-l from-amber-600 to-orange-600">
@@ -92,7 +99,7 @@ export default function HomePage() {
         {[
           { icon: Target, title: "מבוסס על הקורס", desc: "תוכן מנוסח מחדש לפי המצגות, התרגולים והמבחנים" },
           { icon: Zap, title: "תרגול אינטראקטיבי", desc: "שאלות אמריקאיות, פתוחות ותרגילי קוד לכל פרק" },
-          { icon: GraduationCap, title: "מבחן מסכם", desc: "50 שאלות עם ציון, ניתוח חולשות וקישורים לחומר" },
+          { icon: GraduationCap, title: "מבחן מסכם", desc: `${examCount} שאלות מתיקיית תרגול למבחן (HTML + Word) עם ציון וניתוח חולשות` },
         ].map(({ icon: Icon, title, desc }) => (
           <Card key={title} className="border-border/60 bg-card/50 backdrop-blur-sm">
             <CardContent className="pt-6">

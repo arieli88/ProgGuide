@@ -484,73 +484,73 @@
   ],
   "openQuestions": [
     {
-      "id": "library-project-o1",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 1).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o1",
+      "question": "מה המבנה הכללי של פרויקט הספרייה?",
+      "sampleAnswer": "מחלקת Book והיורשים, Library שמנהלת אוסף, ו-Program/תפריט להפעלה.",
+      "hint": "Book / Library",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o2",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 2).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o2",
+      "question": "איך PhysicalBook משנה AvailableCopies ב-Borrow?",
+      "sampleAnswer": "מפחית עותקים זמינים כשיש מלאי; לא נותן לרדת מתחת לאפס.",
+      "hint": "עותקים",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o3",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 3).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o3",
+      "question": "למה משתמשים במערך פולימורפי Book[]?",
+      "sampleAnswer": "לאחסן סוגי ספרים שונים תחת טיפוס בסיס אחד ולקרוא ל-Borrow/דוחות באופן אחיד.",
+      "hint": "פולימורפיזם",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o4",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 4).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o4",
+      "question": "מה ההבדל בין BookCount ל-Length של המערך?",
+      "sampleAnswer": "BookCount סופר ספרים פעילים/תקינים; Length הוא גודל המערך כולל מקומות ריקים אם יש.",
+      "hint": "ספירה לוגית",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o5",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 5).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o5",
+      "question": "איך דוחות משתמשים ב-is?",
+      "sampleAnswer": "מזהים AudioBook/DigitalBook וכו' כדי להציג מידע ייחודי אחרי בדיקת סוג.",
+      "hint": "downcast בטוח",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o6",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 6).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o6",
+      "question": "מה תפקיד התפריט ב-Main?",
+      "sampleAnswer": "מציג אפשרויות, קורא קלט מהמשתמש, ומפעיל פעולות על Library.",
+      "hint": "UI קונסול",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o7",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 7).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o7",
+      "question": "הסבר virtual Borrow בפרויקט.",
+      "sampleAnswer": "בבסיס התנהגות כללית; ביורשים (Physical) override לפי כללי עותקים.",
+      "hint": "override",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o8",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 8).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o8",
+      "question": "אילו עקרונות OOP מתחברים בפרויקט?",
+      "sampleAnswer": "ירושה, פולימורפיזם, אינקפסולציה, ולרוב גם casting בדוחות.",
+      "hint": "סיכום הקורס",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o9",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 9).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o9",
+      "question": "מה בודקים לפני הוספת ספר?",
+      "sampleAnswer": "מקום פנוי במערך/אוסף, קלט תקין, וסוג הספר המתאים ליצירה.",
+      "hint": "הוספה",
       "topicId": "library-project"
     },
     {
-      "id": "library-project-o10",
-      "question": "הסבר במילים שלך נקודה מרכזית מפרק זה (שאלה 10).",
-      "sampleAnswer": "תשובה לדוגמה בהתאם לחומר הקורס.",
-      "hint": "השתמשו בדוגמאות מהתרגול",
+      "id": "lib-o10",
+      "question": "למה הפרויקט טוב כהכנה למבחן?",
+      "sampleAnswer": "מחבר את כל הנושאים בדוגמה אחת שבה רואים קוד עובד מקצה לקצה.",
+      "hint": "אינטגרציה",
       "topicId": "library-project"
     }
   ],
